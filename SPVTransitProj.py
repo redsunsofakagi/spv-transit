@@ -23,75 +23,109 @@ def permission():
     elif str(user.get())=='ATTEN':
         userbox.delete(0, len(str(userbox.get())))
         userbox.insert(END, '#Name of Attendant')
-    elif str(user.get())=='ADMIN':
-        userbox.delete(0, len(str(userbox.get())))
-        userbox.insert(END, '#Admin Username')
+    #elif str(user.get())=='ADMIN':
+        #userbox.delete(0, len(str(userbox.get())))
+        #userbox.insert(END, '#Admin Username')
 def linked():
     #code for connecting databases and verification if the data inputted by the user matches up with the record stored in the tables.
-    canvas.delete("all")
-    canvas.create_window(350,100, window=tableselect)
-    canvas.pack()
-    canvas.create_window(260,150, window=PV)
-    canvas.pack()
-    if str(user.get())=='STUPAR':
-        canvas.create_window(260,200, window=lengthlabel)
+    if str(user.get()) in ['STUPAR', 'ATTEN']: #and other conditions as verification
+        canvas.delete("all")
+        canvas.create_window(260,80, window=tableselect)
+        canvas.pack()
+        canvas.create_window(260,130, window=PV)
+        canvas.pack()
+        canvas.create_window(260,180, window=lengthlabel)
         canvas.pack()
         lengthbox.insert(END, '#value from table')
         lengthbox['state']='disabled'
-        canvas.create_window(260,220, window=lengthbox)
+        canvas.create_window(260,200, window=lengthbox)
         canvas.pack()
-        canvas.create_window(260,260, window=stopslabel)
+        canvas.create_window(260,240, window=stopslabel)
         canvas.pack()
         stopsbox.insert(END, '#value from table')
         stopsbox['state']='disabled'
-        canvas.create_window(260,280, window=stopsbox)
+        canvas.create_window(260,260, window=stopsbox)
         canvas.pack()
-        canvas.create_window(260,320, window=capacitylabel)
+        canvas.create_window(260,300, window=capacitylabel)
         canvas.pack()
         capacitybox.insert(END, '#value from table')
         capacitybox['state']='disabled'
-        canvas.create_window(260,340, window=capacitybox)
+        canvas.create_window(260,320, window=capacitybox)
         canvas.pack()
-        canvas.create_window(500,200, window=attendantlabel)
+        canvas.create_window(500,180, window=attendantlabel)
         canvas.pack()
         attendantbox.insert(END, '#value from table')
         attendantbox['state']='disabled'
-        canvas.create_window(500,220, window=attendantbox)
+        canvas.create_window(500,200, window=attendantbox)
         canvas.pack()
-        canvas.create_window(500,260, window=driverlabel)
+        canvas.create_window(500,240, window=driverlabel)
         canvas.pack()
         driverbox.insert(END, '#value from table')
         driverbox['state']='disabled'
-        canvas.create_window(500,280, window=driverbox)
+        canvas.create_window(500,260, window=driverbox)
         canvas.pack()
-        canvas.create_window(500,320, window=conductorlabel)
+        canvas.create_window(500,300, window=conductorlabel)
         canvas.pack()
         conductorbox.insert(END, '#value from table')
         conductorbox['state']='disabled'
-        canvas.create_window(500,340, window=conductorbox)
+        canvas.create_window(500,320, window=conductorbox)
         canvas.pack()
-        canvas.create_window(650,200, window=attenconlabel)
+        canvas.create_window(650,180, window=attenconlabel)
         canvas.pack()
         attenconbox.insert(END, '#value from table')
         attenconbox['state']='disabled'
-        canvas.create_window(650,220, window=attenconbox)
+        canvas.create_window(650,200, window=attenconbox)
         canvas.pack()
-        canvas.create_window(650,260, window=driverconlabel)
+        canvas.create_window(650,240, window=driverconlabel)
         canvas.pack()
         driverconbox.insert(END, '#value from table')
         driverconbox['state']='disabled'
-        canvas.create_window(650,280, window=driverconbox)
+        canvas.create_window(650,260, window=driverconbox)
         canvas.pack()
-        canvas.create_window(650,320, window=conconlabel)
+        canvas.create_window(650,300, window=conconlabel)
         canvas.pack()
         conconbox.insert(END, '#value from table')
         conconbox['state']='disabled'
-        canvas.create_window(650,340, window=conconbox)
+        canvas.create_window(650,320, window=conconbox)
         canvas.pack()
+        if str(user.get()) == 'STUPAR':
+            canvas.create_window(260,370, window=PASSENGER)
+            canvas.pack()
+            canvas.create_window(260,420, window=passidlabel)
+            canvas.pack()
+            passidbox.insert(END, '#value from table')
+            passidbox['state']='disabled'
+            canvas.create_window(260,450, window=passidbox)
+            canvas.pack()
+            canvas.create_window(260,490, window=namelabel)
+            canvas.pack()
+            namebox.insert(END, '#value from table')
+            namebox['state']='disabled'
+            canvas.create_window(260,510, window=namebox)
+            canvas.pack()
+            canvas.create_window(260,550, window=passpwdlabel)
+            canvas.pack()
+            passpwdbox.insert(END, '#value from table')
+            passpwdbox['state']='disabled'
+            canvas.create_window(260,570, window=passpwdbox)
+            canvas.pack()
+            canvas.create_window(260,610, window=phonelabel)
+            canvas.pack()
+            phonebox.insert(END, '#value from table')
+            phonebox['state']='disabled'
+            canvas.create_window(260,630, window=phonebox)
+            canvas.pack()
+        canvas.create_window(400,80, window=button2)
 def routechange(event):
     PV['text']=str(table.get())
     canvas.update()
     canvas.pack()
+def edit():
+    button2['state']='disabed'
+    if str(user.get()) == 'STUPAR':
+        namebox['state']='normal'
+        passpwdbox['state']='normal'
+        phonebox['state']='normal'
 ########
 canvas=Canvas(root, width=scr_w, height=scr_h, bg='white')
 logoimg=PhotoImage(file='logoimage.png')
@@ -107,9 +141,9 @@ canvas.pack()
 atten=tk.Radiobutton(canvas, text='An Attendant', font=('Courier New',11),variable=user, value='ATTEN', bg='white', command=permission)
 canvas.create_window(222,500, window=atten)
 canvas.pack()
-admin=tk.Radiobutton(canvas, text='An Administrator', font=('Courier New',11),variable=user, value='ADMIN', bg='white', command=permission)
-canvas.create_window(240,520, window=admin)
-canvas.pack()
+#admin=tk.Radiobutton(canvas, text='An Administrator', font=('Courier New',11),variable=user, value='ADMIN', bg='white', command=permission)
+#canvas.create_window(240,520, window=admin)
+#canvas.pack()
 uname=StringVar()
 passwd=StringVar()
 userlabel=ttk.Label(canvas, text="<Username:>", font=('Courier New',10), background='white')
@@ -188,6 +222,7 @@ routebox=ttk.Entry(canvas, textvariable=route, font=('Courier New',9))
 stoplabel=ttk.Label(canvas, text='Stop', font=('Courier New',11), background='white')
 stop=StringVar()
 stopbox=ttk.Entry(canvas, textvariable=stop, font=('Courier New',9))
+button2=ttk.Button(canvas, text='🖉', command=edit) 
 ########
 root.mainloop()
 
