@@ -115,17 +115,63 @@ def linked():
             phonebox['state']='disabled'
             canvas.create_window(260,630, window=phonebox)
             canvas.pack()
-        canvas.create_window(400,80, window=button2)
+            canvas.create_window(500,420, window=routelabel)
+            canvas.pack()
+            routebox.insert(END, '#value from table')
+            routebox['state']='disabled'
+            canvas.create_window(500,450, window=routebox)
+            canvas.pack()
+            canvas.create_window(500,490, window=stoplabel)
+            canvas.pack()
+            stopbox.insert(END, '#value from table')
+            stopbox['state']='disabled'
+            canvas.create_window(500,510, window=stopbox)
+            canvas.pack()
+        canvas.create_window(540,80, window=button2)
+        canvas.create_window(615,80, window=button3)
 def routechange(event):
     PV['text']=str(table.get())
     canvas.update()
     canvas.pack()
 def edit():
-    button2['state']='disabed'
+    button2['state']='disabled'
     if str(user.get()) == 'STUPAR':
         namebox['state']='normal'
         passpwdbox['state']='normal'
         phonebox['state']='normal'
+        routebox['state']='normal'
+        stopbox['state']='normal'
+    elif str(user.get()) == 'ATTEN':
+        lengthbox['state']='normal'
+        stopsbox['state']='normal'
+        capacitybox['state']='normal'
+        attendantbox['state']='normal'
+        driverbox['state']='normal'
+        conductorbox['state']='normal'
+        attenconbox['state']='normal'
+        driverconbox['state']='normal'
+        conconbox['state']='normal'
+    button3['state']='normal'
+def saveload():
+    button3['state']='disabled'
+    #will commit and push changes to main database, then pulls it again
+    if str(user.get()) == 'STUPAR':
+        namebox['state']='disabled'
+        passpwdbox['state']='disabled'
+        phonebox['state']='disabled'
+        routebox['state']='disabled'
+        stopbox['state']='disabled'
+    elif str(user.get()) == 'ATTEN':
+        lengthbox['state']='disabled'
+        stopsbox['state']='disabled'
+        capacitybox['state']='disabled'
+        attendantbox['state']='disabled'
+        driverbox['state']='disabled'
+        conductorbox['state']='disabled'
+        attenconbox['state']='disabled'
+        driverconbox['state']='disabled'
+        conconbox['state']='disabled'
+    button2['state']='normal'
 ########
 canvas=Canvas(root, width=scr_w, height=scr_h, bg='white')
 logoimg=PhotoImage(file='logoimage.png')
@@ -222,7 +268,8 @@ routebox=ttk.Entry(canvas, textvariable=route, font=('Courier New',9))
 stoplabel=ttk.Label(canvas, text='Stop', font=('Courier New',11), background='white')
 stop=StringVar()
 stopbox=ttk.Entry(canvas, textvariable=stop, font=('Courier New',9))
-button2=ttk.Button(canvas, text='🖉', command=edit) 
+button2=ttk.Button(canvas, text='🖉', command=edit)
+button3=ttk.Button(canvas, text='💾', command=saveload, state='disabled')
 ########
 root.mainloop()
 
