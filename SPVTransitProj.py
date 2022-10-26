@@ -19,7 +19,7 @@ root.geometry(str(scr_w)+'x'+str(scr_h))
 def permission():
     if str(user.get())=='STUPAR':
         userbox.delete(0, len(str(userbox.get())))
-        userbox.insert(END, '#Name of Parent')
+        userbox.insert(END, '#Name of Passenger')
     elif str(user.get())=='ATTEN':
         userbox.delete(0, len(str(userbox.get())))
         userbox.insert(END, '#Name of Attendant')
@@ -28,7 +28,7 @@ def permission():
         #userbox.insert(END, '#Admin Username')
 def linked():
     #code for connecting databases and verification if the data inputted by the user matches up with the record stored in the tables.
-    if str(user.get()) in ['STUPAR', 'ATTEN']: #and other conditions as verification
+    if str(user.get()) in ['STUPAR', 'ATTEN']  and str(passbox.get())!='' and str(userbox.get()) not in ['#Name of Passenger','#Name of Attendant']: #and other conditions as verification
         canvas.delete("all")
         canvas.create_window(260,80, window=tableselect)
         canvas.pack()
@@ -128,7 +128,11 @@ def linked():
             canvas.create_window(500,510, window=stopbox)
             canvas.pack()
         canvas.create_window(540,80, window=button2)
+        canvas.pack()
         canvas.create_window(615,80, window=button3)
+        canvas.pack()
+        canvas.create_window(1000,280, window=map_widget)
+        canvas.pack()
 def routechange(event):
     PV['text']=str(table.get())
     canvas.update()
@@ -154,7 +158,7 @@ def edit():
     button3['state']='normal'
 def saveload():
     button3['state']='disabled'
-    #will commit and push changes to main database, then pulls it again
+    #will commit and push changes to main database, then pull it again
     if str(user.get()) == 'STUPAR':
         namebox['state']='disabled'
         passpwdbox['state']='disabled'
@@ -270,6 +274,8 @@ stop=StringVar()
 stopbox=ttk.Entry(canvas, textvariable=stop, font=('Courier New',9))
 button2=ttk.Button(canvas, text='🖉', command=edit)
 button3=ttk.Button(canvas, text='💾', command=saveload, state='disabled')
+map_widget=tmap.TkinterMapView(canvas, width=400, height=400, corner_radius=0)
+map_widget.set_position(28.597055209685127, 77.2266516760437)
+map_widget.set_zoom(12)
 ########
 root.mainloop()
-
