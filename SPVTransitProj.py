@@ -27,7 +27,7 @@ def permission(): #Generates prompt to input in username entry widget.
         #userbox.delete(0, len(str(userbox.get())))
         #userbox.insert(END, '#Admin Username')
         
-def linked():
+def linked(): #moves the user to the data screen
     #code for connecting databases and verification if the data inputted by the user matches up with the record stored in the tables.
     
     if str(user.get()) in ['STUPAR', 'ATTEN']  and str(passbox.get())!='' and str(userbox.get()) not in ['#Name of Passenger','#Name of Attendant']:
@@ -162,8 +162,13 @@ def linked():
             canvas.create_window(500,510, window=stopbox)
             canvas.pack()
 
-def routechange(event):
+
+def routechange(event): #updates to new route. command for combobox. currently ready for routes 1,9 and 20
+    global pv1, pv9, pv20
     PV['text']=str(table.get())
+    pv1.delete()
+    pv9.delete()
+    pv20.delete()
     if str(table.get())[3::]=='1':
         pv1= map_widget.set_path([saketj.position,saketh.position,gyan.position,shivalik.position,malv1.position,sarv.position,swami.position,tito.position,sadiq.position,hudco.position,andrew.position,spv.position])
     elif str(table.get())[3::]=='9':
@@ -176,15 +181,17 @@ def routechange(event):
     canvas.pack()
 
     
-def edit():
+def edit(): #allows user to edit respective data by enabling the disabled entry boxes
     button2['state']='disabled'
-    if str(user.get()) == 'STUPAR':
+    
+    if str(user.get()) == 'STUPAR': #passenger can only edit their own data
         namebox['state']='normal'
         passpwdbox['state']='normal'
         phonebox['state']='normal'
         routebox['state']='normal'
         stopbox['state']='normal'
-    elif str(user.get()) == 'ATTEN':
+        
+    elif str(user.get()) == 'ATTEN': #attendant can edit some data from routes
         lengthbox['state']='normal'
         stopsbox['state']='normal'
         capacitybox['state']='normal'
@@ -194,17 +201,23 @@ def edit():
         attenconbox['state']='normal'
         driverconbox['state']='normal'
         conconbox['state']='normal'
+        
     button3['state']='normal'
-def saveload():
+    
+def saveload(): #will commit and push changes to main database, then pull it again
+    
+    #code to save and load
+    
     button3['state']='disabled'
-    #will commit and push changes to main database, then pull it again
-    if str(user.get()) == 'STUPAR':
+    
+    if str(user.get()) == 'STUPAR': #data is no longer editable. press edit button to change again
         namebox['state']='disabled'
         passpwdbox['state']='disabled'
         phonebox['state']='disabled'
         routebox['state']='disabled'
         stopbox['state']='disabled'
-    elif str(user.get()) == 'ATTEN':
+        
+    elif str(user.get()) == 'ATTEN': #data is no longer editable. press edit button to change again
         lengthbox['state']='disabled'
         stopsbox['state']='disabled'
         capacitybox['state']='disabled'
@@ -214,7 +227,9 @@ def saveload():
         attenconbox['state']='disabled'
         driverconbox['state']='disabled'
         conconbox['state']='disabled'
+        
     button2['state']='normal'
+    
 ########
 canvas=Canvas(root, width=scr_w, height=scr_h, bg='white')
 logoimg=PhotoImage(file='logoimage.png')
@@ -363,7 +378,7 @@ tito=map_widget.set_marker(28.54608,77.22969, text="Josip Broz Tito Marg")
 sadiq=map_widget.set_marker(28.5542,77.22821, text="Sadiq Nagar")
 hudco=map_widget.set_marker(28.56037,77.23096, text="Hudco Place")
 andrew=map_widget.set_marker(28.56555,77.23396, text="Andrews Ganj")
-
+pv1= map_widget.set_path([saketj.position,saketh.position,gyan.position,shivalik.position,malv1.position,sarv.position,swami.position,tito.position,sadiq.position,hudco.position,andrew.position,spv.position])
 #pv9
 kalka=map_widget.set_marker(28.52941,77.25234, text="DDA Flats Kalkaji")
 manda=map_widget.set_marker(28.53295,77.25315, text="Mandakini Enclave")
@@ -374,10 +389,11 @@ crmark1=map_widget.set_marker(28.53998,77.24855, text="C.R. Park Market No. 1")
 crk=map_widget.set_marker(28.54026, 77.24373, text="C.R. Park K Block")
 cra=map_widget.set_marker(28.543,77.24239, text="C.R. Park A Block")
 defence=map_widget.set_marker(28.57488,77.2385, text="Defence Colony")
-
+pv9= map_widget.set_path([kalka.position,manda.position,shivap.position,crmark2.position,mela.position,crmark1.position,crk.position,cra.position,defence.position,spv.position])
 #pv20
 guj=map_widget.set_marker(28.64363,77.29127, text="Gujarat Vihar")
 swasth=map_widget.set_marker(28.64038,77.28629, text="Swasthya Vihar")
 walia=map_widget.set_marker(28.63283, 77.28072, text="Walia Nursing Home")
+pv20= map_widget.set_path([guj.position,swasth.position,walia.position,spv.position])
 ###
 root.mainloop()
