@@ -205,7 +205,7 @@ def linked(): #moves the user to the data screen
 
 
 def routechange(event): #updates to new route
-    global pv1, pv2, pv3, pv4, pv5, pv6, pv7, pv8, pv9, pv10, pv11, pv20, pv21, pv22
+    global pv1, pv2, pv3, pv4, pv5, pv6, pv7, pv8, pv9, pv10, pv11, pv12, pv13, pv14, pv15, pv16, pv17, pv18, pv19, pv20, pv21, pv22
     PV['text']=str(table.get())
     pv1.delete()
     pv2.delete()
@@ -218,14 +218,14 @@ def routechange(event): #updates to new route
     pv9.delete()
     pv10.delete()
     pv11.delete()
-##    pv12.delete()
-##    pv13.delete()
-##    pv14.delete()
-##    pv15.delete()
-##    pv16.delete()
-##    pv17.delete()
-##    pv18.delete()
-##    pv19.delete()
+    pv12.delete()
+    pv13.delete()
+    pv14.delete()
+    pv15.delete()
+    pv16.delete()
+    pv17.delete()
+    pv18.delete()
+    pv19.delete()
     pv20.delete()
     pv21.delete()
     pv22.delete()
@@ -251,22 +251,22 @@ def routechange(event): #updates to new route
         pv10=map_widget.set_path([vv.position,vk.position,am.position,qm.position,mmtc.position,iit.position,gp1.position,aiims.position,spv.position])
     elif str(table.get())[3::]=='11':
         pv11=map_widget.set_path([sarita.position,jasola.position,nfc.position,ashram.position,bho.position,niz.position,spv.position])
-##    elif str(table.get())[3::]=='12':
-##        pv12=map_widget.set_path([])
-##    elif str(table.get())[3::]=='13':
-##        pv13=map_widget.set_path([])
-##    elif str(table.get())[3::]=='14':
-##        pv14=map_widget.set_path([])
-##    elif str(table.get())[3::]=='15':
-##        pv15=map_widget.set_path([])
-##    elif str(table.get())[3::]=='16':
-##        pv16=map_widget.set_path([])
-##    elif str(table.get())[3::]=='17':
-##        pv17=map_widget.set_path([])
-##    elif str(table.get())[3::]=='18':
-##        pv18=map_widget.set_path([])
-##    elif str(table.get())[3::]=='19':
-##        pv19=map_widget.set_path([])
+    elif str(table.get())[3::]=='12':
+        pv12=map_widget.set_path([maya.position,mans.position,kirti.position,shad.position,patel.position,raje.position,karol.position,rail.position,spv.position])
+    elif str(table.get())[3::]=='13':
+        pv13=map_widget.set_path([ashok.position,deraw.position,gujra.position,prat.position,shakti.position,kamlan.position,ramjas.position,jawa.position,malka.position,spv.position])
+    elif str(table.get())[3::]=='14':
+        pv14=map_widget.set_path([azadpur.position,mt3.position,mt2.position,tagore.position,parm.position,rev.position,drin.position,bana.position,khy.position,rajni.position,ludlo.position,civill.position,indra.position,kaka.position,ambed.position,spv.position])
+    elif str(table.get())[3::]=='15':
+        pv15=map_widget.set_path([rohini.position,uniq.position,gujrat.position,bank.position,kohat.position,panj.position,cinema.position,rohtak.position,video.position,gole.position,chowk.position,baroda.position,spv.position])
+    elif str(table.get())[3::]=='16':
+        pv16=map_widget.set_path([rssp.position,ms.position,pa.position,ashir.position,mithila.position,prince.position,him.position,agra.position,savfasc.position,ajanta.position,kunj.position,spv.position])
+    elif str(table.get())[3::]=='17':
+        pv17=map_widget.set_path([gtb.position,lick.position,surya.position,yojana.position,sreshtha.position,avc.position,je.position,kkd.position,pvhd.position,nv.position,lax.position,spv.position])
+    elif str(table.get())[3::]=='18':
+        pv18=map_widget.set_path([crpf.position,stand.position,vasun.position,dh.position,sama.position,aa.position,mvipi.position,sup.position,pol.position,manfas.position,mvipiv.position,spv.position])
+    elif str(table.get())[3::]=='19':
+        pv19=map_widget.set_path([gip.position,sfn.position,stt.position,rvn.position,jvv.position,mmh.position,nbv.position,sfn.position,dnb.position,cgv.position,spv.position])
     elif str(table.get())[3::]=='20':
         pv20= map_widget.set_path([guj.position,swasth.position,walia.position,spv.position])
     elif str(table.get())[3::]=='21':
@@ -615,6 +615,109 @@ jasola=map_widget.set_marker(28.5354, 77.28469,command=stopclick, text="Jasola V
 ashram=map_widget.set_marker(28.57421, 77.25699,command=stopclick, text="Ashram", font=('Courier New',9), marker_color_circle='white', marker_color_outside='red', text_color='black')
 niz=map_widget.set_marker(28.59317, 77.24317,command=stopclick, text="Nizamuddin", font=('Courier New',9), marker_color_circle='white', marker_color_outside='red', text_color='black')
 pv11= map_widget.set_path([sarita.position,jasola.position,nfc.position,ashram.position,bho.position,niz.position,spv.position])
+#pv12
+maya=map_widget.set_marker(28.63748, 77.13002,command=stopclick, text="Mayapuri Chowk", font=('Courier New',9), marker_color_circle='white', marker_color_outside='cyan', text_color='black')
+mans=map_widget.set_marker(28.64088, 77.13542,command=stopclick, text="Mansarovar", font=('Courier New',9), marker_color_circle='white', marker_color_outside='cyan', text_color='black')
+kirti=map_widget.set_marker(28.64963, 77.14356,command=stopclick, text="Kirti Nagar", font=('Courier New',9), marker_color_circle='white', marker_color_outside='cyan', text_color='black')
+shad=map_widget.set_marker(28.65117, 77.15889,command=stopclick, text="Shadipur Metro Station", font=('Courier New',9), marker_color_circle='white', marker_color_outside='cyan', text_color='black')
+patel=map_widget.set_marker(28.64935, 77.16202,command=stopclick, text="Patel Nagar", font=('Courier New',9), marker_color_circle='white', marker_color_outside='cyan', text_color='black')
+raje=map_widget.set_marker(28.64236, 77.1778,command=stopclick, text="Rajendra Place Metro Station", font=('Courier New',9), marker_color_circle='white', marker_color_outside='cyan', text_color='black')
+karol=map_widget.set_marker(28.64409, 77.18897,command=stopclick, text="Karol Bagh Metro Station", font=('Courier New',9), marker_color_circle='white', marker_color_outside='cyan', text_color='black')
+rail=map_widget.set_marker(28.63535, 77.21534,command=stopclick, text="Railway Colony", font=('Courier New',9), marker_color_circle='white', marker_color_outside='cyan', text_color='black')
+pv12= map_widget.set_path([maya.position,mans.position,kirti.position,shad.position,patel.position,raje.position,karol.position,rail.position,spv.position])
+#pv13
+ashok=map_widget.set_marker(28.69071, 77.17605,command=stopclick, text="Ashok Vihar", font=('Courier New',9), marker_color_circle='white', marker_color_outside='gold', text_color='black')
+deraw=map_widget.set_marker(28.69959, 77.1904,command=stopclick, text="Derawal Nagar", font=('Courier New',9), marker_color_circle='white', marker_color_outside='gold', text_color='black')
+gujra=map_widget.set_marker(28.69878, 77.1916,command=stopclick, text="Gujranwala Town", font=('Courier New',9), marker_color_circle='white', marker_color_outside='gold', text_color='black')
+prat=map_widget.set_marker(28.68778, 77.19385,command=stopclick, text="Rana Pratap Bagh", font=('Courier New',9), marker_color_circle='white', marker_color_outside='gold', text_color='black')
+shakti=map_widget.set_marker(28.68155, 77.19842,command=stopclick, text="Shakti Nagar", font=('Courier New',9), marker_color_circle='white', marker_color_outside='gold', text_color='black')
+kamlan=map_widget.set_marker(28.68376, 77.20183,command=stopclick, text="Kamla Nagar", font=('Courier New',9), marker_color_circle='white', marker_color_outside='gold', text_color='black')
+ramjas=map_widget.set_marker(28.68659, 77.20705,command=stopclick, text="Ramjas College", font=('Courier New',9), marker_color_circle='white', marker_color_outside='gold', text_color='black')
+jawa=map_widget.set_marker(28.68103, 77.20878,command=stopclick, text="Jawahar Nagar", font=('Courier New',9), marker_color_circle='white', marker_color_outside='gold', text_color='black')
+malka=map_widget.set_marker(28.67834, 77.20832,command=stopclick, text="Malka Ganj", font=('Courier New',9), marker_color_circle='white', marker_color_outside='gold', text_color='black')
+pv13= map_widget.set_path([ashok.position,deraw.position,gujra.position,prat.position,shakti.position,kamlan.position,ramjas.position,jawa.position,malka.position,spv.position])
+#pv14
+azadpur=map_widget.set_marker(28.71051, 77.18581,command=stopclick, text="Azadpur", font=('Courier New',9), marker_color_circle='white', marker_color_outside='silver', text_color='black')
+mt3=map_widget.set_marker(28.70982, 77.18802,command=stopclick, text="Model Town III", font=('Courier New',9), marker_color_circle='white', marker_color_outside='silver', text_color='black')
+mt2=map_widget.set_marker(28.70954, 77.18902,command=stopclick, text="Model Town II", font=('Courier New',9), marker_color_circle='white', marker_color_outside='silver', text_color='black')
+tagore=map_widget.set_marker(28.70522, 77.19963,command=stopclick, text="Tagore Park", font=('Courier New',9), marker_color_circle='white', marker_color_outside='silver', text_color='black')
+parm=map_widget.set_marker(28.71029, 77.20661,command=stopclick, text="Parmanand Dusshera Ground", font=('Courier New',9), marker_color_circle='white', marker_color_outside='silver', text_color='black')
+rev=map_widget.set_marker(28.69561, 77.21327,command=stopclick, text="Riviera Apartments", font=('Courier New',9), marker_color_circle='white', marker_color_outside='silver', text_color='black')
+drin=map_widget.set_marker(28.69593, 77.21611,command=stopclick, text="DRDO", font=('Courier New',9), marker_color_circle='white', marker_color_outside='silver', text_color='black')
+bana=map_widget.set_marker(28.69638, 77.2192,command=stopclick, text="Banarasi Das Estate", font=('Courier New',9), marker_color_circle='white', marker_color_outside='silver', text_color='black')
+khy=map_widget.set_marker(28.69008, 77.22128,command=stopclick, text="Khyber Pass DTC Bus Stop", font=('Courier New',9), marker_color_circle='white', marker_color_outside='silver', text_color='black')
+rajni=map_widget.set_marker(28.67282, 77.221,command=stopclick, text="Raj Niwas Marg", font=('Courier New',9), marker_color_circle='white', marker_color_outside='silver', text_color='black')
+ludlo=map_widget.set_marker(28.67282, 77.22254,command=stopclick, text="Ludlo Castle", font=('Courier New',9), marker_color_circle='white', marker_color_outside='silver', text_color='black')
+civill=map_widget.set_marker(28.68173, 77.22259,command=stopclick, text="Civil Lines", font=('Courier New',9), marker_color_circle='white', marker_color_outside='silver', text_color='black')
+indra=map_widget.set_marker(28.68226, 77.22469,command=stopclick, text="Indraprastha College", font=('Courier New',9), marker_color_circle='white', marker_color_outside='silver', text_color='black')
+kaka=map_widget.set_marker(28.60514, 77.23607,command=stopclick, text="Kaka Nagar", font=('Courier New',9), marker_color_circle='white', marker_color_outside='silver', text_color='black')
+ambed=map_widget.set_marker(28.60236, 77.23149,command=stopclick, text="Ambedkar Nagar", font=('Courier New',9), marker_color_circle='white', marker_color_outside='silver', text_color='black')
+pv14= map_widget.set_path([azadpur.position,mt3.position,mt2.position,tagore.position,parm.position,rev.position,drin.position,bana.position,khy.position,rajni.position,ludlo.position,civill.position,indra.position,kaka.position,ambed.position,spv.position])
+#pv15
+rohini=map_widget.set_marker(28.74055, 77.11897,command=stopclick, text="Rohini Sector 16", font=('Courier New',9), marker_color_circle='white', marker_color_outside='lavender', text_color='black')
+uniq=map_widget.set_marker(28.71553, 77.13094,command=stopclick, text="Unique Apartments", font=('Courier New',9), marker_color_circle='white', marker_color_outside='lavender', text_color='black')
+gujrat=map_widget.set_marker(28.69171, 77.11144,command=stopclick, text="Gujrat Apartments", font=('Courier New',9), marker_color_circle='white', marker_color_outside='lavender', text_color='black')
+bank=map_widget.set_marker(28.69294, 77.1206,command=stopclick, text="Bank Vihar Apartments", font=('Courier New',9), marker_color_circle='white', marker_color_outside='lavender', text_color='black')
+kohat=map_widget.set_marker(28.69737, 77.14203,command=stopclick, text="Kohat Enclave Metro Station", font=('Courier New',9), marker_color_circle='white', marker_color_outside='lavender', text_color='black')
+panj=map_widget.set_marker(28.67291, 77.14588,command=stopclick, text="Punjabi Bagh Metro Station", font=('Courier New',9), marker_color_circle='white', marker_color_outside='lavender', text_color='black')
+cinema=map_widget.set_marker(28.65954, 77.18992,command=stopclick, text="Liberty Cinema Hall", font=('Courier New',9), marker_color_circle='white', marker_color_outside='lavender', text_color='black')
+rohtak=map_widget.set_marker(28.65787, 77.1941,command=stopclick, text="New Rohtak Road", font=('Courier New',9), marker_color_circle='white', marker_color_outside='lavender', text_color='black')
+video=map_widget.set_marker(28.64481, 77.20423,command=stopclick, text="Videocon Tower", font=('Courier New',9), marker_color_circle='white', marker_color_outside='lavender', text_color='black')
+gole=map_widget.set_marker(28.6339, 77.20546,command=stopclick, text="Gole Market", font=('Courier New',9), marker_color_circle='white', marker_color_outside='lavender', text_color='black')
+chowk=map_widget.set_marker(28.62346, 77.21271,command=stopclick, text="Patel Chowk Metro Station", font=('Courier New',9), marker_color_circle='white', marker_color_outside='lavender', text_color='black')
+baroda=map_widget.set_marker(28.61606, 77.23077,command=stopclick, text="Baroda House", font=('Courier New',9), marker_color_circle='white', marker_color_outside='lavender', text_color='black')
+pv15= map_widget.set_path([rohini.position,uniq.position,gujrat.position,bank.position,kohat.position,panj.position,cinema.position,rohtak.position,video.position,gole.position,chowk.position,baroda.position,spv.position])
+#pv16
+rssp=map_widget.set_marker(28.62064, 77.30742,command=stopclick, text="Radha Swami Satsang Park", font=('Courier New',9), marker_color_circle='white', marker_color_outside='teal', text_color='black')
+ms=map_widget.set_marker(28.61979, 77.30491,command=stopclick, text="Mayur Vihar II Metro Station", font=('Courier New',9), marker_color_circle='white', marker_color_outside='teal', text_color='black')
+pa=map_widget.set_marker(28.61984, 77.3004,command=stopclick, text="Mayur Vihar Pocket A", font=('Courier New',9), marker_color_circle='white', marker_color_outside='teal', text_color='black')
+ashir=map_widget.set_marker(28.6345, 77.30154,command=stopclick, text="Ashirwaad Apartments", font=('Courier New',9), marker_color_circle='white', marker_color_outside='teal', text_color='black')
+mithila=map_widget.set_marker(28.63315, 77.2993,command=stopclick, text="Mithila Apartments", font=('Courier New',9), marker_color_circle='white', marker_color_outside='teal', text_color='black')
+prince=map_widget.set_marker(28.63064, 77.29949,command=stopclick, text="Prince Apartments", font=('Courier New',9), marker_color_circle='white', marker_color_outside='teal', text_color='black')
+him=map_widget.set_marker(28.63262, 77.30557,command=stopclick, text="Himalaya Apartments", font=('Courier New',9), marker_color_circle='white', marker_color_outside='teal', text_color='black')
+agra=map_widget.set_marker(28.6297, 77.30806,command=stopclick, text="Agrasen Apartments", font=('Courier New',9), marker_color_circle='white', marker_color_outside='teal', text_color='black')
+savfasc=map_widget.set_marker(28.62774, 77.30695,command=stopclick, text="Savarkar Apartments", font=('Courier New',9), marker_color_circle='white', marker_color_outside='teal', text_color='black')
+ajanta=map_widget.set_marker(28.62805, 77.30792,command=stopclick, text="Ajanta Apartments", font=('Courier New',9), marker_color_circle='white', marker_color_outside='teal', text_color='black')
+kunj=map_widget.set_marker(28.62214, 77.30091,command=stopclick, text="Saraswati Kunj", font=('Courier New',9), marker_color_circle='white', marker_color_outside='teal', text_color='black')
+pv16= map_widget.set_path([rssp.position,ms.position,pa.position,ashir.position,mithila.position,prince.position,him.position,agra.position,savfasc.position,ajanta.position,kunj.position,spv.position])
+#pv17
+gtb=map_widget.set_marker(28.68658, 77.33111,command=stopclick, text="GTB Hospital", font=('Courier New',9), marker_color_circle='white', marker_color_outside='magenta', text_color='black')
+lick=map_widget.set_marker(28.66429, 77.32058,command=stopclick, text="LIC Office", font=('Courier New',9), marker_color_circle='white', marker_color_outside='magenta', text_color='black')
+surya=map_widget.set_marker(28.66953, 77.33174,command=stopclick, text="Surya Nagar", font=('Courier New',9), marker_color_circle='white', marker_color_outside='magenta', text_color='black')
+yojana=map_widget.set_marker(28.66512, 77.31639,command=stopclick, text="Yojana Vihar", font=('Courier New',9), marker_color_circle='white', marker_color_outside='magenta', text_color='black')
+sreshtha=map_widget.set_marker(28.66561, 77.31356,command=stopclick, text="Sreshtha Vihar", font=('Courier New',9), marker_color_circle='white', marker_color_outside='magenta', text_color='black')
+avc=map_widget.set_marker(28.64942, 77.30079,command=stopclick, text="Anand Vihar Colony", font=('Courier New',9), marker_color_circle='white', marker_color_outside='magenta', text_color='black')
+je=map_widget.set_marker(28.64737, 77.30266,command=stopclick, text="Jagriti Enclave", font=('Courier New',9), marker_color_circle='white', marker_color_outside='magenta', text_color='black')
+kkd=map_widget.set_marker(28.64655, 77.30156,command=stopclick, text="Karkardooma", font=('Courier New',9), marker_color_circle='white', marker_color_outside='magenta', text_color='black')
+pvhd=map_widget.set_marker(28.63921, 77.29178,command=stopclick, text="Preet Vihar", font=('Courier New',9), marker_color_circle='white', marker_color_outside='magenta', text_color='black')
+nv=map_widget.set_marker(28.63608, 77.2859,command=stopclick, text="Nirman Vihar", font=('Courier New',9), marker_color_circle='white', marker_color_outside='magenta', text_color='black')
+lax=map_widget.set_marker(28.62963, 77.27606,command=stopclick, text="Laxmi Nagar", font=('Courier New',9), marker_color_circle='white', marker_color_outside='magenta', text_color='black')
+pv17= map_widget.set_path([gtb.position,lick.position,surya.position,yojana.position,sreshtha.position,avc.position,je.position,kkd.position,pvhd.position,nv.position,lax.position,spv.position])
+#pv18
+crpf=map_widget.set_marker(28.60798, 77.33958,command=stopclick, text="CRPF Camp", font=('Courier New',9), marker_color_circle='white', marker_color_outside='violet', text_color='black')
+stand=map_widget.set_marker(28.60756, 77.33641,command=stopclick, text="St. Andrews Public School", font=('Courier New',9), marker_color_circle='white', marker_color_outside='violet', text_color='black')
+vasun=map_widget.set_marker(28.60016, 77.31649,command=stopclick, text="Vasundhara Enclave", font=('Courier New',9), marker_color_circle='white', marker_color_outside='violet', text_color='black')
+dh=map_widget.set_marker(28.6026, 77.31306,command=stopclick, text="Dharamshila Hospital", font=('Courier New',9), marker_color_circle='white', marker_color_outside='violet', text_color='black')
+sama=map_widget.set_marker(28.59627, 77.29519,command=stopclick, text="Samachar Apartments", font=('Courier New',9), marker_color_circle='white', marker_color_outside='violet', text_color='black')
+aa=map_widget.set_marker(28.59851, 77.29763,command=stopclick, text="Ashiana Apartments", font=('Courier New',9), marker_color_circle='white', marker_color_outside='violet', text_color='black')
+mvipi=map_widget.set_marker(28.60689, 77.29472,command=stopclick, text="Mayur Vihar I Pocket I", font=('Courier New',9), marker_color_circle='white', marker_color_outside='violet', text_color='black')
+sup=map_widget.set_marker(28.60759, 77.2916,command=stopclick, text="Supreme Enclave", font=('Courier New',9), marker_color_circle='white', marker_color_outside='violet', text_color='black')
+pol=map_widget.set_marker(28.61146, 77.28722,command=stopclick, text="Police Apartments", font=('Courier New',9), marker_color_circle='white', marker_color_outside='violet', text_color='black')
+manfas=map_widget.set_marker(28.61098, 77.28639,command=stopclick, text="Manu Apartments", font=('Courier New',9), marker_color_circle='white', marker_color_outside='violet', text_color='black')
+mvipiv=map_widget.set_marker(28.61083, 77.28481,command=stopclick, text="Mayur Vihar I Pocket IV Metro Station", font=('Courier New',9), marker_color_circle='white', marker_color_outside='violet', text_color='black')
+pv18= map_widget.set_path([crpf.position,stand.position,vasun.position,dh.position,sama.position,aa.position,mvipi.position,sup.position,pol.position,manfas.position,mvipiv.position,spv.position])
+#pv19
+gip=map_widget.set_marker(28.56919, 77.32799,command=stopclick, text="GIP Mall", font=('Courier New',9), marker_color_circle='white', marker_color_outside='dark blue', text_color='black')
+sfn=map_widget.set_marker(28.5619, 77.33881,command=stopclick, text="Sector 44 Noida", font=('Courier New',9), marker_color_circle='white', marker_color_outside='dark blue', text_color='black')
+stt=map_widget.set_marker(28.5672, 77.34596,command=stopclick, text="Sector 32 Golf Course Metro Station", font=('Courier New',9), marker_color_circle='white', marker_color_outside='dark blue', text_color='black')
+rvn=map_widget.set_marker(28.57584, 77.33986,command=stopclick, text="Ram Vihar", font=('Courier New',9), marker_color_circle='white', marker_color_outside='dark blue', text_color='black')
+jvv=map_widget.set_marker(28.58382, 77.33555,command=stopclick, text="Jalvayu Vihar", font=('Courier New',9), marker_color_circle='white', marker_color_outside='dark blue', text_color='black')
+mmh=map_widget.set_marker(28.57947, 77.32117,command=stopclick, text="Max Medicare Hospital", font=('Courier New',9), marker_color_circle='white', marker_color_outside='dark blue', text_color='black')
+nbv=map_widget.set_marker(28.58188, 77.31409,command=stopclick, text="Naya Bans Village", font=('Courier New',9), marker_color_circle='white', marker_color_outside='dark blue', text_color='black')
+sfn=map_widget.set_marker(28.58248, 77.3044,command=stopclick, text="Sector 14A Noida", font=('Courier New',9), marker_color_circle='white', marker_color_outside='dark blue', text_color='black')
+dnb=map_widget.set_marker(28.58211, 77.30263,command=stopclick, text="Delhi Noida Border", font=('Courier New',9), marker_color_circle='white', marker_color_outside='dark blue', text_color='black')
+cgv=map_widget.set_marker(28.61028, 77.27267,command=stopclick, text="Commonwealth Games Village", font=('Courier New',9), marker_color_circle='white', marker_color_outside='dark blue', text_color='black')
+pv19= map_widget.set_path([gip.position,sfn.position,stt.position,rvn.position,jvv.position,mmh.position,nbv.position,sfn.position,dnb.position,cgv.position,spv.position])
 #pv20
 guj=map_widget.set_marker(28.64363,77.29127,command=stopclick, text="Gujarat Vihar", font=('Courier New',9), marker_color_circle='white', marker_color_outside='lime', text_color='black')
 swasth=map_widget.set_marker(28.64038,77.28629,command=stopclick, text="Swasthya Vihar", font=('Courier New',9), marker_color_circle='white', marker_color_outside='lime', text_color='black')
