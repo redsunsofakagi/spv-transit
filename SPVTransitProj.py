@@ -291,7 +291,7 @@ def edit(): #allows user to edit respective data by enabling the disabled entry 
         
     elif str(user.get()) == 'ATTEN': #attendant can edit some data from routes
         lengthbox['state']='normal'
-        stopsbox['state']='normal'
+        #stopsbox['state']='normal'
         capacitybox['state']='normal'
         attendantbox['state']='normal'
         driverbox['state']='normal'
@@ -342,6 +342,7 @@ def stopclick(marker): #Function for displaying info when a stop is clicked
     ybox['state']='disabled'
 
     stopnamelabel['text']=marker.text
+
 #---widget creation---#
     
 canvas=Canvas(root, width=scr_w, height=scr_h, bg='white') #Generates canvas to draw the widgets onto
