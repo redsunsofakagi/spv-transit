@@ -1,0 +1,199 @@
+latitude,longitude,stop name,route_num,time,stop_id
+28.52211,77.21593,Saket J Block,1,6.45,saketj  
+28.5223,77.212,Saket H Block,1,6.47,saketh  
+28.52573,77.20557,Gyan Bharti School,1,6.49,gyan    
+28.52784,77.20598,Shivalik Colony,1,6.59,shivalik
+28.53613,77.20901,Malviya Nagar 1,1,7.01,malv1   
+28.54361,77.20763,Sarvpriya Vihar,1,7.05,sarv    
+28.54219,77.22594,Swami Nagar,1,7.07,swami   
+28.54608,77.22969,Josip Broz Tito Marg,1,7.12,tito    
+28.5542,77.22821,Sadiq Nagar,1,7.14,sadiq   
+28.56037,77.23096,Hudco Place,1,7.15,hudco   
+28.56555,77.23396,Andrews Ganj,1,7.17,andrew  
+28.55627,77.17526,DDA Flats Munirka,2,6.40,dda    
+28.535,77.16933,JNU,2,6.50,jnu    
+28.55166,77.18212,Ber Sarai,2,6.52,ber    
+28.55469,77.17767,Munirka Market,2,6.58,munmark
+28.54888,77.18754,RK Puram Sector III,2,7.00,rkp    
+28.54602,77.19609,IIT Gate,2,7.05,iit    
+28.55312,77.20155,Safdarjung Development Area,2,7.07,saf    
+28.56025,77.20341,Green Park,2,7.14,gp1    
+28.57275,77.20922,Kidwai Nagar,2,7.29,kid    
+28.58579,77.21262,Jor Bagh,2,7.33,jorb   
+28.58485,77.19265,Chanakyapuri,3,6.45,cha 
+28.57864,77.17594,New Moti Bagh,3,6.51,nmb 
+28.57328,77.17908,Aradhana Enclave,3,6.53,ae  
+28.56548,77.19669,Chaudhary Jhandu Singh Marg,3,7.03,jsm 
+28.56533,77.20017,Safdarjung Enclave II,3,7.06,saf2
+28.5794,77.20809,Lakshmi Bai Nagar,3,7.15,lbn 
+28.57752,77.21055,INA Colony,3,7.20,ina 
+28.56877,77.22041,South Extension Market,3,7.25,sem 
+28.57619,77.22948,Defence Colony 1,3,7.30,defe
+28.56101,77.2807,Jamia Milia Islamia,4,6.55,jmi
+28.56131,77.2727,Escorts Heart Institute,4,7.00,ehi
+28.5622,77.27221,Zakir Bagh,4,7.01,zb 
+28.56896,77.27577,New Friends Colony,4,7.05,nfc
+28.57264,77.26584,Maharani Bagh,4,7.12,mb 
+28.58161,77.26582,Siddharth Extension,4,7.20,se 
+28.52911,77.21406,Saket City Hospital,5,6.35,sch  
+28.53353,77.23202,Sheikh Sarai II,5,6.50,sksii
+28.53845,77.22284,Sheikh Sarai I,5,6.57,ski  
+28.54911,77.21011,Hauz Khas I,5,7.04,hk1  
+28.54805,77.21872,Asiad Village,5,7.09,asi  
+28.55373,77.21222,Gulmohar Park,5,7.15,gul  
+28.55797,77.21777,Neeti Bagh,5,7.17,nee  
+28.56109,77.22202,Ayurvigyan Nagar,5,7.20,ayu  
+28.56645,77.22502,Shiv Mandir,5,7.25,shi  
+28.55645,77.27768,Sukhdev Vihar,6,6.55,sv  
+28.56074,77.26084,East of Kailash C Block,6,7.05,ek1 
+28.556,77.25187,Sant Nagar,6,7.07,sn  
+28.5583,77.24671,East of Kailash D Block,6,7.09,ek2 
+28.56031,77.24591,East of Kailash E Block,6,7.10,ek3 
+28.56107,77.24901,Amar Colony,6,7.12,ac  
+28.56222,77.25019,Dayanand Colony,6,7.15,dc  
+28.56857,77.24124,3Cs Central Market,6,7.22,tccm
+28.53944,77.26619,Kalkaji Depot,7,6.45,kd  
+28.54552,77.25035,Nehru Apartments,7,6.48,na  
+28.55461,77.24283,Kailash Colony metro station,7,7.02,kc  
+28.55086,77.23877,Greater Kailash I C Block,7,7.05,gkc 
+28.55149,77.2374,Greater Kailash I R Block,7,7.06,gkr 
+28.55142,77.23528,Greater Kailash I S Block,7,7.07,gks 
+28.55726,77.23208,Greater Kailash I N Block,7,7.10,gkn 
+28.58239,77.24164,Gurudwara Jungpura Extension,7,7.20,guru
+28.58294,77.24469,Birbal Park,7,7.23,bir 
+28.58553,77.24898,Bhogal Market,7,7.30,bho 
+28.52612,77.25856,Kalkaji Extension,8,6.50,ke   
+28.52617,77.25271,Gangotri Apartments,8,6.55,ga   
+28.5269,77.25197,Yamuna Apartments,8,6.57,ya   
+28.528,77.25043,Nilgiri Apartments,8,6.59,nia  
+28.52796,77.2481,Narmada Apartments,8,7.01,naa  
+28.53059,77.24709,Greater Kailash II S Block,8,7.05,gkiia
+28.53937,77.24247,Greater Kailash II E Block,8,7.10,gkiib
+28.5847,77.2409,Pragati Vihar Hostel,8,7.25,pvh  
+28.52941,77.25234,DDA Flats Kalkaji,9,7.00,kalka  
+28.53295,77.25315,Mandakini Enclave,9,7.03,manda  
+28.53353,77.25449,Shivalik Apartments,9,7.07,shivap 
+28.53613,77.2535,C.R. Park Market No. 2,9,7.10,crmark2
+28.53799,77.25221,Mela Ground,9,7.15,mela   
+28.53998,77.24855,C.R. Park Market No. 1,9,7.19,crmark1
+28.54026,77.24373,C.R. Park K Block,9,7.23,crk    
+28.543,77.24239,C.R. Park A Block,9,7.25,cra    
+28.57488,77.2385,Defence Colony,9,7.30,defence
+28.55891,77.17053,Vasant Vihar Depot,10,6.30,vv   
+28.53441,77.15224,Vasant Kunj,10,6.52,vk   
+28.50797,77.17663,Andheria Modh,10,7.04,am   
+28.5244,77.19011,Qutub Minar,10,7.10,qm   
+28.5368,77.19743,MMTC DTC Bus Stop,10,7.12,mmtc 
+28.56744,77.20789,AIIMS,10,7.23,aiims
+28.53139,77.29436,Sarita Vihar,11,6.57,sarita
+28.5354,77.28469,Jasola Vihar,11,7.03,jasola
+28.57421,77.25699,Ashram,11,7.15,ashram
+28.59317,77.24317,Nizamuddin,11,7.25,niz   
+28.63748,77.13002,Mayapuri Chowk,12,6.50,maya 
+28.64088,77.13542,Mansarovar,12,6.55,mans 
+28.64963,77.14356,Kirti Nagar,12,6.56,kirti
+28.65117,77.15889,Shadipur Metro Station,12,7.05,shad 
+28.64935,77.16202,Patel Nagar,12,7.08,patel
+28.64236,77.1778,Rajendra Place Metro Station,12,7.10,raje 
+28.64409,77.18897,Karol Bagh Metro Station,12,7.12,karol
+28.63535,77.21534,Railway Colony,12,7.13,rail 
+28.69071,77.17605,Ashok Vihar,13,6.37,ashok 
+28.69959,77.1904,Derawal Nagar,13,6.43,deraw 
+28.69878,77.1916,Gujranwala Town,13,6.46,gujra 
+28.68778,77.19385,Rana Pratap Bagh,13,6.47,prat  
+28.68155,77.19842,Shakti Nagar,13,6.48,shakti
+28.68376,77.20183,Kamla Nagar,13,6.50,kamlan
+28.68659,77.20705,Ramjas College,13,6.51,ramjas
+28.68103,77.20878,Jawahar Nagar,13,6.52,jawa  
+28.67834,77.20832,Malka Ganj,13,6.53,malka 
+28.71051,77.18581,Azadpur,14,6.30,azadpur
+28.70982,77.18802,Model Town III,14,6.32,mt3    
+28.70954,77.18902,Model Town II,14,6.35,mt2    
+28.70522,77.19963,Tagore Park,14,6.40,tagore 
+28.71029,77.20661,Parmanand Dusshera Ground,14,6.45,parm   
+28.69561,77.21327,Riviera Apartments,14,6.51,rev    
+28.69593,77.21611,DRDO,14,6.54,drin   
+28.69638,77.2192,Banarasi Das Estate,14,6.57,bana   
+28.69008,77.22128,Khyber Pass DTC Bus Stop,14,7.00,khy    
+28.67282,77.221,Raj Niwas Marg,14,7.03,rajni  
+28.67282,77.22254,Ludlo Castle,14,7.05,ludlo  
+28.68173,77.22259,Civil Lines,14,7.07,civill 
+28.68226,77.22469,Indraprastha College,14,7.10,indra  
+28.60514,77.23607,Kaka Nagar,14,7.27,kaka   
+28.60236,77.23149,Ambedkar Nagar,14,7.29,ambed  
+28.74055,77.11897,Rohini Sector 16,15,6.15,rohini
+28.71553,77.13094,Unique Apartments,15,6.25,uniq  
+28.69171,77.11144,Gujrat Apartments,15,6.30,gujrat
+28.69294,77.1206,Bank Vihar Apartments,15,6.37,bank  
+28.69737,77.14203,Kohat Enclave Metro Station,15,6.40,kohat 
+28.67291,77.14588,Punjabi Bagh Metro Station,15,6.57,panj  
+28.65954,77.18992,Liberty Cinema Hall,15,7.02,cinema
+28.65787,77.1941,New Rohtak Road,15,7.05,rohtak
+28.64481,77.20423,Videocon Tower,15,7.06,video 
+28.6339,77.20546,Gole Market,15,7.10,gole  
+28.62346,77.21271,Patel Chowk Metro Station,15,7.15,chowk 
+28.61606,77.23077,Baroda House,15,7.17,baroda
+28.62064,77.30742,Radha Swami Satsang Park,16,6.44,rssp   
+28.61979,77.30491,Mayur Vihar II Metro Station,16,6.45,ms     
+28.61984,77.3004,Mayur Vihar Pocket A,16,6.47,pa     
+28.6345,77.30154,Ashirwaad Apartments,16,6.57,ashir  
+28.63315,77.2993,Mithila Apartments,16,6.58,mithila
+28.63064,77.29949,Prince Apartments,16,6.59,prince 
+28.63262,77.30557,Himalaya Apartments,16,7.01,him    
+28.6297,77.30806,Agrasen Apartments,16,7.03,agra   
+28.62774,77.30695,Savarkar Apartments,16,7.05,savfasc
+28.62805,77.30792,Ajanta Apartments,16,7.06,ajanta 
+28.62214,77.30091,Saraswati Kunj,16,7.08,kunj   
+28.68658,77.33111,GTB Hospital,17,6.20,gtb     
+28.66429,77.32058,LIC Office,17,6.28,lick    
+28.66953,77.33174,Surya Nagar,17,6.35,surya   
+28.66512,77.31639,Yojana Vihar,17,6.43,yojana  
+28.66561,77.31356,Sreshtha Vihar,17,6.45,sreshtha
+28.64942,77.30079,Anand Vihar Colony,17,6.50,avc     
+28.64737,77.30266,Jagriti Enclave,17,6.53,je      
+28.64655,77.30156,Karkardooma,17,7.03,kkd     
+28.63921,77.29178,Preet Vihar,17,7.13,pvhd    
+28.63608,77.2859,Nirman Vihar,17,7.16,nv      
+28.62963,77.27606,Laxmi Nagar,17,7.18,lax     
+28.60798,77.33958,CRPF Camp,18,6.15,crpf  
+28.60756,77.33641,St. Andrews Public School,18,6.17,stand 
+28.60016,77.31649,Vasundhara Enclave,18,6.27,vasun 
+28.6026,77.31306,Dharamshila Hospital,18,6.32,dh    
+28.59627,77.29519,Samachar Apartments,18,6.42,sama  
+28.59851,77.29763,Ashiana Apartments,18,6.44,aa    
+28.60689,77.29472,Mayur Vihar I Pocket I,18,6.53,mvipi 
+28.60759,77.2916,Supreme Enclave,18,7.00,sup   
+28.61146,77.28722,Police Apartments,18,7.05,pol   
+28.61098,77.28639,Manu Apartments,18,7.09,manfas
+28.61083,77.28481,Mayur Vihar I Pocket IV Metro Station,18,7.12,mvipiv
+28.56919,77.32799,GIP Mall,19,6.35,gip
+28.58248,77.3044,Sector 14A Noida,19,6.45,sfn
+28.5672,77.34596,Sector 32 Golf Course Metro Station,19,6.50,stt
+28.57584,77.33986,Ram Vihar,19,6.52,rvn
+28.58382,77.33555,Jalvayu Vihar,19,6.55,jvv
+28.57947,77.32117,Max Medicare Hospital,19,6.57,mmh
+28.58188,77.31409,Naya Bans Village,19,7.00,nbv
+28.58248,77.3044,Sector 14A Noida,19,7.05,sfn
+28.58211,77.30263,Delhi Noida Border,19,7.10,dnb
+28.61028,77.27267,Commonwealth Games Village,19,7.15,cgv
+28.64363,77.29127,Gujarat Vihar,20,7.00,guj   
+28.64038,77.28629,Swasthya Vihar,20,7.10,swasth
+28.63283,77.28072,Walia Nursing Home,20,7.12,walia 
+28.65325,77.23652,Chandni Chowk,21,6.55,chan 
+28.64481,77.24032,Darya Ganj,21,7.08,darya
+28.63807,77.23113,Guru Nanak Eye Center,21,7.12,nanak
+28.63592,77.24013,Maulana Azad Medical College,21,7.16,azad 
+28.62553,77.23644,Lady Irwin College,21,7.21,irwin
+28.62561,77.23426,Mandi House Metro Station,21,7.22,mandi
+28.60597,77.23071,Pandara Road,21,7.30,pand 
+28.64213,77.31627,EDM Mall,22,6.55,edm   
+28.63333,77.31026,Vidhi Apartments,22,7.00,vidhi 
+28.63632,77.31222,Silver Oak Apartments,22,7.02,silver
+28.63046,77.31053,Jai Apartments,22,7.04,jai   
+28.62981,77.30852,DDA Market,22,7.07,ddam  
+28.62621,77.30821,Paradise Apartments,22,7.09,para  
+28.62449,77.30294,Technology Apartments,22,7.10,tech  
+28.62304,77.29858,Press Apartments,22,7.12,press 
+28.62129,77.29332,Ekta Gardens,22,7.14,ekta  
+28.62015,77.29016,Ankur Apartments,22,7.15,ankur 
+28.61861,77.28664,Mother Dairy Patparganj,22,7.18,mdp   

@@ -1,16 +1,16 @@
 -- @block
 CREATE TABLE bus_routes(
     route_num char(2) NOT NULL PRIMARY KEY,
-    route_length int,
+    route_length decimal(3,1),
     stop_count int,
     capacity int,
-    utilisation int
+    ---utilisation int
 )
 
 -- @block
 
 CREATE TABLE  IF NOT EXISTS passengers(
-    pass_id char(5) UNIQUE NOT NULL PRIMARY KEY,
+    pass_id char(5) UNIQUE NOT NULL PRIMARY KEY, ---username equivalent (adm no.?) in entrybox
     pass_name varchar(50),
     route_num char(2),
     stop_id char(5) UNIQUE NOT NULL,
@@ -25,15 +25,15 @@ CREATE TABLE  IF NOT EXISTS passengers(
 
 -- @block
 CREATE TABLE  IF NOT EXISTS stops(
-    stop_id char(5) UNIQUE NOT NULL PRIMARY KEY,
+    stop_id varchar(20) UNIQUE NOT NULL PRIMARY KEY,
     stop_name varchar(100),
     route_num char(2),
     latitude decimal(8,6),
     longitude decimal(8,6),
-    stop_address varchar(200),
+    ---stop_address varchar(200),
     pass_count int,
     morning_time time,
-    evening_time time,
+    ---evening_time time,
     FOREIGN KEY (route_num) REFERENCES bus_routes (route_num)
     ON DELETE CASCADE ON UPDATE CASCADE
 )
@@ -43,7 +43,16 @@ CREATE TABLE IF NOT EXISTS drivers (
     route_num char(2) UNIQUE NOT NULL,
     driver_name varchar(50) NOT NULL,
     driver_phnum char(10),
-    driver_license char(16),
+    ---driver_license char(16),
+    FOREIGN KEY (route_num) REFERENCES bus_routes (route_num)
+    ON DELETE CASCADE ON UPDATE CASCADE
+)
+-- @block
+
+CREATE TABLE IF NOT EXISTS conductors (
+    route_num char(2) UNIQUE NOT NULL,
+    conductor_name varchar(50) NOT NULL,
+    conductor_phnum char(10),
     FOREIGN KEY (route_num) REFERENCES bus_routes (route_num)
     ON DELETE CASCADE ON UPDATE CASCADE
 )
@@ -53,7 +62,7 @@ CREATE TABLE  IF NOT EXISTS attendants (
     route_num char(2) UNIQUE NOT NULL,
     attendant_name varchar(50),
     attendant_phnum_1 char(10),
-    attendant_phnum_2 char(10),
+    ---attendant_phnum_2 char(10),
     FOREIGN KEY (route_num) REFERENCES bus_routes (route_num)
     ON DELETE CASCADE ON UPDATE CASCADE
 )
@@ -67,4 +76,4 @@ CREATE TABLE  IF NOT EXISTS logins (
 )
 
 -- @block
-select * from attendants
+select 6*7 as answer

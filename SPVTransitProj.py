@@ -1,5 +1,6 @@
 #---imported libraries---#
 
+from main2 import *
 from tkinter import *
 from tkinter import ttk
 import tkinter as tk
