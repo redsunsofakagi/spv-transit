@@ -1,6 +1,6 @@
 -- @block
 CREATE TABLE bus_routes(
-    route_num char(2) NOT NULL PRIMARY KEY,
+    route_num char(4) NOT NULL PRIMARY KEY,
     route_length decimal(3,1),
     stop_count int,
     capacity int,
@@ -10,10 +10,10 @@ CREATE TABLE bus_routes(
 -- @block
 
 CREATE TABLE  IF NOT EXISTS passengers(
-    pass_id char(5) UNIQUE NOT NULL PRIMARY KEY, ---username equivalent (adm no.?) in entrybox
+    pass_id char(6) UNIQUE NOT NULL PRIMARY KEY, ---username equivalent (adm no.?) in entrybox
     pass_name varchar(50),
-    route_num char(2),
-    stop_id char(5) UNIQUE NOT NULL,
+    route_num char(4),
+    stop_id varchar(20) UNIQUE NOT NULL,
     pass_phnum char(10),    
     FOREIGN KEY (route_num) REFERENCES bus_routes (route_num)
     ON DELETE CASCADE ON UPDATE CASCADE,
@@ -27,7 +27,7 @@ CREATE TABLE  IF NOT EXISTS passengers(
 CREATE TABLE  IF NOT EXISTS stops(
     stop_id varchar(20) UNIQUE NOT NULL PRIMARY KEY,
     stop_name varchar(100),
-    route_num char(2),
+    route_num char(4),
     latitude decimal(8,6),
     longitude decimal(8,6),
     ---stop_address varchar(200),
@@ -40,7 +40,7 @@ CREATE TABLE  IF NOT EXISTS stops(
 -- @block
 
 CREATE TABLE IF NOT EXISTS drivers (
-    route_num char(2) UNIQUE NOT NULL,
+    route_num char(4) UNIQUE NOT NULL,
     driver_name varchar(50) NOT NULL,
     driver_phnum char(10),
     ---driver_license char(16),
@@ -50,7 +50,7 @@ CREATE TABLE IF NOT EXISTS drivers (
 -- @block
 
 CREATE TABLE IF NOT EXISTS conductors (
-    route_num char(2) UNIQUE NOT NULL,
+    route_num char(4) UNIQUE NOT NULL,
     conductor_name varchar(50) NOT NULL,
     conductor_phnum char(10),
     FOREIGN KEY (route_num) REFERENCES bus_routes (route_num)
@@ -59,9 +59,9 @@ CREATE TABLE IF NOT EXISTS conductors (
 -- @block
 
 CREATE TABLE  IF NOT EXISTS attendants (
-    route_num char(2) UNIQUE NOT NULL,
+    route_num char(4) UNIQUE NOT NULL,
     attendant_name varchar(50),
-    attendant_phnum_1 char(10),
+    attendant_phnum char(10),
     ---attendant_phnum_2 char(10),
     FOREIGN KEY (route_num) REFERENCES bus_routes (route_num)
     ON DELETE CASCADE ON UPDATE CASCADE
