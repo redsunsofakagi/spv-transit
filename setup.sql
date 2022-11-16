@@ -1,16 +1,15 @@
 -- @block
-CREATE TABLE bus_routes(
+CREATE TABLE IF NOT EXISTS bus_routes(
     route_num char(4) NOT NULL PRIMARY KEY,
     route_length decimal(3,1),
     stop_count int,
-    capacity int,
-    ---utilisation int
+    capacity int
 )
 
 -- @block
 
 CREATE TABLE  IF NOT EXISTS passengers(
-    pass_id char(6) UNIQUE NOT NULL PRIMARY KEY, ---username equivalent (adm no.?) in entrybox
+    pass_id char(6) UNIQUE NOT NULL PRIMARY KEY,
     pass_name varchar(50),
     route_num char(4),
     stop_id varchar(20) UNIQUE NOT NULL,
@@ -30,10 +29,8 @@ CREATE TABLE  IF NOT EXISTS stops(
     route_num char(4),
     latitude decimal(8,6),
     longitude decimal(8,6),
-    ---stop_address varchar(200),
     pass_count int,
     morning_time time,
-    ---evening_time time,
     FOREIGN KEY (route_num) REFERENCES bus_routes (route_num)
     ON DELETE CASCADE ON UPDATE CASCADE
 )
@@ -43,7 +40,6 @@ CREATE TABLE IF NOT EXISTS drivers (
     route_num char(4) UNIQUE NOT NULL,
     driver_name varchar(50) NOT NULL,
     driver_phnum char(10),
-    ---driver_license char(16),
     FOREIGN KEY (route_num) REFERENCES bus_routes (route_num)
     ON DELETE CASCADE ON UPDATE CASCADE
 )
@@ -62,7 +58,6 @@ CREATE TABLE  IF NOT EXISTS attendants (
     route_num char(4) UNIQUE NOT NULL,
     attendant_name varchar(50),
     attendant_phnum char(10),
-    ---attendant_phnum_2 char(10),
     FOREIGN KEY (route_num) REFERENCES bus_routes (route_num)
     ON DELETE CASCADE ON UPDATE CASCADE
 )
@@ -76,4 +71,4 @@ CREATE TABLE  IF NOT EXISTS logins (
 )
 
 -- @block
-select 6*7 as answer
+select * from logins

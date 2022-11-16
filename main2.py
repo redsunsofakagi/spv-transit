@@ -1,4 +1,5 @@
 #importing modules
+import sys
 import csv
 import bcrypt
 import mysql.connector as sqlcon
@@ -9,9 +10,10 @@ cur=conn.cursor()
 
 #cheking connection
 if conn.is_connected():
-    print("Mysql connector is connected")
+    print("Mysql connector is connected.")
 else:
-    print("Connection failed")
+    print("Connection failed. Aborting.")
+    sys.exit()
 
 #funtion to create a new account
 def create_account(username, permissions, password):
@@ -22,9 +24,10 @@ def create_account(username, permissions, password):
     try:
         cur.execute(quer1)
         conn.commit()
-        print("account successfuly created")
+        print("Account successfuly created.")
         return True
     except (sqlcon.Error, sqlcon.Warning) as e:
+        conn.rollback()
         print(e)
         return False
 
@@ -65,7 +68,7 @@ def route_fetch(n):
             print(e)
             return None
     else:
-        print("Enter a valid route number")
+        print("Enter a valid route number.")
         return None
     
 
@@ -117,7 +120,9 @@ def pass_update(pass_id, pass_name, route_num, stop_id, pass_phnum):
     quer2="UPDATE passengers SET pass_id='{}', pass_name='{}', route_num='{}', stop_id='{}', pass_phnum='{}'".format(lst[0], lst[1], lst[2], lst[3], lst[4])
     try:
         cur.execute(quer2)
+        conn.commit()
     except (sqlcon.Error, sqlcon.Warning) as e:
+        conn.rollback()
         print(e)
             
 
@@ -173,7 +178,9 @@ def attendant_update(attendant_id, content_list ):
         cur.execute(quer9)
         cur.execute(quer10)
         cur.execute(quer11)
+        conn.commit()
     except (sqlcon.Error, sqlcon.Warning) as e:
+        conn.rollback()
         print(e)
 
         
@@ -182,4 +189,4 @@ def attendant_update(attendant_id, content_list ):
 #print(login('arin', 'attendant','1234') )
 #print(route_fetch(22))
 
-conn.close()
+#conn.close()

@@ -23,187 +23,193 @@ root.geometry(str(scr_w)+'x'+str(scr_h))
 
 #---functions---#
 
+def disable_event():
+    pass
+
 def permission(): #Generates prompt to input in username entry widget.
-    if str(user.get())=='STUPAR':
+    if str(user.get())=='passenger':
         userbox.delete(0, len(str(userbox.get())))
         userbox.insert(END, '#Admission Number')
-    elif str(user.get())=='ATTEN':
+    elif str(user.get())=='attendant':
         userbox.delete(0, len(str(userbox.get())))
-        userbox.insert(END, '#Name of Attendant')
+        userbox.insert(END, '#Phone Number')
     #elif str(user.get())=='ADMIN':
         #userbox.delete(0, len(str(userbox.get())))
         #userbox.insert(END, '#Admin Username')
         
 def linked(): #moves the user to the data screen
-    #code for connecting databases and verification if the data inputted by the user matches up with the record stored in the tables.
-    
-    if str(user.get()) in ['STUPAR', 'ATTEN']  and str(passbox.get())!='' and str(userbox.get()) not in ['#Name of Passenger','#Name of Attendant']:
-        #and other conditions as verification
+    try: 
+        if login(str(userbox.get()), str(user.get()), str(passbox.get())):
 
-        canvas.delete("all")
-        
-        canvas.create_window(260,80, window=tableselect) #Places route choice combobox widget
-        canvas.pack()
-        
-        canvas.create_window(260,130, window=PV) #Places label for route name
-        canvas.pack()
-        
-        canvas.create_window(260,180, window=lengthlabel) #Places label and table entry for route length
-        canvas.pack()
-        lengthbox.insert(END, '#value from table')
-        lengthbox['state']='disabled'
-        canvas.create_window(260,200, window=lengthbox)
-        canvas.pack()
-        
-        canvas.create_window(260,240, window=stopslabel) #Places label and table entry for no. of stops
-        canvas.pack()
-        stopsbox.insert(END, '#value from table')
-        stopsbox['state']='disabled'
-        canvas.create_window(260,260, window=stopsbox)
-        canvas.pack()
-        
-        canvas.create_window(260,300, window=capacitylabel) #Places label and table entry for capacity
-        canvas.pack()
-        capacitybox.insert(END, '#value from table')
-        capacitybox['state']='disabled'
-        canvas.create_window(260,320, window=capacitybox)
-        canvas.pack()
-        
-        canvas.create_window(500,180, window=attendantlabel) #Places label and table entry for the attendant of that route
-        canvas.pack()
-        attendantbox.insert(END, '#value from table')
-        attendantbox['state']='disabled'
-        canvas.create_window(500,200, window=attendantbox)
-        canvas.pack()
-        
-        canvas.create_window(500,240, window=driverlabel) #Places label and table entry for the driver of that route
-        canvas.pack()
-        driverbox.insert(END, '#value from table')
-        driverbox['state']='disabled'
-        canvas.create_window(500,260, window=driverbox)
-        canvas.pack()
-        
-        canvas.create_window(500,300, window=conductorlabel)#Places label and table entry for the conductor of that route
-        canvas.pack()
-        conductorbox.insert(END, '#value from table')
-        conductorbox['state']='disabled'
-        canvas.create_window(500,320, window=conductorbox)
-        canvas.pack()
-        
-        canvas.create_window(650,180, window=attenconlabel) #Places label and table entry for the attendant's contact
-        canvas.pack()
-        attenconbox.insert(END, '#value from table')
-        attenconbox['state']='disabled'
-        canvas.create_window(650,200, window=attenconbox)
-        canvas.pack()
-        
-        canvas.create_window(650,240, window=driverconlabel)#Places label and table entry for the drivers's contact
-        canvas.pack()
-        driverconbox.insert(END, '#value from table')
-        driverconbox['state']='disabled'
-        canvas.create_window(650,260, window=driverconbox)
-        canvas.pack()
-        
-        canvas.create_window(650,300, window=conconlabel) #Places label and table entry for the conductor's contact
-        canvas.pack()
-        conconbox.insert(END, '#value from table')
-        conconbox['state']='disabled'
-        canvas.create_window(650,320, window=conconbox)
-        canvas.pack()
+            canvas.delete("all")
 
-        canvas.create_window(540,80, window=button2)#places edit button
-        canvas.pack()
-        
-        canvas.create_window(615,80, window=button3)#places save button
-        canvas.pack()
-        
-        canvas.create_window(1000,280, window=map_widget)#places map widget
-        canvas.pack()
-
-        canvas.create_window(1000,510, window=stopnamelabel) #Places label for name of stop
-        canvas.pack()
-
-        canvas.create_window(890,560, window=xlabel) #Places label and table entry for the stop's latitude
-        canvas.pack()
-        xbox.insert(END, '#select a stop')
-        xbox['state']='disabled'
-        canvas.create_window(890, 580, window=xbox)
-        canvas.pack()
-
-        canvas.create_window(1130,560, window=ylabel) #Places label and table entry for the stop's longitude
-        canvas.pack()
-        ybox.insert(END, '#select a stop')
-        ybox['state']='disabled'
-        canvas.create_window(1130, 580, window=ybox)
-        canvas.pack()
-
-        canvas.create_window(890,620, window=numpasslabel) #Places label and table entry for the number of passengers
-        canvas.pack()
-        numpassbox.insert(END, '#value from table')
-        numpassbox['state']='disabled'
-        canvas.create_window(890,640, window=numpassbox)
-        canvas.pack()
-
-        canvas.create_window(1130,620, window=timelabel) #Places label and table entry for the number of passengers
-        canvas.pack()
-        timebox.insert(END, '#value from table')
-        timebox['state']='disabled'
-        canvas.create_window(1130,640, window=timebox)
-        canvas.pack()
-        
-
-        #canvas.create_image(1000,61, image=pinimg)#Places a small pin on top pf the map 
-        #canvas.pack()
-
-        ##Above were the windows generated for all users
-    
-        if str(user.get()) == 'STUPAR':
+            root.protocol("WM_DELETE_WINDOW", disable_event)
             
-            canvas.create_window(260,370, window=PASSENGER) #Places label for passenger details
+            canvas.create_window(260,80, window=tableselect) #Places route choice combobox widget
             canvas.pack()
             
-            canvas.create_window(260,420, window=passidlabel) #Places label and table entry for the passenger ID
-            canvas.pack()
-            passidbox.insert(END, '#value from table')
-            passidbox['state']='disabled'
-            canvas.create_window(260,450, window=passidbox)
+            canvas.create_window(260,130, window=PV) #Places label for route name
             canvas.pack()
             
-            canvas.create_window(260,490, window=namelabel)#Places label and table entry for the passenger's name
+            canvas.create_window(260,180, window=lengthlabel) #Places label and table entry for route length
             canvas.pack()
-            namebox.insert(END, '#value from table')
-            namebox['state']='disabled'
-            canvas.create_window(260,510, window=namebox)
-            canvas.pack()
-            
-            canvas.create_window(260,550, window=passpwdlabel)#Places label and table entry for the passenger's password
-            canvas.pack()
-            passpwdbox.insert(END, '#value from table')
-            passpwdbox['state']='disabled'
-            canvas.create_window(260,570, window=passpwdbox)
+            lengthbox.insert(END, '#value from table')
+            lengthbox['state']='disabled'
+            canvas.create_window(260,200, window=lengthbox)
             canvas.pack()
             
-            canvas.create_window(260,610, window=phonelabel)#Places label and table entry for the passenger's phone number
+            canvas.create_window(260,240, window=stopslabel) #Places label and table entry for no. of stops
             canvas.pack()
-            phonebox.insert(END, '#value from table')
-            phonebox['state']='disabled'
-            canvas.create_window(260,630, window=phonebox)
-            canvas.pack()
-            
-            canvas.create_window(500,420, window=routelabel)#Places label and table entry for the passenger's route
-            canvas.pack()
-            routebox.insert(END, '#value from table')
-            routebox['state']='disabled'
-            canvas.create_window(500,450, window=routebox)
+            stopsbox.insert(END, '#value from table')
+            stopsbox['state']='disabled'
+            canvas.create_window(260,260, window=stopsbox)
             canvas.pack()
             
-            canvas.create_window(500,490, window=stoplabel)#Places label and table entry for the passenger's stop
+            canvas.create_window(260,300, window=capacitylabel) #Places label and table entry for capacity
             canvas.pack()
-            stopbox.insert(END, '#value from table')
-            stopbox['state']='disabled'
-            canvas.create_window(500,510, window=stopbox)
+            capacitybox.insert(END, '#value from table')
+            capacitybox['state']='disabled'
+            canvas.create_window(260,320, window=capacitybox)
+            canvas.pack()
+            
+            canvas.create_window(500,180, window=attendantlabel) #Places label and table entry for the attendant of that route
+            canvas.pack()
+            attendantbox.insert(END, '#value from table')
+            attendantbox['state']='disabled'
+            canvas.create_window(500,200, window=attendantbox)
+            canvas.pack()
+            
+            canvas.create_window(500,240, window=driverlabel) #Places label and table entry for the driver of that route
+            canvas.pack()
+            driverbox.insert(END, '#value from table')
+            driverbox['state']='disabled'
+            canvas.create_window(500,260, window=driverbox)
+            canvas.pack()
+            
+            canvas.create_window(500,300, window=conductorlabel)#Places label and table entry for the conductor of that route
+            canvas.pack()
+            conductorbox.insert(END, '#value from table')
+            conductorbox['state']='disabled'
+            canvas.create_window(500,320, window=conductorbox)
+            canvas.pack()
+            
+            canvas.create_window(650,180, window=attenconlabel) #Places label and table entry for the attendant's contact
+            canvas.pack()
+            attenconbox.insert(END, '#value from table')
+            attenconbox['state']='disabled'
+            canvas.create_window(650,200, window=attenconbox)
+            canvas.pack()
+            
+            canvas.create_window(650,240, window=driverconlabel)#Places label and table entry for the drivers's contact
+            canvas.pack()
+            driverconbox.insert(END, '#value from table')
+            driverconbox['state']='disabled'
+            canvas.create_window(650,260, window=driverconbox)
+            canvas.pack()
+            
+            canvas.create_window(650,300, window=conconlabel) #Places label and table entry for the conductor's contact
+            canvas.pack()
+            conconbox.insert(END, '#value from table')
+            conconbox['state']='disabled'
+            canvas.create_window(650,320, window=conconbox)
             canvas.pack()
 
+            canvas.create_window(540,80, window=button2)#places edit button
+            canvas.pack()
+            
+            canvas.create_window(615,80, window=button3)#places save button
+            canvas.pack()
+            
+            canvas.create_window(1000,280, window=map_widget)#places map widget
+            canvas.pack()
+
+            canvas.create_window(1000,510, window=stopnamelabel) #Places label for name of stop
+            canvas.pack()
+
+            canvas.create_window(890,560, window=xlabel) #Places label and table entry for the stop's latitude
+            canvas.pack()
+            xbox.insert(END, '#select a stop')
+            xbox['state']='disabled'
+            canvas.create_window(890, 580, window=xbox)
+            canvas.pack()
+
+            canvas.create_window(1130,560, window=ylabel) #Places label and table entry for the stop's longitude
+            canvas.pack()
+            ybox.insert(END, '#select a stop')
+            ybox['state']='disabled'
+            canvas.create_window(1130, 580, window=ybox)
+            canvas.pack()
+
+            canvas.create_window(890,620, window=numpasslabel) #Places label and table entry for the number of passengers
+            canvas.pack()
+            numpassbox.insert(END, '#value from table')
+            numpassbox['state']='disabled'
+            canvas.create_window(890,640, window=numpassbox)
+            canvas.pack()
+
+            canvas.create_window(1130,620, window=timelabel) #Places label and table entry for the number of passengers
+            canvas.pack()
+            timebox.insert(END, '#value from table')
+            timebox['state']='disabled'
+            canvas.create_window(1130,640, window=timebox)
+            canvas.pack()
+            
+            canvas.create_window(1225, 20, window=button6)
+            canvas.pack()
+
+            #canvas.create_image(1000,61, image=pinimg)#Places a small pin on top pf the map 
+            #canvas.pack()
+
+            ##Above were the windows generated for all users
+        
+            if str(user.get()) == 'passenger':
+                
+                canvas.create_window(260,370, window=PASSENGER) #Places label for passenger details
+                canvas.pack()
+                
+                canvas.create_window(260,420, window=passidlabel) #Places label and table entry for the passenger ID
+                canvas.pack()
+                passidbox.insert(END, '#value from table')
+                passidbox['state']='disabled'
+                canvas.create_window(260,450, window=passidbox)
+                canvas.pack()
+                
+                canvas.create_window(260,490, window=namelabel)#Places label and table entry for the passenger's name
+                canvas.pack()
+                namebox.insert(END, '#value from table')
+                namebox['state']='disabled'
+                canvas.create_window(260,510, window=namebox)
+                canvas.pack()
+                
+                canvas.create_window(260,550, window=passpwdlabel)#Places label and table entry for the passenger's password
+                canvas.pack()
+                passpwdbox.insert(END, '#value from table')
+                passpwdbox['state']='disabled'
+                canvas.create_window(260,570, window=passpwdbox)
+                canvas.pack()
+                
+                canvas.create_window(260,610, window=phonelabel)#Places label and table entry for the passenger's phone number
+                canvas.pack()
+                phonebox.insert(END, '#value from table')
+                phonebox['state']='disabled'
+                canvas.create_window(260,630, window=phonebox)
+                canvas.pack()
+                
+                canvas.create_window(500,420, window=routelabel)#Places label and table entry for the passenger's route
+                canvas.pack()
+                routebox.insert(END, '#value from table')
+                routebox['state']='disabled'
+                canvas.create_window(500,450, window=routebox)
+                canvas.pack()
+                
+                canvas.create_window(500,490, window=stoplabel)#Places label and table entry for the passenger's stop
+                canvas.pack()
+                stopbox.insert(END, '#value from table')
+                stopbox['state']='disabled'
+                canvas.create_window(500,510, window=stopbox)
+                canvas.pack()
+    except TypeError:
+        print("Incorrect/empty fields entered.")
 
 def routechange(event): #updates to new route
     global pv1, pv2, pv3, pv4, pv5, pv6, pv7, pv8, pv9, pv10, pv11, pv12, pv13, pv14, pv15, pv16, pv17, pv18, pv19, pv20, pv21, pv22
@@ -283,14 +289,14 @@ def routechange(event): #updates to new route
 def edit(): #allows user to edit respective data by enabling the disabled entry boxes
     button2['state']='disabled'
     
-    if str(user.get()) == 'STUPAR': #passenger can only edit their own data
+    if str(user.get()) == 'passenger': #passenger can only edit their own data
         namebox['state']='normal'
         passpwdbox['state']='normal'
         phonebox['state']='normal'
         routebox['state']='normal'
         stopbox['state']='normal'
         
-    elif str(user.get()) == 'ATTEN': #attendant can edit some data from routes
+    elif str(user.get()) == 'attendant': #attendant can edit some data from routes
         lengthbox['state']='normal'
         #stopsbox['state']='normal'
         capacitybox['state']='normal'
@@ -310,14 +316,14 @@ def saveload(): #will commit and push changes to main database, then pull it aga
     
     button3['state']='disabled'
     
-    if str(user.get()) == 'STUPAR': #data is no longer editable. press edit button to change again
+    if str(user.get()) == 'passenger': #data is no longer editable. press edit button to change again
         namebox['state']='disabled'
         passpwdbox['state']='disabled'
         phonebox['state']='disabled'
         routebox['state']='disabled'
         stopbox['state']='disabled'
         
-    elif str(user.get()) == 'ATTEN': #data is no longer editable. press edit button to change again
+    elif str(user.get()) == 'attendant': #data is no longer editable. press edit button to change again
         lengthbox['state']='disabled'
         stopsbox['state']='disabled'
         capacitybox['state']='disabled'
@@ -331,6 +337,36 @@ def saveload(): #will commit and push changes to main database, then pull it aga
         
     button2['state']='normal'
 
+def doubt():
+    button1['state']='disabled'
+    button4['state']='disabled'
+    accountlabel['text']='<Please fill in the following fields to\ncreate your new account:>'
+    canvas.create_window(1000,60, window=accusnamebox, tags=('au'))
+    canvas.create_window(1000,80, window=accpermitbox, tags=('ap1'))
+    canvas.create_window(1000,100, window=accpassbox, tags=('ap2'))
+    button5['state']='normal'
+    canvas.pack()
+
+def accreate():
+    x = create_account(str(accusname.get()), str(accpermit.get()), str(accpass.get()))
+    if x:
+        accountlabel['text']='<Account made successfully.>'
+    else:
+        accountlabel['text']='<An error occured.>'
+    accusnamebox.delete(0, len(str(accusnamebox.get())))
+    accpermitbox.delete(0, len(str(accpermitbox.get())))
+    accpassbox.delete(0, len(str(accpassbox.get())))
+    accusnamebox.insert(END, '#Username')
+    accpermitbox.insert(END, '#attendent/passenger')
+    accpassbox.insert(END, '#Password')
+    canvas.delete('au')
+    canvas.delete('ap1')
+    canvas.delete('ap2')
+    button5['state']='disabled'
+    button4['state']='normal'
+    button1['state']='normal'
+        
+
 def stopclick(marker): #Function for displaying info when a stop is clicked
     xbox['state']='normal'
     xbox.delete(0, len(str(xbox.get())))
@@ -343,6 +379,10 @@ def stopclick(marker): #Function for displaying info when a stop is clicked
     ybox['state']='disabled'
 
     stopnamelabel['text']=marker.text
+
+def quit():
+    conn.close()
+    root.destroy()
 
 #---widget creation---#
     
@@ -361,11 +401,11 @@ canvas.pack()
 #Note: all StringVar() values store the values passed to Entries/radiobuttons/comboboxes as a texvariable
 
 user=StringVar()
-stupar=tk.Radiobutton(canvas, text='A Student/Parent', font=('Courier New',11),variable=user, value='STUPAR', bg='white', command=permission) #passenger option
+stupar=tk.Radiobutton(canvas, text='A Student/Parent', font=('Courier New',11),variable=user, value='passenger', bg='white', command=permission) #passenger option
 canvas.create_window(240,490, window=stupar)
 canvas.pack()
 
-atten=tk.Radiobutton(canvas, text='An Attendant', font=('Courier New',11),variable=user, value='ATTEN', bg='white', command=permission) #attendant option
+atten=tk.Radiobutton(canvas, text='An Attendant', font=('Courier New',11),variable=user, value='attendant', bg='white', command=permission) #attendant option
 canvas.create_window(222,510, window=atten)
 canvas.pack()
 
@@ -495,8 +535,36 @@ timelabel=ttk.Label(canvas, text='Time of Arrival', font=('Courier New',11), bac
 time=StringVar()
 timebox=ttk.Entry(canvas, textvariable=time, font=('Courier New',9))
 
+accountlabel=ttk.Label(canvas, text="Click the '?' button to\ncreate an account.", font=('Courier New', 9),background='white')#label to prompt making an account
+canvas.create_window(1000,20, window=accountlabel)
+canvas.pack()
+
+accusname=StringVar()
+accusnamebox=ttk.Entry(canvas, textvariable=accusname, font=('Courier New', 9))#entry for account username
+accusnamebox.insert(END, '#Username')
+
+accpermit=StringVar()
+accpermitbox=ttk.Entry(canvas, textvariable=accpermit, font=('Courier New', 9))#entry for account permit
+accpermitbox.insert(END, '#attendant/passenger')
+
+accpass=StringVar()
+accpassbox=ttk.Entry(canvas, textvariable=accpass, font=('Courier New', 9), show="*")#entry for account password
+accpassbox.insert(END, '#Password')
+
 button2=ttk.Button(canvas, text='🖉', command=edit) #edit button
+
 button3=ttk.Button(canvas, text='💾', command=saveload, state='disabled') #save and load button
+
+button4=ttk.Button(canvas, text='❓', command=doubt) #for account creation menu
+canvas.create_window(1225,20,window=button4)
+canvas.pack()
+
+button5=ttk.Button(canvas, text='>', command=accreate) #for confirming account creation
+button5['state']='disabled'
+canvas.create_window(1225,50,window=button5)
+canvas.pack()
+
+button6=ttk.Button(canvas, text='QUIT', command=quit)
 
 map_widget=tmap.TkinterMapView(canvas, width=400, height=400, corner_radius=5) #map widget
 
