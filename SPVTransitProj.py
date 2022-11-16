@@ -26,7 +26,7 @@ root.geometry(str(scr_w)+'x'+str(scr_h))
 def permission(): #Generates prompt to input in username entry widget.
     if str(user.get())=='STUPAR':
         userbox.delete(0, len(str(userbox.get())))
-        userbox.insert(END, '#Name of Passenger')
+        userbox.insert(END, '#Admission Number')
     elif str(user.get())=='ATTEN':
         userbox.delete(0, len(str(userbox.get())))
         userbox.insert(END, '#Name of Attendant')
