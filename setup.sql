@@ -70,5 +70,3 @@ CREATE TABLE  IF NOT EXISTS logins (
     salt tinytext
 )
 
--- @block
-select * from logins
