@@ -53,63 +53,63 @@ def linked(): #moves the user to the data screen
             
             canvas.create_window(260,180, window=lengthlabel) #Places label and table entry for route length
             canvas.pack()
-            lengthbox.insert(END, '#value from table')
+            #lengthbox.insert(END, '#value from table')
             lengthbox['state']='disabled'
             canvas.create_window(260,200, window=lengthbox)
             canvas.pack()
             
             canvas.create_window(260,240, window=stopslabel) #Places label and table entry for no. of stops
             canvas.pack()
-            stopsbox.insert(END, '#value from table')
+            #stopsbox.insert(END, '#value from table')
             stopsbox['state']='disabled'
             canvas.create_window(260,260, window=stopsbox)
             canvas.pack()
             
             canvas.create_window(260,300, window=capacitylabel) #Places label and table entry for capacity
             canvas.pack()
-            capacitybox.insert(END, '#value from table')
+            #capacitybox.insert(END, '#value from table')
             capacitybox['state']='disabled'
             canvas.create_window(260,320, window=capacitybox)
             canvas.pack()
             
             canvas.create_window(500,180, window=attendantlabel) #Places label and table entry for the attendant of that route
             canvas.pack()
-            attendantbox.insert(END, '#value from table')
+            #attendantbox.insert(END, '#value from table')
             attendantbox['state']='disabled'
             canvas.create_window(500,200, window=attendantbox)
             canvas.pack()
             
             canvas.create_window(500,240, window=driverlabel) #Places label and table entry for the driver of that route
             canvas.pack()
-            driverbox.insert(END, '#value from table')
+            #driverbox.insert(END, '#value from table')
             driverbox['state']='disabled'
             canvas.create_window(500,260, window=driverbox)
             canvas.pack()
             
             canvas.create_window(500,300, window=conductorlabel)#Places label and table entry for the conductor of that route
             canvas.pack()
-            conductorbox.insert(END, '#value from table')
+            #conductorbox.insert(END, '#value from table')
             conductorbox['state']='disabled'
             canvas.create_window(500,320, window=conductorbox)
             canvas.pack()
             
             canvas.create_window(650,180, window=attenconlabel) #Places label and table entry for the attendant's contact
             canvas.pack()
-            attenconbox.insert(END, '#value from table')
+           #attenconbox.insert(END, '#value from table')
             attenconbox['state']='disabled'
             canvas.create_window(650,200, window=attenconbox)
             canvas.pack()
             
             canvas.create_window(650,240, window=driverconlabel)#Places label and table entry for the drivers's contact
             canvas.pack()
-            driverconbox.insert(END, '#value from table')
+            #driverconbox.insert(END, '#value from table')
             driverconbox['state']='disabled'
             canvas.create_window(650,260, window=driverconbox)
             canvas.pack()
             
             canvas.create_window(650,300, window=conconlabel) #Places label and table entry for the conductor's contact
             canvas.pack()
-            conconbox.insert(END, '#value from table')
+            #conconbox.insert(END, '#value from table')
             conconbox['state']='disabled'
             canvas.create_window(650,320, window=conconbox)
             canvas.pack()
@@ -142,14 +142,14 @@ def linked(): #moves the user to the data screen
 
             canvas.create_window(890,620, window=numpasslabel) #Places label and table entry for the number of passengers
             canvas.pack()
-            numpassbox.insert(END, '#value from table')
+            #numpassbox.insert(END, '#value from table')
             numpassbox['state']='disabled'
             canvas.create_window(890,640, window=numpassbox)
             canvas.pack()
 
             canvas.create_window(1130,620, window=timelabel) #Places label and table entry for the number of passengers
             canvas.pack()
-            timebox.insert(END, '#value from table')
+            #timebox.insert(END, '#value from table')
             timebox['state']='disabled'
             canvas.create_window(1130,640, window=timebox)
             canvas.pack()
@@ -169,42 +169,42 @@ def linked(): #moves the user to the data screen
                 
                 canvas.create_window(260,420, window=passidlabel) #Places label and table entry for the passenger ID
                 canvas.pack()
-                passidbox.insert(END, '#value from table')
+                #passidbox.insert(END, '#value from table')
                 passidbox['state']='disabled'
                 canvas.create_window(260,450, window=passidbox)
                 canvas.pack()
                 
                 canvas.create_window(260,490, window=namelabel)#Places label and table entry for the passenger's name
                 canvas.pack()
-                namebox.insert(END, '#value from table')
+                #namebox.insert(END, '#value from table')
                 namebox['state']='disabled'
                 canvas.create_window(260,510, window=namebox)
                 canvas.pack()
                 
                 canvas.create_window(260,550, window=passpwdlabel)#Places label and table entry for the passenger's password
                 canvas.pack()
-                passpwdbox.insert(END, '#value from table')
+                #passpwdbox.insert(END, '#value from table')
                 passpwdbox['state']='disabled'
                 canvas.create_window(260,570, window=passpwdbox)
                 canvas.pack()
                 
                 canvas.create_window(260,610, window=phonelabel)#Places label and table entry for the passenger's phone number
                 canvas.pack()
-                phonebox.insert(END, '#value from table')
+                #phonebox.insert(END, '#value from table')
                 phonebox['state']='disabled'
                 canvas.create_window(260,630, window=phonebox)
                 canvas.pack()
                 
                 canvas.create_window(500,420, window=routelabel)#Places label and table entry for the passenger's route
                 canvas.pack()
-                routebox.insert(END, '#value from table')
+                #routebox.insert(END, '#value from table')
                 routebox['state']='disabled'
                 canvas.create_window(500,450, window=routebox)
                 canvas.pack()
                 
                 canvas.create_window(500,490, window=stoplabel)#Places label and table entry for the passenger's stop
                 canvas.pack()
-                stopbox.insert(END, '#value from table')
+                #stopbox.insert(END, '#value from table')
                 stopbox['state']='disabled'
                 canvas.create_window(500,510, window=stopbox)
                 canvas.pack()
