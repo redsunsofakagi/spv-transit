@@ -128,7 +128,7 @@ def passengers_create(filename):
                 conn.rollback()
 
 path="csv\\"
-logins_create("passengers.csv")
+logins_create(path+"passengers.csv")
 bus_routes_create(path+"bus_routes.csv")
 stops_create(path+"csv")
 passengers_create(path+"passengers.csv")
