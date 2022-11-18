@@ -1,6 +1,6 @@
 #---imported libraries---#
 
-from main2 import *
+from backend import *
 from tkinter import *
 from tkinter import ttk
 import tkinter as tk
@@ -778,7 +778,8 @@ mvipiv=map_widget.set_marker(28.61083, 77.28481,command=stopclick, text="Mayur V
 pv18= map_widget.set_path([crpf.position,stand.position,vasun.position,dh.position,sama.position,aa.position,mvipi.position,sup.position,pol.position,manfas.position,mvipiv.position,spv.position])
 #pv19
 gip=map_widget.set_marker(28.56919, 77.32799,command=stopclick, text="GIP Mall", font=('Courier New',9), marker_color_circle='white', marker_color_outside='dark blue', text_color='black')
-sfn=map_widget.set_marker(28.5619, 77.33881,command=stopclick, text="Sector 44 Noida", font=('Courier New',9), marker_color_circle='white', marker_color_outside='dark blue', text_color='black')
+#s44n,Sector 44 Noida,28.56026, 77.33655,1,06:45:00
+s44n=map_widget.set_marker(28.56026, 77.33655,command=stopclick, text="Sector 44 Noida", font=('Courier New',9), marker_color_circle='white', marker_color_outside='dark blue', text_color='black')
 stt=map_widget.set_marker(28.5672, 77.34596,command=stopclick, text="Sector 32 Golf Course Metro Station", font=('Courier New',9), marker_color_circle='white', marker_color_outside='dark blue', text_color='black')
 rvn=map_widget.set_marker(28.57584, 77.33986,command=stopclick, text="Ram Vihar", font=('Courier New',9), marker_color_circle='white', marker_color_outside='dark blue', text_color='black')
 jvv=map_widget.set_marker(28.58382, 77.33555,command=stopclick, text="Jalvayu Vihar", font=('Courier New',9), marker_color_circle='white', marker_color_outside='dark blue', text_color='black')

@@ -10,7 +10,7 @@ cur=conn.cursor()
 
 #cheking connection
 if conn.is_connected():
-    print("Mysql connector is connected.")
+    pass
 else:
     print("Connection failed. Aborting.")
     sys.exit()
@@ -53,9 +53,10 @@ def login(username, permissions, password):
 #function to return all data for a given route in the form of a dictionary
 def route_fetch(n):
     if n<=22 and n>=1:
-        quer1="SELECT * FROM bus_routes WHERE route_num='{}'".format(n,)
-        quer2="SELECT * FROM drivers WHERE route_num='{}'".format(n,)
-        quer3="SELECT * FROM attendants WHERE route_num='{}'".format(n,)
+        quer1="SELECT * FROM bus_routes WHERE route_num={}".format(n,)
+        quer2="SELECT * FROM drivers WHERE route_num={}".format(n,)
+        quer3="SELECT * FROM attendants WHERE route_num={}".format(n,)
+        quer4="SELECT * FROM conductors WHERE route_num={}".format(n,)
         try:
             cur.execute(quer1)
             route_data=cur.fetchone()
@@ -63,6 +64,8 @@ def route_fetch(n):
             driver_data=cur.fetchone()
             cur.execute(quer3)
             attendant_data=cur.fetchone()
+            cur.execute(quer4)
+            conductor_data=cur.fetchone()
         except (sqlcon.Error, sqlcon.Warning) as e:
             print("There is an error!")
             print(e)
@@ -71,42 +74,50 @@ def route_fetch(n):
         print("Enter a valid route number.")
         return None
     
+    route_data_dic={'route_length':route_data[1],'stop_count':route_data[2], 'capacity':route_data[3]}
+    driver_data_dic={'driver_name':driver_data[1], 'driver_phnum':driver_data[2]}
+    attendant_data_dic={'attendant_name':attendant_data[1], 'attendant_phnum':attendant_data[2]}
+    conductor_data_dic={'conductor_name':conductor_data[1], 'conductor_phnum':conductor_data[2]}
 
-    route_dic={'route':route_data, 'driver':driver_data, 'attendant':attendant_data}
+    route_dic={'route':route_data_dic, 'driver':driver_data_dic, 'attendant':attendant_data_dic, 'conductor':conductor_data_dic}
     return route_dic
+
 
 #function to fetch all details for a given pass_id
 def pass_fetch(pass_id):
     quer1="SELECT * FROM passengers WHERE pass_id='{}'".format(pass_id,)
     try:
         cur.execute(quer1)
-        pass_data=cur.fetchall()
+        pass_data=cur.fetchone()
     except (sqlcon.Error, sqlcon.Warning) as e:
         print(e)
         return None
-    
-    pass_dic={'username':pass_data[0][0], 'name':pass_data[0][1], 'route':pass_data[0][2]}
+
+    pass_dic={'pass_id':pass_data[0], 'name':pass_data[1], 'route':pass_data[2]}
+    return pass_dic
     
     
 #function to fetch all details for a given stop_id
 def stop_fetch(stop_id):
-    quer1="SELECT stop_name, route_num, latitude, longitiude, stop_address, pass_count, morning_time, evening_time FROM stops WHERE stop_id='{}'".format(stop_id,)
+    quer1="SELECT * FROM stops WHERE stop_id='{}'".format(stop_id,)
     try:
         cur.execute(quer1)
-        stop_data=cur.fetchall()
-    except:
-        pass
-    route_dic= {'stop_name':stop_data[0], 'route_num':stop_data[1], 'latitude':stop_data[2],
-     'longitude':stop_data[3],'stop_address':stop_data[4], 'pass_count':stop_data[5],
-     'morning_time':stop_data[6],'evening_time':[7]}
+        stop_data=cur.fetchone()
+    except (sqlcon.Error, sqlcon.Warning) as e:
+        print(e)
+        return None
+
+    route_dic= {'stop_name':stop_data[1], 'route_num':stop_data[2], 'latitude':stop_data[3],
+     'longitude':stop_data[4], 'pass_count':stop_data[5],
+     'morning_time':stop_data[6]}
     return route_dic
 
 
 
-#function to updata data if you are a student account
+#function to updata data if you are a passenger account
 
 def pass_update(pass_id, pass_name, route_num, stop_id, pass_phnum):
-    quer1="SELECT * FROM passengers WHERE pass_id={}".format(pass_id,)
+    quer1="SELECT * FROM passengers WHERE pass_id='{}'".format(pass_id,)
     try:
         cur.execute(quer1)
         pass_data=cur.fetchone()
@@ -116,8 +127,8 @@ def pass_update(pass_id, pass_name, route_num, stop_id, pass_phnum):
     for i in range (len(lst)):
         if lst[i]==None:
             lst[i]=pass_data[i]
-##ERRROR HERE PLS FIX
-    quer2="UPDATE passengers SET pass_id='{}', pass_name='{}', route_num='{}', stop_id='{}', pass_phnum='{}'".format(lst[0], lst[1], lst[2], lst[3], lst[4])
+
+    quer2="UPDATE passengers SET pass_name='{}', route_num={}, stop_id='{}', pass_phnum='{}' WHERE pass_id='{}'".format(lst[1], lst[2], lst[3], lst[4], lst[0])
     try:
         cur.execute(quer2)
         conn.commit()
@@ -127,6 +138,7 @@ def pass_update(pass_id, pass_name, route_num, stop_id, pass_phnum):
             
 
         
+
     
 # this function is too long but I am not recoding it
 #function to update data for a admin account
@@ -183,10 +195,6 @@ def attendant_update(attendant_id, content_list ):
         conn.rollback()
         print(e)
 
-        
 
-#create_account('arin','attendant','1234')
-#print(login('arin', 'attendant','1234') )
-#print(route_fetch(22))
 
-#conn.close()
+conn.close()

@@ -1,0 +1,199 @@
+stop_id,stop name,route_num,latitude,longitude,pass_count,morning_time
+saketj,Saket J Block,1,28.52211,77.21593,1,06:45:00
+saketh,Saket H Block,1,28.52230,77.21200,1,06:47:00
+gyan,Gyan Bharti School,1,28.52573,77.20557,2,06:49:00
+shivalik,Shivalik Colony,1,28.52784,77.20598,1,06:59:00
+malv1,Malviya Nagar 1,1,28.53613,77.20901,1,06:49:00
+sarv,Sarvpriya Vihar,1,28.54361,77.20763,1,07:05:00
+swami,Swami Nagar,1,28.54219,77.22594,1,07:07:00
+tito,Josip Broz Tito Marg,1,28.54608,77.22969,2,07:12:00
+sadiq,Sadiq Nagar,1,28.55420,77.22821,1,07:14:00
+hudco,Hudco Place,1,28.56037,77.23096,1,07:15:00
+andrew,Andrews Ganj,1,28.56555,77.23396,2,07:17:00
+dda,DDA Flats Munirka,2,28.55627,77.17526,1,06:40:00
+jnu,JNU,2,28.53500,77.16933,2,06:50:00
+ber,Ber Sarai,2,28.55166,77.18212,2,06:52:00
+munmark,Munirka Market,2,28.55469,77.17767,1,06:58:00
+rkp,RK Puram Sector III,2,28.54888,77.18754,1,07:00:00
+iit,IIT Gate,2,28.54602,77.19609,2,07:05:00
+saf,Safdarjung Development Area,2,28.55312,77.20155,1,07:07:00
+gp1,Green Park,2,28.56025,77.20341,1,07:14:00
+kid,Kidwai Nagar,2,28.57275,77.20922,1,07:29:00
+jorb,Jor Bagh,2,28.58579,77.21262,1,07:33:00
+cha,Chanakyapuri,3,28.58485,77.19265,1,06:45:00
+nmb,New Moti Bagh,3,28.57864,77.17594,1,06:51:00
+ae,Aradhana Enclave,3,28.57328,77.17908,1,06:53:00
+jsm,Chaudhary Jhandu Singh Marg,3,28.56548,77.19669,1,07:03:00
+saf2,Safdarjung Enclave II,3,28.56533,77.20017,1,07:06:00
+lbn,Lakshmi Bai Nagar,3,28.57940,77.20809,1,07:15:00
+ina,INA Colony,3,28.57752,77.21055,3,07:20:00
+sem,South Extension Market,3,28.56877,77.22041,1,07:25:00
+defe,Defence Colony 1,3,28.57619,77.22948,1,07:30:00
+jmi,Jamia Milia Islamia,4,28.56101,77.28070,2,06:55:00
+ehi,Escorts Heart Institute,4,28.56131,77.27270,2,07:00:00
+zb,Zakir Bagh,4,28.56220,77.27221,4,07:01:00
+nfc,New Friends Colony,4,28.56896,77.27577,2,07:05:00
+mb,Maharani Bagh,4,28.57264,77.26584,1,07:12:00
+se,Siddharth Extension,4,28.58161,77.26582,1,07:20:00
+sch,Saket City Hospital,5,28.52911,77.21406,2,06:35:00
+sksii,Sheikh Sarai II,5,28.53353,77.23202,2,06:50:00
+ski,Sheikh Sarai I,5,28.53845,77.22284,2,06:57:00
+hk1,Hauz Khas I,5,28.54911,77.21011,2,07:04:00
+asi,Asiad Village,5,28.54805,77.21872,1,07:09:00
+gul,Gulmohar Park,5,28.55373,77.21222,1,07:15:00
+nee,Neeti Bagh,5,28.55797,77.21777,1,07:17:00
+ayu,Ayurvigyan Nagar,5,28.56109,77.22202,1,07:20:00
+shi,Shiv Mandir,5,28.56645,77.22502,1,07:25:00
+sv,Sukhdev Vihar,6,28.55645,77.27768,1,06:55:00
+ek1,East of Kailash C Block,6,28.56074,77.26084,1,07:05:00
+sn,Sant Nagar,6,28.55600,77.25187,1,07:07:00
+ek2,East of Kailash D Block,6,28.55830,77.24671,1,07:09:00
+ek3,East of Kailash E Block,6,28.56031,77.24591,1,07:10:00
+ac,Amar Colony,6,28.56107,77.24901,2,07:12:00
+dc,Dayanand Colony,6,28.56222,77.25019,2,07:15:00
+tccm,3Cs Central Market,6,28.56857,77.24124,2,07:22:00
+kd,Kalkaji Depot,7,28.53944,77.26619,1,06:45:00
+na,Nehru Apartments,7,28.54552,77.25035,1,06:48:00
+kc,Kailash Colony metro station,7,28.55461,77.24283,1,07:02:00
+gkc,Greater Kailash I C Block,7,28.55086,77.23877,1,07:05:00
+gkr,Greater Kailash I R Block,7,28.55149,77.23740,1,07:06:00
+gks,Greater Kailash I S Block,7,28.55142,77.23528,2,07:07:00
+gkn,Greater Kailash I N Block,7,28.55726,77.23208,2,07:10:00
+guru,Gurudwara Jungpura Extension,7,28.58239,77.24164,2,07:20:00
+bir,Birbal Park,7,28.58294,77.24469,2,07:23:00
+bho,Bhogal Market,7,28.58553,77.24898,1,07:30:00
+ke,Kalkaji Extension,8,28.52612,77.25856,1,06:50:00
+ga,Gangotri Apartments,8,28.52617,77.25271,1,06:55:00
+ya,Yamuna Apartments,8,28.52690,77.25197,1,06:57:00
+nia,Nilgiri Apartments,8,28.52800,77.25043,1,06:59:00
+naa,Narmada Apartments,8,28.52796,77.24810,2,07:01:00
+gkiia,Greater Kailash II S Block,8,28.53059,77.24709,2,07:05:00
+gkiib,Greater Kailash II E Block,8,28.53937,77.24247,2,07:10:00
+pvh,Pragati Vihar Hostel,8,28.58470,77.24090,1,07:25:00
+kalka,DDA Flats Kalkaji,9,28.52941,77.25234,1,07:00:00
+manda,Mandakini Enclave,9,28.53295,77.25315,1,07:03:00
+shivap,Shivalik Apartments,9,28.53353,77.25449,1,07:07:00
+crmark2,C:R: Park Market No: 2,9,28.53613,77.25350,1,07:10:00
+mela,Mela Ground,9,28.53799,77.25221,2,07:15:00
+crmark1,C:R: Park Market No: 1,9,28.53998,77.24855,1,07:19:00
+crk,C:R: Park K Block,9,28.54026,77.24373,1,07:23:00
+cra,C:R: Park A Block,9,28.54300,77.24239,1,07:25:00
+defence,Defence Colony,9,28.57488,77.23850,1,07:30:00
+vv,Vasant Vihar Depot,10,28.55891,77.17053,3,06:30:00
+vk,Vasant Kunj,10,28.53441,77.15224,3,06:52:00
+am,Andheria Modh,10,28.50797,77.17663,1,07:04:00
+qm,Qutub Minar,10,28.52440,77.19011,1,07:10:00
+mmtc,MMTC DTC Bus Stop,10,28.53680,77.19743,1,07:12:00
+aiims,AIIMS,10,28.56744,77.20789,1,07:23:00
+sarita,Sarita Vihar,11,28.53139,77.29436,2,06:57:00
+jasola,Jasola Vihar,11,28.53540,77.28469,2,07:03:00
+ashram,Ashram,11,28.57421,77.25699,2,07:15:00
+niz,Nizamuddin,11,28.59317,77.24317,2,07:25:00
+maya,Mayapuri Chowk,12,28.63748,77.13002,1,06:50:00
+mans,Mansarovar,12,28.64088,77.13542,1,06:55:00
+kirti,Kirti Nagar,12,28.64963,77.14356,1,06:56:00
+shad,Shadipur Metro Station,12,28.65117,77.15889,1,07:05:00
+patel,Patel Nagar,12,28.64935,77.16202,1,07:08:00
+raje,Rajendra Place Metro Station,12,28.64236,77.17780,2,07:10:00
+karol,Karol Bagh Metro Station,12,28.64409,77.18897,1,07:12:00
+rail,Railway Colony,12,28.63535,77.21534,1,07:13:00
+ashok,Ashok Vihar,13,28.69071,77.17605,1,06:37:00
+deraw,Derawal Nagar,13,28.69959,77.19040,1,06:43:00
+gujra,Gujranwala Town,13,28.69878,77.19160,1,06:46:00
+prat,Rana Pratap Bagh,13,28.68778,77.19385,1,06:47:00
+shakti,Shakti Nagar,13,28.68155,77.19842,1,06:48:00
+kamlan,Kamla Nagar,13,28.68376,77.20183,1,06:50:00
+ramjas,Ramjas College,13,28.68659,77.20705,1,06:51:00
+jawa,Jawahar Nagar,13,28.68103,77.20878,2,06:52:00
+malka,Malka Ganj,13,28.67834,77.20832,2,06:53:00
+azadpur,Azadpur,14,28.71051,77.18581,1,06:30:00
+mt3,Model Town III,14,28.70982,77.18802,1,06:32:00
+mt2,Model Town II,14,28.70954,77.18902,1,06:35:00
+tagore,Tagore Park,14,28.70522,77.19963,1,06:40:00
+parm,Parmanand Dusshera Ground,14,28.71029,77.20661,1,06:45:00
+rev,Riviera Apartments,14,28.69561,77.21327,1,06:51:00
+drin,DRDO,14,28.69593,77.21611,1,06:54:00
+bana,Banarasi Das Estate,14,28.69638,77.21920,1,06:57:00
+khy,Khyber Pass DTC Bus Stop,14,28.69008,77.22128,1,07:00:00
+rajni,Raj Niwas Marg,14,28.67282,77.22100,1,07:03:00
+ludlo,Ludlo Castle,14,28.67282,77.22254,1,07:05:00
+civill,Civil Lines,14,28.68173,77.22259,1,07:07:00
+indra,Indraprastha College,14,28.68226,77.22469,1,07:10:00
+kaka,Kaka Nagar,14,28.60514,77.23607,1,07:27:00
+ambed,Ambedkar Nagar,14,28.60236,77.23149,1,07:29:00
+rohini,Rohini Sector 16,15,28.74055,77.11897,1,06:15:00
+uniq,Unique Apartments,15,28.71553,77.13094,1,06:25:00
+gujrat,Gujrat Apartments,15,28.69171,77.11144,1,06:30:00
+bank,Bank Vihar Apartments,15,28.69294,77.12060,1,06:37:00
+kohat,Kohat Enclave Metro Station,15,28.69737,77.14203,1,06:40:00
+panj,Punjabi Bagh Metro Station,15,28.67291,77.14588,1,06:57:00
+cinema,Liberty Cinema Hall,15,28.65954,77.18992,1,07:02:00
+rohtak,New Rohtak Road,15,28.65787,77.19410,1,07:05:00
+video,Videocon Tower,15,28.64481,77.20423,1,07:06:00
+gole,Gole Market,15,28.63390,77.20546,1,07:10:00
+chowk,Patel Chowk Metro Station,15,28.62346,77.21271,1,07:15:00
+baroda,Baroda House,15,28.61606,77.23077,1,07:17:00
+rssp,Radha Swami Satsang Park,16,28.62064,77.30742,1,06:44:00
+ms,Mayur Vihar II Metro Station,16,28.61979,77.30491,1,06:45:00
+pa,Mayur Vihar Pocket A,16,28.61984,77.30040,1,06:47:00
+ashir,Ashirwaad Apartments,16,28.63450,77.30154,1,06:57:00
+mithila,Mithila Apartments,16,28.63315,77.29930,1,06:58:00
+prince,Prince Apartments,16,28.63064,77.29949,1,06:59:00
+him,Himalaya Apartments,16,28.63262,77.30557,1,07:01:00
+agra,Agrasen Apartments,16,28.62970,77.30806,1,07:03:00
+savfasc,Savarkar Apartments,16,28.62774,77.30695,1,07:05:00
+ajanta,Ajanta Apartments,16,28.62805,77.30792,1,07:06:00
+kunj,Saraswati Kunj,16,28.62214,77.30091,1,07:08:00
+gtb,GTB Hospital,17,28.68658,77.33111,1,06:20:00
+lick,LIC Office,17,28.66429,77.32058,1,06:28:00
+surya,Surya Nagar,17,28.66953,77.33174,1,06:35:00
+yojana,Yojana Vihar,17,28.66512,77.31639,1,06:43:00
+sreshtha,Sreshtha Vihar,17,28.66561,77.31356,1,06:45:00
+avc,Anand Vihar Colony,17,28.64942,77.30079,1,06:50:00
+je,Jagriti Enclave,17,28.64737,77.30266,1,06:53:00
+kkd,Karkardooma,17,28.64655,77.30156,1,07:03:00
+pvhd,Preet Vihar,17,28.63921,77.29178,1,07:13:00
+nv,Nirman Vihar,17,28.63608,77.28590,1,07:16:00
+lax,Laxmi Nagar,17,28.62963,77.27606,1,07:18:00
+crpf,CRPF Camp,18,28.60798,77.33958,1,06:15:00
+stand,St: Andrews Public School,18,28.60756,77.33641,1,06:17:00
+vasun,Vasundhara Enclave,18,28.60016,77.31649,1,06:27:00
+dh,Dharamshila Hospital,18,28.60260,77.31306,1,06:32:00
+sama,Samachar Apartments,18,28.59627,77.29519,1,06:42:00
+aa,Ashiana Apartments,18,28.59851,77.29763,1,06:44:00
+mvipi,Mayur Vihar I Pocket I,18,28.60689,77.29472,1,06:53:00
+sup,Supreme Enclave,18,28.60759,77.29160,1,07:00:00
+pol,Police Apartments,18,28.61146,77.28722,1,07:05:00
+manfas,Manu Apartments,18,28.61098,77.28639,1,07:09:00
+mvipiv,Mayur Vihar I Pocket IV Metro Station,18,28.61083,77.28481,1,07:12:00
+gip,GIP Mall,19,28.56919,77.32799,1,06:35:00
+s44n,Sector 44 Noida,19,28.56026,77.33655,1,06:45:00
+stt,Sector 32 Golf Course Metro Station,19,28.56720,77.34596,1,06:50:00
+rvn,Ram Vihar,19,28.57584,77.33986,1,06:52:00
+jvv,Jalvayu Vihar,19,28.58382,77.33555,1,06:55:00
+mmh,Max Medicare Hospital,19,28.57947,77.32117,1,06:57:00
+nbv,Naya Bans Village,19,28.58188,77.31409,1,07:00:00
+sfn,Sector 14A Noida,19,28.58248,77.30440,1,07:05:00
+dnb,Delhi Noida Border,19,28.58211,77.30263,1,07:10:00
+cgv,Commonwealth Games Village,19,28.61028,77.27267,1,07:15:00
+guj,Gujarat Vihar,20,28.64363,77.29127,3,07:00:00
+swasth,Swasthya Vihar,20,28.64038,77.28629,2,07:10:00
+walia,Walia Nursing Home,20,28.63283,77.28072,2,07:12:00
+chan,Chandni Chowk,21,28.65325,77.23652,1,06:55:00
+darya,Darya Ganj,21,28.64481,77.24032,1,07:08:00
+nanak,Guru Nanak Eye Center,21,28.63807,77.23113,1,07:12:00
+azad,Maulana Azad Medical College,21,28.63592,77.24013,1,07:16:00
+irwin,Lady Irwin College,21,28.62553,77.23644,1,07:21:00
+mandi,Mandi House Metro Station,21,28.62561,77.23426,2,07:22:00
+pand,Pandara Road,21,28.60597,77.23071,2,07:30:00
+edm,EDM Mall,22,28.64213,77.31627,1,06:55:00
+vidhi,Vidhi Apartments,22,28.63333,77.31026,1,07:00:00
+silver,Silver Oak Apartments,22,28.63632,77.31222,1,07:02:00
+jai,Jai Apartments,22,28.63046,77.31053,1,07:04:00
+ddam,DDA Market,22,28.62981,77.30852,1,07:07:00
+para,Paradise Apartments,22,28.62621,77.30821,1,07:09:00
+tech,Technology Apartments,22,28.62449,77.30294,1,07:10:00
+press,Press Apartments,22,28.62304,77.29858,1,07:12:00
+ekta,Ekta Gardens,22,28.62129,77.29332,1,07:14:00
+ankur,Ankur Apartments,22,28.62015,77.29016,1,07:15:00
+mdp,Mother Dairy Patparganj,22,28.61861,77.28664,1,07:18:00
