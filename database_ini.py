@@ -31,10 +31,12 @@ def tables_create():
         cur.execute(quer5)
         cur.execute(quer6)
         cur.execute(quer7)
-        conn.commit()               
+        conn.commit()
+        print("Tables successfully created.")             
     except(sqlcon.Error,sqlcon.Warning) as e:
         print(e)
         conn.rollback()
+        print("Table creation failed")
 
 
 def tables_delete():
@@ -53,29 +55,39 @@ def tables_delete():
         cur.execute(quer5)
         cur.execute(quer6)
         cur.execute(quer7)
-        conn.commit()               
+        conn.commit()
+        print("Tables succesfully deleted")              
     except(sqlcon.Error,sqlcon.Warning) as e:
         print(e)
         conn.rollback()
+        print("Deletion of tables failed.")
 
 
 def logins_create(filename1, filename2):
     with open(filename1, "r", newline="") as fin:
         csvreader=csv.reader(fin)
         head=True
+        count=0
+        print("Creating passenger accounts...")
         for i in csvreader:
             if head==True:
                 head=False
                 continue
+            count+=1
             create_account(i[0],"passenger",'1234')
+            print("("+str(count)+"/246)")
     with open(filename2, "r", newline="") as fin:
         csvreader=csv.reader(fin)
         head=True
+        count=0
+        print("Creating attendant tables")
         for i in csvreader:
             if head==True:
                 head=False
                 continue
+            count+=1
             create_account(i[2],"attendant",'1234')
+            print("("+str(count)+"/22)")
         
 
             
@@ -95,6 +107,7 @@ def bus_routes_create(filename):
             except(sqlcon.Error,sqlcon.Warning) as e:
                 print(e)
                 conn.rollback()
+        print("Bus routes added")
 
 
 def stops_create(filename):
@@ -102,20 +115,17 @@ def stops_create(filename):
         csvreader=csv.reader(fin)
         head=True
         for i in csvreader:
-            #print(i)
             if head==True:
                 head=False
                 continue
             quer1="INSERT INTO stops VALUES('{}','{}','{}',{},{},{},'{}')".format(i[0].strip(),i[1].strip(),int(i[2].strip()),float(i[3].strip()),float(i[4].strip()),int(i[5].strip()),i[6].strip())
-            #print(quer1)
             try:
                 cur.execute(quer1)
                 conn.commit()
-                
             except(sqlcon.Error,sqlcon.Warning) as e:
                 print(e)
                 conn.rollback()
-
+        print("stops added")
 
 def drivers_create(filename):
     with open(filename, "r", newline="") as fin:
@@ -132,7 +142,7 @@ def drivers_create(filename):
             except(sqlcon.Error,sqlcon.Warning) as e:
                 print(e)
                 conn.rollback()
-
+        print("driver details added")
 
 def conductors_create(filename):
     with open(filename, "r", newline="") as fin:
@@ -149,7 +159,7 @@ def conductors_create(filename):
             except(sqlcon.Error,sqlcon.Warning) as e:
                 print(e)
                 conn.rollback()
-
+        print("conductor details added")
 
 def attendants_create(filename):
     with open(filename, "r", newline="") as fin:
@@ -166,7 +176,7 @@ def attendants_create(filename):
             except(sqlcon.Error,sqlcon.Warning) as e:
                 print(e)
                 conn.rollback()
-
+        print("attendant details added")
 
 def passengers_create(filename):
     with open(filename, "r", newline="") as fin:
@@ -176,7 +186,6 @@ def passengers_create(filename):
             if head==True:
                 head=False
                 continue
-            print(i)
             quer1="INSERT INTO passengers VALUES('{}','{}','{}','{}','{}')".format(i[0].strip(),i[1].strip(),int(i[2].strip()),i[3].strip(),i[4].strip())
             try:
                 cur.execute(quer1)
@@ -184,8 +193,10 @@ def passengers_create(filename):
             except(sqlcon.Error,sqlcon.Warning) as e:
                 print(e)
                 conn.rollback()
-path="csv/"
-#path="csv\\"
+        print("passenger details added")
+            
+path="csv/" #uncomment for macos/linux
+#path="csv\\" #uncoment for windows
 
 tables_delete()
 tables_create()

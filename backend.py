@@ -23,7 +23,6 @@ def create_account(username, permissions, password):
     try:
         cur.execute(quer1)
         conn.commit()
-        print("Account successfuly created.")
         return True
     except (sqlcon.Error, sqlcon.Warning) as e:
         conn.rollback()
@@ -180,7 +179,7 @@ def attendant_update(attendant_phnum, content_list ):
     quer7="UPDATE bus_routes SET route_length={}, capacity={} WHERE route_num={}".format(content_list[0][0], content_list[0][1], route_num)
     quer8="UPDATE attendants SET attendant_name='{}' WHERE route_num={}".format(content_list[1][0], route_num)   
     quer9="UPDATE drivers SET driver_name='{}', driver_phnum='{}' WHERE route_num={}".format(content_list[2][0], content_list[2][1],route_num)
-    quer10="UPDATE conductors SET conductor_name='{}', conductor_phnum='{}' WHERE route_num={}".format(content_list[3][0], content_list[3][1], route_num)
+    quer10="UPDATE conductors SET conductor_name='{}', conductor_phnum='{}' WHERE route_num={}".format(content_list[3][0], content_list[3][1], route_num), contact1, contact2
     quer11="UPDATE stops SET pass_count={} WHERE stop_id='{}'".format(content_list[4][1],content_list[4][0])
 
     try:
@@ -203,6 +202,4 @@ def attendant_update(attendant_phnum, content_list ):
 #stop_fetch(stop_id)
 #pass_update(pass_id, pass_name, route_num, stop_id, pass_phnum)
 #attendant_update(attendant_phnum, content_list )
-#[[length_route, capacity], [attendant_name, contact1, contact2], [driver_name, contact], [conductor_name, contact],[stop_id, number of passengers]]
-lst=[[18,15],["Richard Hammond"],["Jeremy Clarkson","8800226060"],[None,"6969696969"],["s44n",4]]
-attendant_update("7703937445", lst)
+#[[length_route, capacity], [attendant_name], [driver_name, contact], [conductor_name, contact],[stop_id, number of passengers]]
