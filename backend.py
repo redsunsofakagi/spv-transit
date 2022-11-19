@@ -179,7 +179,7 @@ def attendant_update(attendant_phnum, content_list ):
     quer7="UPDATE bus_routes SET route_length={}, capacity={} WHERE route_num={}".format(content_list[0][0], content_list[0][1], route_num)
     quer8="UPDATE attendants SET attendant_name='{}' WHERE route_num={}".format(content_list[1][0], route_num)   
     quer9="UPDATE drivers SET driver_name='{}', driver_phnum='{}' WHERE route_num={}".format(content_list[2][0], content_list[2][1],route_num)
-    quer10="UPDATE conductors SET conductor_name='{}', conductor_phnum='{}' WHERE route_num={}".format(content_list[3][0], content_list[3][1], route_num), contact1, contact2
+    quer10="UPDATE conductors SET conductor_name='{}', conductor_phnum='{}' WHERE route_num={}".format(content_list[3][0], content_list[3][1], route_num)
     quer11="UPDATE stops SET pass_count={} WHERE stop_id='{}'".format(content_list[4][1],content_list[4][0])
 
     try:
