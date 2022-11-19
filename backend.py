@@ -198,11 +198,5 @@ def attendant_update(attendant_phnum, content_list ):
 #stop_fetch(stop_id)
 #pass_update(pass_id, pass_name, route_num, stop_id, pass_phnum)
 #attendant_update(attendant_phnum, content_list )
-<<<<<<< Updated upstream
-#[[length_route, capacity], [attendant_name], [driver_name, contact], [conductor_name, contact],[stop_id, number of passengers]]
-=======
-#[[length_route, capacity], [attendant_name, contact1, contact2], [driver_name, contact], [conductor_name, contact],[stop_id, number of passengers]]
 
-#lst=[[18,15],["Richard Hammond"],["Jeremy Clarkson","8800226060"],[None,"6969696969"],["s44n",4]]
-#attendant_update("7703937445", lst)
->>>>>>> Stashed changes
+#[[length_route, capacity], [attendant_name], [driver_name, contact], [conductor_name, contact],[stop_id, number of passengers]]
