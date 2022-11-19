@@ -126,12 +126,12 @@ def passengers_create(filename):
             except(sqlcon.Error,sqlcon.Warning) as e:
                 print(e)
                 conn.rollback()
-
+#path="csv/"
 path="csv\\"
 logins_create(path+"passengers.csv")
 bus_routes_create(path+"bus_routes.csv")
-stops_create(path+"csv")
+stops_create(path+"stops.csv")
 passengers_create(path+"passengers.csv")
-drivers_create(path+"passengers.csv")
+drivers_create(path+"drivers.csv")
 conductors_create(path+"conductors.csv")
 attendants_create(path+"attendants.csv")
