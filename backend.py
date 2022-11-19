@@ -147,16 +147,16 @@ def attendant_update(attendant_phnum, content_list ):
     quer1="SELECT route_num FROM attendants WHERE attendant_phnum={}".format(attendant_phnum,)
     try:
         cur.execute(quer1)
-        route_num=cur.fetchone()
+        route_num_data=cur.fetchone()
     except (sqlcon.Error, sqlcon.Warning) as e:
         print(e)
-    
+    route_num=route_num_data[0]
     quer2="SELECT route_length, capacity from bus_routes WHERE route_num={}".format(route_num,)
-    quer3="SELECT attendant_name, attendant_phnum1 from attendants WHERE route_num={}".format(route_num,)
+    quer3="SELECT attendant_name, attendant_phnum from attendants WHERE route_num={}".format(route_num,)
     quer4="SELECT driver_name, driver_phnum from drivers WHERE route_num={}".format(route_num,)
     quer5="SELECT conductor_name, conductor_phnum from conductors WHERE route_num={}".format(route_num,)
-    quer6="SELECT pass_count from stops WHERE stop_id={}".format(content_list[4][0],)
-
+    quer6="SELECT pass_count from stops WHERE stop_id='{}'".format(content_list[4][0],)
+    print(content_list)
     try:
         cur.execute(quer2)
         route_data=cur.fetchone()
@@ -170,18 +170,18 @@ def attendant_update(attendant_phnum, content_list ):
         stop_data=cur.fetchone()
     except (sqlcon.Error, sqlcon.Warning) as e:
         print(e)
-    
+    print(stop_data)
     old_content=[route_data, attendant_data, driver_data, conductor_data, stop_data]
-
+    print(content_list[4][0])
     for i in range(len(content_list)):
-        for j in range (len(i)):
+        for j in range (len(content_list[i])):
             if content_list[i][j]==None:
                 content_list[i][j]=old_content[i][j]
     quer7="UPDATE bus_routes SET route_length={}, capacity={} WHERE route_num={}".format(content_list[0][0], content_list[0][1], route_num)
-    quer8="UPDATE attendants SET attendant_name={}, attendant_phnum1={} WHERE route_num={}".format(content_list[1][0], content_list[1][1], route_num)   
-    quer9="UPDATE drivers SET driver_name={}, driver_phnum={} WHERE route_num={}".format(content_list[2][0], content_list[2][1],route_num)
-    quer10="UPDATE conductors SET conductor_name={}, conductor_phnum={} WHERE route_num={}".format(content_list[3][0], content_list[3][1], route_num)
-    quer11="UPDATE stops pass_count={} WHERE stop_id={}".format(content_list[4][1],content_list[4][0])
+    quer8="UPDATE attendants SET attendant_name='{}' WHERE route_num={}".format(content_list[1][0], route_num)   
+    quer9="UPDATE drivers SET driver_name='{}', driver_phnum='{}' WHERE route_num={}".format(content_list[2][0], content_list[2][1],route_num)
+    quer10="UPDATE conductors SET conductor_name='{}', conductor_phnum='{}' WHERE route_num={}".format(content_list[3][0], content_list[3][1], route_num)
+    quer11="UPDATE stops SET pass_count={} WHERE stop_id='{}'".format(content_list[4][1],content_list[4][0])
 
     try:
         cur.execute(quer7)
@@ -202,6 +202,7 @@ def attendant_update(attendant_phnum, content_list ):
 #pass_fetch(pass_id)
 #stop_fetch(stop_id)
 #pass_update(pass_id, pass_name, route_num, stop_id, pass_phnum)
-
 #attendant_update(attendant_phnum, content_list )
 #[[length_route, capacity], [attendant_name, contact1, contact2], [driver_name, contact], [conductor_name, contact],[stop_id, number of passengers]]
+lst=[[18,15],["Richard Hammond"],["Jeremy Clarkson","8800226060"],[None,"6969696969"],["s44n",4]]
+attendant_update("7703937445", lst)
