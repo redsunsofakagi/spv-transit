@@ -1,6 +1,5 @@
 #importing modules
 import sys
-import csv
 import bcrypt
 import mysql.connector as sqlcon
 
@@ -143,9 +142,9 @@ def pass_update(pass_id, pass_name, route_num, stop_id, pass_phnum):
 # this function is too long but I am not recoding it
 #function to update data for a admin account
 #Enter None where there is no change
-# Content_list format: [[length_route, capacity], [attendant_name, contact1, contact2], [driver_name, contact], [conductor_name, contact],[stop_id, number of passengers]]
-def attendant_update(attendant_id, content_list ):
-    quer1="SELECT route_num FROM attendants WHERE attendant_id={}".format(attendant_id,)
+# Content_list format: [[length_route, capacity], [attendant_name], [driver_name, contact], [conductor_name, contact],[stop_id, number of passengers]]
+def attendant_update(attendant_phnum, content_list ):
+    quer1="SELECT route_num FROM attendants WHERE attendant_phnum={}".format(attendant_phnum,)
     try:
         cur.execute(quer1)
         route_num=cur.fetchone()
@@ -153,7 +152,7 @@ def attendant_update(attendant_id, content_list ):
         print(e)
     
     quer2="SELECT route_length, capacity from bus_routes WHERE route_num={}".format(route_num,)
-    quer3="SELECT attendant_name, attendant_phnum1, attendant_phnum2 from attendants WHERE route_num={}".format(route_num,)
+    quer3="SELECT attendant_name, attendant_phnum1 from attendants WHERE route_num={}".format(route_num,)
     quer4="SELECT driver_name, driver_phnum from drivers WHERE route_num={}".format(route_num,)
     quer5="SELECT conductor_name, conductor_phnum from conductors WHERE route_num={}".format(route_num,)
     quer6="SELECT pass_count from stops WHERE stop_id={}".format(content_list[4][0],)
@@ -178,10 +177,10 @@ def attendant_update(attendant_id, content_list ):
         for j in range (len(i)):
             if content_list[i][j]==None:
                 content_list[i][j]=old_content[i][j]
-    quer7="UPDATE bus_routes SET route_length={}, capacity={} WHERE route_num={}".format(content_list[0][0], content_list[0],[1], route_num)
-    quer8="UPDATE attendants SET attendant_name={}, attendant_phnum1={}, attendant_phnum2={} WHERE route_num={}".format(content_list[1][0], content_list[1],[1], content_list[1],[2], route_num)   
-    quer9="UPDATE drivers SET driver_name={}, driver_phnum={} WHERE route_num={}".format(content_list[2][0], content_list[2],[1],route_num)
-    quer10="UPDATE conductors SET conductor_name={}, conductor_phnum={} WHERE route_num={}".format(content_list[3][0], content_list[3],[1], route_num)
+    quer7="UPDATE bus_routes SET route_length={}, capacity={} WHERE route_num={}".format(content_list[0][0], content_list[0][1], route_num)
+    quer8="UPDATE attendants SET attendant_name={}, attendant_phnum1={} WHERE route_num={}".format(content_list[1][0], content_list[1][1], route_num)   
+    quer9="UPDATE drivers SET driver_name={}, driver_phnum={} WHERE route_num={}".format(content_list[2][0], content_list[2][1],route_num)
+    quer10="UPDATE conductors SET conductor_name={}, conductor_phnum={} WHERE route_num={}".format(content_list[3][0], content_list[3][1], route_num)
     quer11="UPDATE stops pass_count={} WHERE stop_id={}".format(content_list[4][1],content_list[4][0])
 
     try:
@@ -197,4 +196,12 @@ def attendant_update(attendant_id, content_list ):
 
 
 
-conn.close()
+#create_account(username, permissions, password)
+#login(username, permissions, password)
+#route_fetch(n)
+#pass_fetch(pass_id)
+#stop_fetch(stop_id)
+#pass_update(pass_id, pass_name, route_num, stop_id, pass_phnum)
+
+#attendant_update(attendant_phnum, content_list )
+#[[length_route, capacity], [attendant_name, contact1, contact2], [driver_name, contact], [conductor_name, contact],[stop_id, number of passengers]]
