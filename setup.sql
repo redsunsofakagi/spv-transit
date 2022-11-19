@@ -67,8 +67,10 @@ CREATE TABLE IF NOT EXISTS conductors (
 CREATE TABLE  IF NOT EXISTS attendants (
     route_num int UNIQUE NOT NULL,
     attendant_name varchar(50),
-    attendant_phnum char(10),
+    attendant_phnum varchar(20) UNIQUE,
     FOREIGN KEY (route_num) REFERENCES bus_routes (route_num)
+    ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (attendant_phnum) REFERENCES logins (username)
     ON DELETE CASCADE ON UPDATE CASCADE
 )
 
