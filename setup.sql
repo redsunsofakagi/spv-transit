@@ -75,5 +75,7 @@ CREATE TABLE  IF NOT EXISTS attendants (
 )
 
 -- @block
+select * from passengers;
+
 
 

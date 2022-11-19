@@ -91,7 +91,7 @@ def pass_fetch(pass_id):
         print(e)
         return None
 
-    pass_dic={'pass_id':pass_data[0], 'name':pass_data[1], 'route':pass_data[2]}
+    pass_dic={'pass_id':pass_data[0], 'name':pass_data[1], 'route':pass_data[2], 'stop_id':pass_data[3], 'pass_phnum':pass_data[4]}
     return pass_dic
     
     
@@ -133,10 +133,6 @@ def pass_update(pass_id, pass_name, route_num, stop_id, pass_phnum):
     except (sqlcon.Error, sqlcon.Warning) as e:
         conn.rollback()
         print(e)
-            
-
-        
-
     
 # this function is too long but I am not recoding it
 #function to update data for a admin account
@@ -155,7 +151,7 @@ def attendant_update(attendant_phnum, content_list ):
     quer4="SELECT driver_name, driver_phnum from drivers WHERE route_num={}".format(route_num,)
     quer5="SELECT conductor_name, conductor_phnum from conductors WHERE route_num={}".format(route_num,)
     quer6="SELECT pass_count from stops WHERE stop_id='{}'".format(content_list[4][0],)
-    print(content_list)
+    #print(content_list)
     try:
         cur.execute(quer2)
         route_data=cur.fetchone()
@@ -169,9 +165,9 @@ def attendant_update(attendant_phnum, content_list ):
         stop_data=cur.fetchone()
     except (sqlcon.Error, sqlcon.Warning) as e:
         print(e)
-    print(stop_data)
+    #print(stop_data)
     old_content=[route_data, attendant_data, driver_data, conductor_data, stop_data]
-    print(content_list[4][0])
+    #print(content_list[4][0])
     for i in range(len(content_list)):
         for j in range (len(content_list[i])):
             if content_list[i][j]==None:
@@ -202,4 +198,11 @@ def attendant_update(attendant_phnum, content_list ):
 #stop_fetch(stop_id)
 #pass_update(pass_id, pass_name, route_num, stop_id, pass_phnum)
 #attendant_update(attendant_phnum, content_list )
+<<<<<<< Updated upstream
 #[[length_route, capacity], [attendant_name], [driver_name, contact], [conductor_name, contact],[stop_id, number of passengers]]
+=======
+#[[length_route, capacity], [attendant_name, contact1, contact2], [driver_name, contact], [conductor_name, contact],[stop_id, number of passengers]]
+
+#lst=[[18,15],["Richard Hammond"],["Jeremy Clarkson","8800226060"],[None,"6969696969"],["s44n",4]]
+#attendant_update("7703937445", lst)
+>>>>>>> Stashed changes

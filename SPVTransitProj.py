@@ -5,8 +5,6 @@ from tkinter import *
 from tkinter import ttk
 import tkinter as tk
 import tkintermapview as tmap
-import time
-import os
 
 #---window creation---#
 
@@ -53,63 +51,54 @@ def linked(): #moves the user to the data screen
             
             canvas.create_window(260,180, window=lengthlabel) #Places label and table entry for route length
             canvas.pack()
-            #lengthbox.insert(END, '#value from table')
             lengthbox['state']='disabled'
             canvas.create_window(260,200, window=lengthbox)
             canvas.pack()
             
             canvas.create_window(260,240, window=stopslabel) #Places label and table entry for no. of stops
             canvas.pack()
-            #stopsbox.insert(END, '#value from table')
             stopsbox['state']='disabled'
             canvas.create_window(260,260, window=stopsbox)
             canvas.pack()
             
             canvas.create_window(260,300, window=capacitylabel) #Places label and table entry for capacity
             canvas.pack()
-            #capacitybox.insert(END, '#value from table')
             capacitybox['state']='disabled'
             canvas.create_window(260,320, window=capacitybox)
             canvas.pack()
             
             canvas.create_window(500,180, window=attendantlabel) #Places label and table entry for the attendant of that route
             canvas.pack()
-            #attendantbox.insert(END, '#value from table')
             attendantbox['state']='disabled'
             canvas.create_window(500,200, window=attendantbox)
             canvas.pack()
             
             canvas.create_window(500,240, window=driverlabel) #Places label and table entry for the driver of that route
             canvas.pack()
-            #driverbox.insert(END, '#value from table')
             driverbox['state']='disabled'
             canvas.create_window(500,260, window=driverbox)
             canvas.pack()
             
             canvas.create_window(500,300, window=conductorlabel)#Places label and table entry for the conductor of that route
             canvas.pack()
-            #conductorbox.insert(END, '#value from table')
             conductorbox['state']='disabled'
             canvas.create_window(500,320, window=conductorbox)
             canvas.pack()
             
             canvas.create_window(650,180, window=attenconlabel) #Places label and table entry for the attendant's contact
             canvas.pack()
-           #attenconbox.insert(END, '#value from table')
             attenconbox['state']='disabled'
             canvas.create_window(650,200, window=attenconbox)
             canvas.pack()
             
             canvas.create_window(650,240, window=driverconlabel)#Places label and table entry for the drivers's contact
             canvas.pack()
-            #driverconbox.insert(END, '#value from table')
             driverconbox['state']='disabled'
             canvas.create_window(650,260, window=driverconbox)
             canvas.pack()
             
             canvas.create_window(650,300, window=conconlabel) #Places label and table entry for the conductor's contact
             canvas.pack()
-            #conconbox.insert(END, '#value from table')
             conconbox['state']='disabled'
             canvas.create_window(650,320, window=conconbox)
             canvas.pack()
@@ -142,14 +131,14 @@ def linked(): #moves the user to the data screen
 
             canvas.create_window(890,620, window=numpasslabel) #Places label and table entry for the number of passengers
             canvas.pack()
-            #numpassbox.insert(END, '#value from table')
+            numpassbox.insert(END, '#select a stop')
             numpassbox['state']='disabled'
             canvas.create_window(890,640, window=numpassbox)
             canvas.pack()
 
-            canvas.create_window(1130,620, window=timelabel) #Places label and table entry for the number of passengers
+            canvas.create_window(1130,620, window=timelabel) #Places label and table entry for the time of arrival
             canvas.pack()
-            #timebox.insert(END, '#value from table')
+            timebox.insert(END, '#select a stop')
             timebox['state']='disabled'
             canvas.create_window(1130,640, window=timebox)
             canvas.pack()
@@ -157,61 +146,59 @@ def linked(): #moves the user to the data screen
             canvas.create_window(1225, 20, window=button6)
             canvas.pack()
 
-            #canvas.create_image(1000,61, image=pinimg)#Places a small pin on top pf the map 
-            #canvas.pack()
-
             ##Above were the windows generated for all users
         
             if str(user.get()) == 'passenger':
-                
+
+                pdic=pass_fetch(str(userbox.get()))
+                sdic=stop_fetch(pdic['stop_id'])
+
                 canvas.create_window(260,370, window=PASSENGER) #Places label for passenger details
                 canvas.pack()
                 
                 canvas.create_window(260,420, window=passidlabel) #Places label and table entry for the passenger ID
                 canvas.pack()
-                #passidbox.insert(END, '#value from table')
+                passidbox.insert(END, pdic['pass_id'])
                 passidbox['state']='disabled'
-                canvas.create_window(260,450, window=passidbox)
+                canvas.create_window(260,440, window=passidbox)
                 canvas.pack()
                 
-                canvas.create_window(260,490, window=namelabel)#Places label and table entry for the passenger's name
+                canvas.create_window(260,480, window=namelabel)#Places label and table entry for the passenger's name
                 canvas.pack()
-                #namebox.insert(END, '#value from table')
+                namebox.insert(END, pdic['name'])
                 namebox['state']='disabled'
-                canvas.create_window(260,510, window=namebox)
+                canvas.create_window(260,500, window=namebox)
                 canvas.pack()
                 
-                canvas.create_window(260,550, window=passpwdlabel)#Places label and table entry for the passenger's password
+                canvas.create_window(260,540, window=phonelabel)#Places label and table entry for the passenger's phone number
                 canvas.pack()
-                #passpwdbox.insert(END, '#value from table')
-                passpwdbox['state']='disabled'
-                canvas.create_window(260,570, window=passpwdbox)
-                canvas.pack()
-                
-                canvas.create_window(260,610, window=phonelabel)#Places label and table entry for the passenger's phone number
-                canvas.pack()
-                #phonebox.insert(END, '#value from table')
+                phonebox.insert(END, pdic['pass_phnum'])
                 phonebox['state']='disabled'
-                canvas.create_window(260,630, window=phonebox)
+                canvas.create_window(260,560, window=phonebox)
                 canvas.pack()
                 
                 canvas.create_window(500,420, window=routelabel)#Places label and table entry for the passenger's route
                 canvas.pack()
-                #routebox.insert(END, '#value from table')
+                routebox.insert(END, pdic['route'])
                 routebox['state']='disabled'
-                canvas.create_window(500,450, window=routebox)
+                canvas.create_window(500,440, window=routebox)
                 canvas.pack()
                 
-                canvas.create_window(500,490, window=stoplabel)#Places label and table entry for the passenger's stop
+                canvas.create_window(500,480, window=stoplabel)#Places label and table entry for the passenger's stop
                 canvas.pack()
-                #stopbox.insert(END, '#value from table')
+                stopbox.insert(END, sdic['stop_name'])
                 stopbox['state']='disabled'
-                canvas.create_window(500,510, window=stopbox)
+                canvas.create_window(500,500, window=stopbox)
                 canvas.pack()
+        elif str(userbox.get()) in ['Avyaya', 'Ritwik', 'Arin'] and str(passbox.get()) == 't0p10p@55w0rD5':
+
+            canvas.delete("all")
+
     except TypeError:
         print("Incorrect/empty fields entered.")
 
 def routechange(event): #updates to new route
+    button2['state']='normal'
     global pv1, pv2, pv3, pv4, pv5, pv6, pv7, pv8, pv9, pv10, pv11, pv12, pv13, pv14, pv15, pv16, pv17, pv18, pv19, pv20, pv21, pv22
     PV['text']=str(table.get())
     pv1.delete()
@@ -236,79 +223,1192 @@ def routechange(event): #updates to new route
     pv20.delete()
     pv21.delete()
     pv22.delete()
+
     if str(table.get())[3::]=='1':
+
+        rdic=route_fetch(1)
+
+        lengthbox['state']='normal'
+        lengthbox.delete(0, len(str(lengthbox.get())))
+        lengthbox.insert(END, rdic['route']['route_length'])
+        lengthbox['state']='disabled'
+        
+        stopsbox['state']='normal'
+        stopsbox.delete(0, len(str(stopsbox.get())))
+        stopsbox.insert(END, rdic['route']['stop_count'])
+        stopsbox['state']='disabled'
+
+        capacitybox['state']='normal'
+        capacitybox.delete(0, len(str(capacitybox.get())))
+        capacitybox.insert(END, rdic['route']['capacity'])
+        capacitybox['state']='disabled'
+
+        attendantbox['state']='normal'
+        attendantbox.delete(0, len(str(attendantbox.get())))
+        attendantbox.insert(END, rdic['attendant']['attendant_name'])
+        attendantbox['state']='disabled'
+
+        attenconbox['state']='normal'
+        attenconbox.delete(0, len(str(attenconbox.get())))
+        attenconbox.insert(END, rdic['attendant']['attendant_phnum'])
+        attenconbox['state']='disabled'
+
+        driverbox['state']='normal'
+        driverbox.delete(0, len(str(driverbox.get())))
+        driverbox.insert(END, rdic['driver']['driver_name'])
+        driverbox['state']='disabled'
+
+        driverconbox['state']='normal'
+        driverconbox.delete(0, len(str(driverconbox.get())))
+        driverconbox.insert(END, rdic['driver']['driver_phnum'])
+        driverconbox['state']='disabled'
+
+        conductorbox['state']='normal'
+        conductorbox.delete(0, len(str(conductorbox.get())))
+        conductorbox.insert(END, rdic['conductor']['conductor_name'])
+        conductorbox['state']='disabled'
+
+        conconbox['state']='normal'
+        conconbox.delete(0, len(str(conconbox.get())))
+        conconbox.insert(END, rdic['conductor']['conductor_phnum'])
+        conconbox['state']='disabled'
+        
         pv1= map_widget.set_path([saketj.position,saketh.position,gyan.position,shivalik.position,malv1.position,sarv.position,swami.position,tito.position,sadiq.position,hudco.position,andrew.position,spv.position])
+
     elif str(table.get())[3::]=='2':
+
+        rdic=route_fetch(2)
+
+        lengthbox['state']='normal'
+        lengthbox.delete(0, len(str(lengthbox.get())))
+        lengthbox.insert(END, rdic['route']['route_length'])
+        lengthbox['state']='disabled'
+        
+        stopsbox['state']='normal'
+        stopsbox.delete(0, len(str(stopsbox.get())))
+        stopsbox.insert(END, rdic['route']['stop_count'])
+        stopsbox['state']='disabled'
+
+        capacitybox['state']='normal'
+        capacitybox.delete(0, len(str(capacitybox.get())))
+        capacitybox.insert(END, rdic['route']['capacity'])
+        capacitybox['state']='disabled'
+
+        attendantbox['state']='normal'
+        attendantbox.delete(0, len(str(attendantbox.get())))
+        attendantbox.insert(END, rdic['attendant']['attendant_name'])
+        attendantbox['state']='disabled'
+
+        attenconbox['state']='normal'
+        attenconbox.delete(0, len(str(attenconbox.get())))
+        attenconbox.insert(END, rdic['attendant']['attendant_phnum'])
+        attenconbox['state']='disabled'
+
+        driverbox['state']='normal'
+        driverbox.delete(0, len(str(driverbox.get())))
+        driverbox.insert(END, rdic['driver']['driver_name'])
+        driverbox['state']='disabled'
+
+        driverconbox['state']='normal'
+        driverconbox.delete(0, len(str(driverconbox.get())))
+        driverconbox.insert(END, rdic['driver']['driver_phnum'])
+        driverconbox['state']='disabled'
+
+        conductorbox['state']='normal'
+        conductorbox.delete(0, len(str(conductorbox.get())))
+        conductorbox.insert(END, rdic['conductor']['conductor_name'])
+        conductorbox['state']='disabled'
+
+        conconbox['state']='normal'
+        conconbox.delete(0, len(str(conconbox.get())))
+        conconbox.insert(END, rdic['conductor']['conductor_phnum'])
+        conconbox['state']='disabled'
+
         pv2=map_widget.set_path([dda.position,jnu.position,ber.position,munmark.position,rkp.position,iit.position,saf.position,gp1.position,kid.position,jorb.position,spv.position])
+    
     elif str(table.get())[3::]=='3':
+        
+        rdic=route_fetch(3)
+
+        lengthbox['state']='normal'
+        lengthbox.delete(0, len(str(lengthbox.get())))
+        lengthbox.insert(END, rdic['route']['route_length'])
+        lengthbox['state']='disabled'
+        
+        stopsbox['state']='normal'
+        stopsbox.delete(0, len(str(stopsbox.get())))
+        stopsbox.insert(END, rdic['route']['stop_count'])
+        stopsbox['state']='disabled'
+
+        capacitybox['state']='normal'
+        capacitybox.delete(0, len(str(capacitybox.get())))
+        capacitybox.insert(END, rdic['route']['capacity'])
+        capacitybox['state']='disabled'
+
+        attendantbox['state']='normal'
+        attendantbox.delete(0, len(str(attendantbox.get())))
+        attendantbox.insert(END, rdic['attendant']['attendant_name'])
+        attendantbox['state']='disabled'
+
+        attenconbox['state']='normal'
+        attenconbox.delete(0, len(str(attenconbox.get())))
+        attenconbox.insert(END, rdic['attendant']['attendant_phnum'])
+        attenconbox['state']='disabled'
+
+        driverbox['state']='normal'
+        driverbox.delete(0, len(str(driverbox.get())))
+        driverbox.insert(END, rdic['driver']['driver_name'])
+        driverbox['state']='disabled'
+
+        driverconbox['state']='normal'
+        driverconbox.delete(0, len(str(driverconbox.get())))
+        driverconbox.insert(END, rdic['driver']['driver_phnum'])
+        driverconbox['state']='disabled'
+
+        conductorbox['state']='normal'
+        conductorbox.delete(0, len(str(conductorbox.get())))
+        conductorbox.insert(END, rdic['conductor']['conductor_name'])
+        conductorbox['state']='disabled'
+
+        conconbox['state']='normal'
+        conconbox.delete(0, len(str(conconbox.get())))
+        conconbox.insert(END, rdic['conductor']['conductor_phnum'])
+        conconbox['state']='disabled'
+
         pv3= map_widget.set_path([cha.position,nmb.position,ae.position,jsm.position,saf2.position,lbn.position,ina.position,kid.position,sem.position,defe.position,spv.position])
+    
     elif str(table.get())[3::]=='4':
+        
+        rdic=route_fetch(4)
+
+        lengthbox['state']='normal'
+        lengthbox.delete(0, len(str(lengthbox.get())))
+        lengthbox.insert(END, rdic['route']['route_length'])
+        lengthbox['state']='disabled'
+        
+        stopsbox['state']='normal'
+        stopsbox.delete(0, len(str(stopsbox.get())))
+        stopsbox.insert(END, rdic['route']['stop_count'])
+        stopsbox['state']='disabled'
+
+        capacitybox['state']='normal'
+        capacitybox.delete(0, len(str(capacitybox.get())))
+        capacitybox.insert(END, rdic['route']['capacity'])
+        capacitybox['state']='disabled'
+
+        attendantbox['state']='normal'
+        attendantbox.delete(0, len(str(attendantbox.get())))
+        attendantbox.insert(END, rdic['attendant']['attendant_name'])
+        attendantbox['state']='disabled'
+
+        attenconbox['state']='normal'
+        attenconbox.delete(0, len(str(attenconbox.get())))
+        attenconbox.insert(END, rdic['attendant']['attendant_phnum'])
+        attenconbox['state']='disabled'
+
+        driverbox['state']='normal'
+        driverbox.delete(0, len(str(driverbox.get())))
+        driverbox.insert(END, rdic['driver']['driver_name'])
+        driverbox['state']='disabled'
+
+        driverconbox['state']='normal'
+        driverconbox.delete(0, len(str(driverconbox.get())))
+        driverconbox.insert(END, rdic['driver']['driver_phnum'])
+        driverconbox['state']='disabled'
+
+        conductorbox['state']='normal'
+        conductorbox.delete(0, len(str(conductorbox.get())))
+        conductorbox.insert(END, rdic['conductor']['conductor_name'])
+        conductorbox['state']='disabled'
+
+        conconbox['state']='normal'
+        conconbox.delete(0, len(str(conconbox.get())))
+        conconbox.insert(END, rdic['conductor']['conductor_phnum'])
+        conconbox['state']='disabled'
+
         pv4= map_widget.set_path([jmi.position,ehi.position,zb.position,nfc.position,mb.position,se.position,spv.position])
+    
     elif str(table.get())[3::]=='5':
+
+        rdic=route_fetch(5)
+
+        lengthbox['state']='normal'
+        lengthbox.delete(0, len(str(lengthbox.get())))
+        lengthbox.insert(END, rdic['route']['route_length'])
+        lengthbox['state']='disabled'
+        
+        stopsbox['state']='normal'
+        stopsbox.delete(0, len(str(stopsbox.get())))
+        stopsbox.insert(END, rdic['route']['stop_count'])
+        stopsbox['state']='disabled'
+
+        capacitybox['state']='normal'
+        capacitybox.delete(0, len(str(capacitybox.get())))
+        capacitybox.insert(END, rdic['route']['capacity'])
+        capacitybox['state']='disabled'
+
+        attendantbox['state']='normal'
+        attendantbox.delete(0, len(str(attendantbox.get())))
+        attendantbox.insert(END, rdic['attendant']['attendant_name'])
+        attendantbox['state']='disabled'
+
+        attenconbox['state']='normal'
+        attenconbox.delete(0, len(str(attenconbox.get())))
+        attenconbox.insert(END, rdic['attendant']['attendant_phnum'])
+        attenconbox['state']='disabled'
+
+        driverbox['state']='normal'
+        driverbox.delete(0, len(str(driverbox.get())))
+        driverbox.insert(END, rdic['driver']['driver_name'])
+        driverbox['state']='disabled'
+
+        driverconbox['state']='normal'
+        driverconbox.delete(0, len(str(driverconbox.get())))
+        driverconbox.insert(END, rdic['driver']['driver_phnum'])
+        driverconbox['state']='disabled'
+
+        conductorbox['state']='normal'
+        conductorbox.delete(0, len(str(conductorbox.get())))
+        conductorbox.insert(END, rdic['conductor']['conductor_name'])
+        conductorbox['state']='disabled'
+
+        conconbox['state']='normal'
+        conconbox.delete(0, len(str(conconbox.get())))
+        conconbox.insert(END, rdic['conductor']['conductor_phnum'])
+        conconbox['state']='disabled'
+
         pv5=map_widget.set_path([sch.position,sksii.position,ski.position,hk1.position,asi.position,gul.position,nee.position,ayu.position,shi.position,spv.position])
+    
     elif str(table.get())[3::]=='6':
+        
+        rdic=route_fetch(6)
+
+        lengthbox['state']='normal'
+        lengthbox.delete(0, len(str(lengthbox.get())))
+        lengthbox.insert(END, rdic['route']['route_length'])
+        lengthbox['state']='disabled'
+        
+        stopsbox['state']='normal'
+        stopsbox.delete(0, len(str(stopsbox.get())))
+        stopsbox.insert(END, rdic['route']['stop_count'])
+        stopsbox['state']='disabled'
+
+        capacitybox['state']='normal'
+        capacitybox.delete(0, len(str(capacitybox.get())))
+        capacitybox.insert(END, rdic['route']['capacity'])
+        capacitybox['state']='disabled'
+
+        attendantbox['state']='normal'
+        attendantbox.delete(0, len(str(attendantbox.get())))
+        attendantbox.insert(END, rdic['attendant']['attendant_name'])
+        attendantbox['state']='disabled'
+
+        attenconbox['state']='normal'
+        attenconbox.delete(0, len(str(attenconbox.get())))
+        attenconbox.insert(END, rdic['attendant']['attendant_phnum'])
+        attenconbox['state']='disabled'
+
+        driverbox['state']='normal'
+        driverbox.delete(0, len(str(driverbox.get())))
+        driverbox.insert(END, rdic['driver']['driver_name'])
+        driverbox['state']='disabled'
+
+        driverconbox['state']='normal'
+        driverconbox.delete(0, len(str(driverconbox.get())))
+        driverconbox.insert(END, rdic['driver']['driver_phnum'])
+        driverconbox['state']='disabled'
+
+        conductorbox['state']='normal'
+        conductorbox.delete(0, len(str(conductorbox.get())))
+        conductorbox.insert(END, rdic['conductor']['conductor_name'])
+        conductorbox['state']='disabled'
+
+        conconbox['state']='normal'
+        conconbox.delete(0, len(str(conconbox.get())))
+        conconbox.insert(END, rdic['conductor']['conductor_phnum'])
+        conconbox['state']='disabled'
+        
         pv6=map_widget.set_path([sv.position,ek1.position,sn.position,ek2.position,ek3.position,ac.position,dc.position,tccm.position,spv.position])
+    
     elif str(table.get())[3::]=='7':
+
+        rdic=route_fetch(7)
+
+        lengthbox['state']='normal'
+        lengthbox.delete(0, len(str(lengthbox.get())))
+        lengthbox.insert(END, rdic['route']['route_length'])
+        lengthbox['state']='disabled'
+        
+        stopsbox['state']='normal'
+        stopsbox.delete(0, len(str(stopsbox.get())))
+        stopsbox.insert(END, rdic['route']['stop_count'])
+        stopsbox['state']='disabled'
+
+        capacitybox['state']='normal'
+        capacitybox.delete(0, len(str(capacitybox.get())))
+        capacitybox.insert(END, rdic['route']['capacity'])
+        capacitybox['state']='disabled'
+
+        attendantbox['state']='normal'
+        attendantbox.delete(0, len(str(attendantbox.get())))
+        attendantbox.insert(END, rdic['attendant']['attendant_name'])
+        attendantbox['state']='disabled'
+
+        attenconbox['state']='normal'
+        attenconbox.delete(0, len(str(attenconbox.get())))
+        attenconbox.insert(END, rdic['attendant']['attendant_phnum'])
+        attenconbox['state']='disabled'
+
+        driverbox['state']='normal'
+        driverbox.delete(0, len(str(driverbox.get())))
+        driverbox.insert(END, rdic['driver']['driver_name'])
+        driverbox['state']='disabled'
+
+        driverconbox['state']='normal'
+        driverconbox.delete(0, len(str(driverconbox.get())))
+        driverconbox.insert(END, rdic['driver']['driver_phnum'])
+        driverconbox['state']='disabled'
+
+        conductorbox['state']='normal'
+        conductorbox.delete(0, len(str(conductorbox.get())))
+        conductorbox.insert(END, rdic['conductor']['conductor_name'])
+        conductorbox['state']='disabled'
+
+        conconbox['state']='normal'
+        conconbox.delete(0, len(str(conconbox.get())))
+        conconbox.insert(END, rdic['conductor']['conductor_phnum'])
+        conconbox['state']='disabled'
+
         pv7=map_widget.set_path([kd.position,na.position,sn.position,kc.position,gkc.position,gkr.position,gks.position,gkn.position,guru.position,bir.position,bho.position,spv.position])
+    
     elif str(table.get())[3::]=='8':
+
+        rdic=route_fetch(8)
+
+        lengthbox['state']='normal'
+        lengthbox.delete(0, len(str(lengthbox.get())))
+        lengthbox.insert(END, rdic['route']['route_length'])
+        lengthbox['state']='disabled'
+        
+        stopsbox['state']='normal'
+        stopsbox.delete(0, len(str(stopsbox.get())))
+        stopsbox.insert(END, rdic['route']['stop_count'])
+        stopsbox['state']='disabled'
+
+        capacitybox['state']='normal'
+        capacitybox.delete(0, len(str(capacitybox.get())))
+        capacitybox.insert(END, rdic['route']['capacity'])
+        capacitybox['state']='disabled'
+
+        attendantbox['state']='normal'
+        attendantbox.delete(0, len(str(attendantbox.get())))
+        attendantbox.insert(END, rdic['attendant']['attendant_name'])
+        attendantbox['state']='disabled'
+
+        attenconbox['state']='normal'
+        attenconbox.delete(0, len(str(attenconbox.get())))
+        attenconbox.insert(END, rdic['attendant']['attendant_phnum'])
+        attenconbox['state']='disabled'
+
+        driverbox['state']='normal'
+        driverbox.delete(0, len(str(driverbox.get())))
+        driverbox.insert(END, rdic['driver']['driver_name'])
+        driverbox['state']='disabled'
+
+        driverconbox['state']='normal'
+        driverconbox.delete(0, len(str(driverconbox.get())))
+        driverconbox.insert(END, rdic['driver']['driver_phnum'])
+        driverconbox['state']='disabled'
+
+        conductorbox['state']='normal'
+        conductorbox.delete(0, len(str(conductorbox.get())))
+        conductorbox.insert(END, rdic['conductor']['conductor_name'])
+        conductorbox['state']='disabled'
+
+        conconbox['state']='normal'
+        conconbox.delete(0, len(str(conconbox.get())))
+        conconbox.insert(END, rdic['conductor']['conductor_phnum'])
+        conconbox['state']='disabled'
+
         pv8=map_widget.set_path([ke.position,ga.position,ya.position,nia.position,naa.position,gkiia.position,gkiib.position,pvh.position,spv.position])
+    
     elif str(table.get())[3::]=='9':
+
+        rdic=route_fetch(9)
+
+        lengthbox['state']='normal'
+        lengthbox.delete(0, len(str(lengthbox.get())))
+        lengthbox.insert(END, rdic['route']['route_length'])
+        lengthbox['state']='disabled'
+        
+        stopsbox['state']='normal'
+        stopsbox.delete(0, len(str(stopsbox.get())))
+        stopsbox.insert(END, rdic['route']['stop_count'])
+        stopsbox['state']='disabled'
+
+        capacitybox['state']='normal'
+        capacitybox.delete(0, len(str(capacitybox.get())))
+        capacitybox.insert(END, rdic['route']['capacity'])
+        capacitybox['state']='disabled'
+
+        attendantbox['state']='normal'
+        attendantbox.delete(0, len(str(attendantbox.get())))
+        attendantbox.insert(END, rdic['attendant']['attendant_name'])
+        attendantbox['state']='disabled'
+
+        attenconbox['state']='normal'
+        attenconbox.delete(0, len(str(attenconbox.get())))
+        attenconbox.insert(END, rdic['attendant']['attendant_phnum'])
+        attenconbox['state']='disabled'
+
+        driverbox['state']='normal'
+        driverbox.delete(0, len(str(driverbox.get())))
+        driverbox.insert(END, rdic['driver']['driver_name'])
+        driverbox['state']='disabled'
+
+        driverconbox['state']='normal'
+        driverconbox.delete(0, len(str(driverconbox.get())))
+        driverconbox.insert(END, rdic['driver']['driver_phnum'])
+        driverconbox['state']='disabled'
+
+        conductorbox['state']='normal'
+        conductorbox.delete(0, len(str(conductorbox.get())))
+        conductorbox.insert(END, rdic['conductor']['conductor_name'])
+        conductorbox['state']='disabled'
+
+        conconbox['state']='normal'
+        conconbox.delete(0, len(str(conconbox.get())))
+        conconbox.insert(END, rdic['conductor']['conductor_phnum'])
+        conconbox['state']='disabled'
+
         pv9= map_widget.set_path([kalka.position,manda.position,shivap.position,crmark2.position,mela.position,crmark1.position,crk.position,cra.position,defence.position,spv.position])
+    
     elif str(table.get())[3::]=='10':
+
+        rdic=route_fetch(10)
+
+        lengthbox['state']='normal'
+        lengthbox.delete(0, len(str(lengthbox.get())))
+        lengthbox.insert(END, rdic['route']['route_length'])
+        lengthbox['state']='disabled'
+        
+        stopsbox['state']='normal'
+        stopsbox.delete(0, len(str(stopsbox.get())))
+        stopsbox.insert(END, rdic['route']['stop_count'])
+        stopsbox['state']='disabled'
+
+        capacitybox['state']='normal'
+        capacitybox.delete(0, len(str(capacitybox.get())))
+        capacitybox.insert(END, rdic['route']['capacity'])
+        capacitybox['state']='disabled'
+
+        attendantbox['state']='normal'
+        attendantbox.delete(0, len(str(attendantbox.get())))
+        attendantbox.insert(END, rdic['attendant']['attendant_name'])
+        attendantbox['state']='disabled'
+
+        attenconbox['state']='normal'
+        attenconbox.delete(0, len(str(attenconbox.get())))
+        attenconbox.insert(END, rdic['attendant']['attendant_phnum'])
+        attenconbox['state']='disabled'
+
+        driverbox['state']='normal'
+        driverbox.delete(0, len(str(driverbox.get())))
+        driverbox.insert(END, rdic['driver']['driver_name'])
+        driverbox['state']='disabled'
+
+        driverconbox['state']='normal'
+        driverconbox.delete(0, len(str(driverconbox.get())))
+        driverconbox.insert(END, rdic['driver']['driver_phnum'])
+        driverconbox['state']='disabled'
+
+        conductorbox['state']='normal'
+        conductorbox.delete(0, len(str(conductorbox.get())))
+        conductorbox.insert(END, rdic['conductor']['conductor_name'])
+        conductorbox['state']='disabled'
+
+        conconbox['state']='normal'
+        conconbox.delete(0, len(str(conconbox.get())))
+        conconbox.insert(END, rdic['conductor']['conductor_phnum'])
+        conconbox['state']='disabled'
+
         pv10=map_widget.set_path([vv.position,vk.position,am.position,qm.position,mmtc.position,iit.position,gp1.position,aiims.position,spv.position])
+    
     elif str(table.get())[3::]=='11':
+
+        rdic=route_fetch(11)
+
+        lengthbox['state']='normal'
+        lengthbox.delete(0, len(str(lengthbox.get())))
+        lengthbox.insert(END, rdic['route']['route_length'])
+        lengthbox['state']='disabled'
+        
+        stopsbox['state']='normal'
+        stopsbox.delete(0, len(str(stopsbox.get())))
+        stopsbox.insert(END, rdic['route']['stop_count'])
+        stopsbox['state']='disabled'
+
+        capacitybox['state']='normal'
+        capacitybox.delete(0, len(str(capacitybox.get())))
+        capacitybox.insert(END, rdic['route']['capacity'])
+        capacitybox['state']='disabled'
+
+        attendantbox['state']='normal'
+        attendantbox.delete(0, len(str(attendantbox.get())))
+        attendantbox.insert(END, rdic['attendant']['attendant_name'])
+        attendantbox['state']='disabled'
+
+        attenconbox['state']='normal'
+        attenconbox.delete(0, len(str(attenconbox.get())))
+        attenconbox.insert(END, rdic['attendant']['attendant_phnum'])
+        attenconbox['state']='disabled'
+
+        driverbox['state']='normal'
+        driverbox.delete(0, len(str(driverbox.get())))
+        driverbox.insert(END, rdic['driver']['driver_name'])
+        driverbox['state']='disabled'
+
+        driverconbox['state']='normal'
+        driverconbox.delete(0, len(str(driverconbox.get())))
+        driverconbox.insert(END, rdic['driver']['driver_phnum'])
+        driverconbox['state']='disabled'
+
+        conductorbox['state']='normal'
+        conductorbox.delete(0, len(str(conductorbox.get())))
+        conductorbox.insert(END, rdic['conductor']['conductor_name'])
+        conductorbox['state']='disabled'
+
+        conconbox['state']='normal'
+        conconbox.delete(0, len(str(conconbox.get())))
+        conconbox.insert(END, rdic['conductor']['conductor_phnum'])
+        conconbox['state']='disabled'
+
         pv11=map_widget.set_path([sarita.position,jasola.position,nfc.position,ashram.position,bho.position,niz.position,spv.position])
+    
     elif str(table.get())[3::]=='12':
+
+        rdic=route_fetch(12)
+
+        lengthbox['state']='normal'
+        lengthbox.delete(0, len(str(lengthbox.get())))
+        lengthbox.insert(END, rdic['route']['route_length'])
+        lengthbox['state']='disabled'
+        
+        stopsbox['state']='normal'
+        stopsbox.delete(0, len(str(stopsbox.get())))
+        stopsbox.insert(END, rdic['route']['stop_count'])
+        stopsbox['state']='disabled'
+
+        capacitybox['state']='normal'
+        capacitybox.delete(0, len(str(capacitybox.get())))
+        capacitybox.insert(END, rdic['route']['capacity'])
+        capacitybox['state']='disabled'
+
+        attendantbox['state']='normal'
+        attendantbox.delete(0, len(str(attendantbox.get())))
+        attendantbox.insert(END, rdic['attendant']['attendant_name'])
+        attendantbox['state']='disabled'
+
+        attenconbox['state']='normal'
+        attenconbox.delete(0, len(str(attenconbox.get())))
+        attenconbox.insert(END, rdic['attendant']['attendant_phnum'])
+        attenconbox['state']='disabled'
+
+        driverbox['state']='normal'
+        driverbox.delete(0, len(str(driverbox.get())))
+        driverbox.insert(END, rdic['driver']['driver_name'])
+        driverbox['state']='disabled'
+
+        driverconbox['state']='normal'
+        driverconbox.delete(0, len(str(driverconbox.get())))
+        driverconbox.insert(END, rdic['driver']['driver_phnum'])
+        driverconbox['state']='disabled'
+
+        conductorbox['state']='normal'
+        conductorbox.delete(0, len(str(conductorbox.get())))
+        conductorbox.insert(END, rdic['conductor']['conductor_name'])
+        conductorbox['state']='disabled'
+
+        conconbox['state']='normal'
+        conconbox.delete(0, len(str(conconbox.get())))
+        conconbox.insert(END, rdic['conductor']['conductor_phnum'])
+        conconbox['state']='disabled'
+        
         pv12=map_widget.set_path([maya.position,mans.position,kirti.position,shad.position,patel.position,raje.position,karol.position,rail.position,spv.position])
+    
     elif str(table.get())[3::]=='13':
+
+        rdic=route_fetch(13)
+
+        lengthbox['state']='normal'
+        lengthbox.delete(0, len(str(lengthbox.get())))
+        lengthbox.insert(END, rdic['route']['route_length'])
+        lengthbox['state']='disabled'
+        
+        stopsbox['state']='normal'
+        stopsbox.delete(0, len(str(stopsbox.get())))
+        stopsbox.insert(END, rdic['route']['stop_count'])
+        stopsbox['state']='disabled'
+
+        capacitybox['state']='normal'
+        capacitybox.delete(0, len(str(capacitybox.get())))
+        capacitybox.insert(END, rdic['route']['capacity'])
+        capacitybox['state']='disabled'
+
+        attendantbox['state']='normal'
+        attendantbox.delete(0, len(str(attendantbox.get())))
+        attendantbox.insert(END, rdic['attendant']['attendant_name'])
+        attendantbox['state']='disabled'
+
+        attenconbox['state']='normal'
+        attenconbox.delete(0, len(str(attenconbox.get())))
+        attenconbox.insert(END, rdic['attendant']['attendant_phnum'])
+        attenconbox['state']='disabled'
+
+        driverbox['state']='normal'
+        driverbox.delete(0, len(str(driverbox.get())))
+        driverbox.insert(END, rdic['driver']['driver_name'])
+        driverbox['state']='disabled'
+
+        driverconbox['state']='normal'
+        driverconbox.delete(0, len(str(driverconbox.get())))
+        driverconbox.insert(END, rdic['driver']['driver_phnum'])
+        driverconbox['state']='disabled'
+
+        conductorbox['state']='normal'
+        conductorbox.delete(0, len(str(conductorbox.get())))
+        conductorbox.insert(END, rdic['conductor']['conductor_name'])
+        conductorbox['state']='disabled'
+
+        conconbox['state']='normal'
+        conconbox.delete(0, len(str(conconbox.get())))
+        conconbox.insert(END, rdic['conductor']['conductor_phnum'])
+        conconbox['state']='disabled'
+
         pv13=map_widget.set_path([ashok.position,deraw.position,gujra.position,prat.position,shakti.position,kamlan.position,ramjas.position,jawa.position,malka.position,spv.position])
+    
     elif str(table.get())[3::]=='14':
+        
+        rdic=route_fetch(14)
+
+        lengthbox['state']='normal'
+        lengthbox.delete(0, len(str(lengthbox.get())))
+        lengthbox.insert(END, rdic['route']['route_length'])
+        lengthbox['state']='disabled'
+        
+        stopsbox['state']='normal'
+        stopsbox.delete(0, len(str(stopsbox.get())))
+        stopsbox.insert(END, rdic['route']['stop_count'])
+        stopsbox['state']='disabled'
+
+        capacitybox['state']='normal'
+        capacitybox.delete(0, len(str(capacitybox.get())))
+        capacitybox.insert(END, rdic['route']['capacity'])
+        capacitybox['state']='disabled'
+
+        attendantbox['state']='normal'
+        attendantbox.delete(0, len(str(attendantbox.get())))
+        attendantbox.insert(END, rdic['attendant']['attendant_name'])
+        attendantbox['state']='disabled'
+
+        attenconbox['state']='normal'
+        attenconbox.delete(0, len(str(attenconbox.get())))
+        attenconbox.insert(END, rdic['attendant']['attendant_phnum'])
+        attenconbox['state']='disabled'
+
+        driverbox['state']='normal'
+        driverbox.delete(0, len(str(driverbox.get())))
+        driverbox.insert(END, rdic['driver']['driver_name'])
+        driverbox['state']='disabled'
+
+        driverconbox['state']='normal'
+        driverconbox.delete(0, len(str(driverconbox.get())))
+        driverconbox.insert(END, rdic['driver']['driver_phnum'])
+        driverconbox['state']='disabled'
+
+        conductorbox['state']='normal'
+        conductorbox.delete(0, len(str(conductorbox.get())))
+        conductorbox.insert(END, rdic['conductor']['conductor_name'])
+        conductorbox['state']='disabled'
+
+        conconbox['state']='normal'
+        conconbox.delete(0, len(str(conconbox.get())))
+        conconbox.insert(END, rdic['conductor']['conductor_phnum'])
+        conconbox['state']='disabled'
+
         pv14=map_widget.set_path([azadpur.position,mt3.position,mt2.position,tagore.position,parm.position,rev.position,drin.position,bana.position,khy.position,rajni.position,ludlo.position,civill.position,indra.position,kaka.position,ambed.position,spv.position])
+    
     elif str(table.get())[3::]=='15':
+
+        rdic=route_fetch(15)
+
+        lengthbox['state']='normal'
+        lengthbox.delete(0, len(str(lengthbox.get())))
+        lengthbox.insert(END, rdic['route']['route_length'])
+        lengthbox['state']='disabled'
+        
+        stopsbox['state']='normal'
+        stopsbox.delete(0, len(str(stopsbox.get())))
+        stopsbox.insert(END, rdic['route']['stop_count'])
+        stopsbox['state']='disabled'
+
+        capacitybox['state']='normal'
+        capacitybox.delete(0, len(str(capacitybox.get())))
+        capacitybox.insert(END, rdic['route']['capacity'])
+        capacitybox['state']='disabled'
+
+        attendantbox['state']='normal'
+        attendantbox.delete(0, len(str(attendantbox.get())))
+        attendantbox.insert(END, rdic['attendant']['attendant_name'])
+        attendantbox['state']='disabled'
+
+        attenconbox['state']='normal'
+        attenconbox.delete(0, len(str(attenconbox.get())))
+        attenconbox.insert(END, rdic['attendant']['attendant_phnum'])
+        attenconbox['state']='disabled'
+
+        driverbox['state']='normal'
+        driverbox.delete(0, len(str(driverbox.get())))
+        driverbox.insert(END, rdic['driver']['driver_name'])
+        driverbox['state']='disabled'
+
+        driverconbox['state']='normal'
+        driverconbox.delete(0, len(str(driverconbox.get())))
+        driverconbox.insert(END, rdic['driver']['driver_phnum'])
+        driverconbox['state']='disabled'
+
+        conductorbox['state']='normal'
+        conductorbox.delete(0, len(str(conductorbox.get())))
+        conductorbox.insert(END, rdic['conductor']['conductor_name'])
+        conductorbox['state']='disabled'
+
+        conconbox['state']='normal'
+        conconbox.delete(0, len(str(conconbox.get())))
+        conconbox.insert(END, rdic['conductor']['conductor_phnum'])
+        conconbox['state']='disabled'
+
         pv15=map_widget.set_path([rohini.position,uniq.position,gujrat.position,bank.position,kohat.position,panj.position,cinema.position,rohtak.position,video.position,gole.position,chowk.position,baroda.position,spv.position])
+    
     elif str(table.get())[3::]=='16':
+
+        rdic=route_fetch(16)
+
+        lengthbox['state']='normal'
+        lengthbox.delete(0, len(str(lengthbox.get())))
+        lengthbox.insert(END, rdic['route']['route_length'])
+        lengthbox['state']='disabled'
+        
+        stopsbox['state']='normal'
+        stopsbox.delete(0, len(str(stopsbox.get())))
+        stopsbox.insert(END, rdic['route']['stop_count'])
+        stopsbox['state']='disabled'
+
+        capacitybox['state']='normal'
+        capacitybox.delete(0, len(str(capacitybox.get())))
+        capacitybox.insert(END, rdic['route']['capacity'])
+        capacitybox['state']='disabled'
+
+        attendantbox['state']='normal'
+        attendantbox.delete(0, len(str(attendantbox.get())))
+        attendantbox.insert(END, rdic['attendant']['attendant_name'])
+        attendantbox['state']='disabled'
+
+        attenconbox['state']='normal'
+        attenconbox.delete(0, len(str(attenconbox.get())))
+        attenconbox.insert(END, rdic['attendant']['attendant_phnum'])
+        attenconbox['state']='disabled'
+
+        driverbox['state']='normal'
+        driverbox.delete(0, len(str(driverbox.get())))
+        driverbox.insert(END, rdic['driver']['driver_name'])
+        driverbox['state']='disabled'
+
+        driverconbox['state']='normal'
+        driverconbox.delete(0, len(str(driverconbox.get())))
+        driverconbox.insert(END, rdic['driver']['driver_phnum'])
+        driverconbox['state']='disabled'
+
+        conductorbox['state']='normal'
+        conductorbox.delete(0, len(str(conductorbox.get())))
+        conductorbox.insert(END, rdic['conductor']['conductor_name'])
+        conductorbox['state']='disabled'
+
+        conconbox['state']='normal'
+        conconbox.delete(0, len(str(conconbox.get())))
+        conconbox.insert(END, rdic['conductor']['conductor_phnum'])
+        conconbox['state']='disabled'
+
         pv16=map_widget.set_path([rssp.position,ms.position,pa.position,ashir.position,mithila.position,prince.position,him.position,agra.position,savfasc.position,ajanta.position,kunj.position,spv.position])
+    
     elif str(table.get())[3::]=='17':
+
+        rdic=route_fetch(17)
+
+        lengthbox['state']='normal'
+        lengthbox.delete(0, len(str(lengthbox.get())))
+        lengthbox.insert(END, rdic['route']['route_length'])
+        lengthbox['state']='disabled'
+        
+        stopsbox['state']='normal'
+        stopsbox.delete(0, len(str(stopsbox.get())))
+        stopsbox.insert(END, rdic['route']['stop_count'])
+        stopsbox['state']='disabled'
+
+        capacitybox['state']='normal'
+        capacitybox.delete(0, len(str(capacitybox.get())))
+        capacitybox.insert(END, rdic['route']['capacity'])
+        capacitybox['state']='disabled'
+
+        attendantbox['state']='normal'
+        attendantbox.delete(0, len(str(attendantbox.get())))
+        attendantbox.insert(END, rdic['attendant']['attendant_name'])
+        attendantbox['state']='disabled'
+
+        attenconbox['state']='normal'
+        attenconbox.delete(0, len(str(attenconbox.get())))
+        attenconbox.insert(END, rdic['attendant']['attendant_phnum'])
+        attenconbox['state']='disabled'
+
+        driverbox['state']='normal'
+        driverbox.delete(0, len(str(driverbox.get())))
+        driverbox.insert(END, rdic['driver']['driver_name'])
+        driverbox['state']='disabled'
+
+        driverconbox['state']='normal'
+        driverconbox.delete(0, len(str(driverconbox.get())))
+        driverconbox.insert(END, rdic['driver']['driver_phnum'])
+        driverconbox['state']='disabled'
+
+        conductorbox['state']='normal'
+        conductorbox.delete(0, len(str(conductorbox.get())))
+        conductorbox.insert(END, rdic['conductor']['conductor_name'])
+        conductorbox['state']='disabled'
+
+        conconbox['state']='normal'
+        conconbox.delete(0, len(str(conconbox.get())))
+        conconbox.insert(END, rdic['conductor']['conductor_phnum'])
+        conconbox['state']='disabled'
+
         pv17=map_widget.set_path([gtb.position,lick.position,surya.position,yojana.position,sreshtha.position,avc.position,je.position,kkd.position,pvhd.position,nv.position,lax.position,spv.position])
+    
     elif str(table.get())[3::]=='18':
+
+        rdic=route_fetch(18)
+
+        lengthbox['state']='normal'
+        lengthbox.delete(0, len(str(lengthbox.get())))
+        lengthbox.insert(END, rdic['route']['route_length'])
+        lengthbox['state']='disabled'
+        
+        stopsbox['state']='normal'
+        stopsbox.delete(0, len(str(stopsbox.get())))
+        stopsbox.insert(END, rdic['route']['stop_count'])
+        stopsbox['state']='disabled'
+
+        capacitybox['state']='normal'
+        capacitybox.delete(0, len(str(capacitybox.get())))
+        capacitybox.insert(END, rdic['route']['capacity'])
+        capacitybox['state']='disabled'
+
+        attendantbox['state']='normal'
+        attendantbox.delete(0, len(str(attendantbox.get())))
+        attendantbox.insert(END, rdic['attendant']['attendant_name'])
+        attendantbox['state']='disabled'
+
+        attenconbox['state']='normal'
+        attenconbox.delete(0, len(str(attenconbox.get())))
+        attenconbox.insert(END, rdic['attendant']['attendant_phnum'])
+        attenconbox['state']='disabled'
+
+        driverbox['state']='normal'
+        driverbox.delete(0, len(str(driverbox.get())))
+        driverbox.insert(END, rdic['driver']['driver_name'])
+        driverbox['state']='disabled'
+
+        driverconbox['state']='normal'
+        driverconbox.delete(0, len(str(driverconbox.get())))
+        driverconbox.insert(END, rdic['driver']['driver_phnum'])
+        driverconbox['state']='disabled'
+
+        conductorbox['state']='normal'
+        conductorbox.delete(0, len(str(conductorbox.get())))
+        conductorbox.insert(END, rdic['conductor']['conductor_name'])
+        conductorbox['state']='disabled'
+
+        conconbox['state']='normal'
+        conconbox.delete(0, len(str(conconbox.get())))
+        conconbox.insert(END, rdic['conductor']['conductor_phnum'])
+        conconbox['state']='disabled'
+
         pv18=map_widget.set_path([crpf.position,stand.position,vasun.position,dh.position,sama.position,aa.position,mvipi.position,sup.position,pol.position,manfas.position,mvipiv.position,spv.position])
+    
     elif str(table.get())[3::]=='19':
+
+        rdic=route_fetch(19)
+
+        lengthbox['state']='normal'
+        lengthbox.delete(0, len(str(lengthbox.get())))
+        lengthbox.insert(END, rdic['route']['route_length'])
+        lengthbox['state']='disabled'
+        
+        stopsbox['state']='normal'
+        stopsbox.delete(0, len(str(stopsbox.get())))
+        stopsbox.insert(END, rdic['route']['stop_count'])
+        stopsbox['state']='disabled'
+
+        capacitybox['state']='normal'
+        capacitybox.delete(0, len(str(capacitybox.get())))
+        capacitybox.insert(END, rdic['route']['capacity'])
+        capacitybox['state']='disabled'
+
+        attendantbox['state']='normal'
+        attendantbox.delete(0, len(str(attendantbox.get())))
+        attendantbox.insert(END, rdic['attendant']['attendant_name'])
+        attendantbox['state']='disabled'
+
+        attenconbox['state']='normal'
+        attenconbox.delete(0, len(str(attenconbox.get())))
+        attenconbox.insert(END, rdic['attendant']['attendant_phnum'])
+        attenconbox['state']='disabled'
+
+        driverbox['state']='normal'
+        driverbox.delete(0, len(str(driverbox.get())))
+        driverbox.insert(END, rdic['driver']['driver_name'])
+        driverbox['state']='disabled'
+
+        driverconbox['state']='normal'
+        driverconbox.delete(0, len(str(driverconbox.get())))
+        driverconbox.insert(END, rdic['driver']['driver_phnum'])
+        driverconbox['state']='disabled'
+
+        conductorbox['state']='normal'
+        conductorbox.delete(0, len(str(conductorbox.get())))
+        conductorbox.insert(END, rdic['conductor']['conductor_name'])
+        conductorbox['state']='disabled'
+
+        conconbox['state']='normal'
+        conconbox.delete(0, len(str(conconbox.get())))
+        conconbox.insert(END, rdic['conductor']['conductor_phnum'])
+        conconbox['state']='disabled'
+
         pv19=map_widget.set_path([gip.position,sfn.position,stt.position,rvn.position,jvv.position,mmh.position,nbv.position,sfn.position,dnb.position,cgv.position,spv.position])
+    
     elif str(table.get())[3::]=='20':
+
+        rdic=route_fetch(20)
+
+        lengthbox['state']='normal'
+        lengthbox.delete(0, len(str(lengthbox.get())))
+        lengthbox.insert(END, rdic['route']['route_length'])
+        lengthbox['state']='disabled'
+        
+        stopsbox['state']='normal'
+        stopsbox.delete(0, len(str(stopsbox.get())))
+        stopsbox.insert(END, rdic['route']['stop_count'])
+        stopsbox['state']='disabled'
+
+        capacitybox['state']='normal'
+        capacitybox.delete(0, len(str(capacitybox.get())))
+        capacitybox.insert(END, rdic['route']['capacity'])
+        capacitybox['state']='disabled'
+
+        attendantbox['state']='normal'
+        attendantbox.delete(0, len(str(attendantbox.get())))
+        attendantbox.insert(END, rdic['attendant']['attendant_name'])
+        attendantbox['state']='disabled'
+
+        attenconbox['state']='normal'
+        attenconbox.delete(0, len(str(attenconbox.get())))
+        attenconbox.insert(END, rdic['attendant']['attendant_phnum'])
+        attenconbox['state']='disabled'
+
+        driverbox['state']='normal'
+        driverbox.delete(0, len(str(driverbox.get())))
+        driverbox.insert(END, rdic['driver']['driver_name'])
+        driverbox['state']='disabled'
+
+        driverconbox['state']='normal'
+        driverconbox.delete(0, len(str(driverconbox.get())))
+        driverconbox.insert(END, rdic['driver']['driver_phnum'])
+        driverconbox['state']='disabled'
+
+        conductorbox['state']='normal'
+        conductorbox.delete(0, len(str(conductorbox.get())))
+        conductorbox.insert(END, rdic['conductor']['conductor_name'])
+        conductorbox['state']='disabled'
+
+        conconbox['state']='normal'
+        conconbox.delete(0, len(str(conconbox.get())))
+        conconbox.insert(END, rdic['conductor']['conductor_phnum'])
+        conconbox['state']='disabled'
+
         pv20= map_widget.set_path([guj.position,swasth.position,walia.position,spv.position])
+    
     elif str(table.get())[3::]=='21':
+
+        rdic=route_fetch(21)
+
+        lengthbox['state']='normal'
+        lengthbox.delete(0, len(str(lengthbox.get())))
+        lengthbox.insert(END, rdic['route']['route_length'])
+        lengthbox['state']='disabled'
+        
+        stopsbox['state']='normal'
+        stopsbox.delete(0, len(str(stopsbox.get())))
+        stopsbox.insert(END, rdic['route']['stop_count'])
+        stopsbox['state']='disabled'
+
+        capacitybox['state']='normal'
+        capacitybox.delete(0, len(str(capacitybox.get())))
+        capacitybox.insert(END, rdic['route']['capacity'])
+        capacitybox['state']='disabled'
+
+        attendantbox['state']='normal'
+        attendantbox.delete(0, len(str(attendantbox.get())))
+        attendantbox.insert(END, rdic['attendant']['attendant_name'])
+        attendantbox['state']='disabled'
+
+        attenconbox['state']='normal'
+        attenconbox.delete(0, len(str(attenconbox.get())))
+        attenconbox.insert(END, rdic['attendant']['attendant_phnum'])
+        attenconbox['state']='disabled'
+
+        driverbox['state']='normal'
+        driverbox.delete(0, len(str(driverbox.get())))
+        driverbox.insert(END, rdic['driver']['driver_name'])
+        driverbox['state']='disabled'
+
+        driverconbox['state']='normal'
+        driverconbox.delete(0, len(str(driverconbox.get())))
+        driverconbox.insert(END, rdic['driver']['driver_phnum'])
+        driverconbox['state']='disabled'
+
+        conductorbox['state']='normal'
+        conductorbox.delete(0, len(str(conductorbox.get())))
+        conductorbox.insert(END, rdic['conductor']['conductor_name'])
+        conductorbox['state']='disabled'
+
+        conconbox['state']='normal'
+        conconbox.delete(0, len(str(conconbox.get())))
+        conconbox.insert(END, rdic['conductor']['conductor_phnum'])
+        conconbox['state']='disabled'
+
         pv21=map_widget.set_path([chan.position,darya.position,nanak.position,azad.position,irwin.position,mandi.position,pand.position,spv.position])
+    
     elif str(table.get())[3::]=='22':
+
+        rdic=route_fetch(22)
+
+        lengthbox['state']='normal'
+        lengthbox.delete(0, len(str(lengthbox.get())))
+        lengthbox.insert(END, rdic['route']['route_length'])
+        lengthbox['state']='disabled'
+        
+        stopsbox['state']='normal'
+        stopsbox.delete(0, len(str(stopsbox.get())))
+        stopsbox.insert(END, rdic['route']['stop_count'])
+        stopsbox['state']='disabled'
+
+        capacitybox['state']='normal'
+        capacitybox.delete(0, len(str(capacitybox.get())))
+        capacitybox.insert(END, rdic['route']['capacity'])
+        capacitybox['state']='disabled'
+
+        attendantbox['state']='normal'
+        attendantbox.delete(0, len(str(attendantbox.get())))
+        attendantbox.insert(END, rdic['attendant']['attendant_name'])
+        attendantbox['state']='disabled'
+
+        attenconbox['state']='normal'
+        attenconbox.delete(0, len(str(attenconbox.get())))
+        attenconbox.insert(END, rdic['attendant']['attendant_phnum'])
+        attenconbox['state']='disabled'
+
+        driverbox['state']='normal'
+        driverbox.delete(0, len(str(driverbox.get())))
+        driverbox.insert(END, rdic['driver']['driver_name'])
+        driverbox['state']='disabled'
+
+        driverconbox['state']='normal'
+        driverconbox.delete(0, len(str(driverconbox.get())))
+        driverconbox.insert(END, rdic['driver']['driver_phnum'])
+        driverconbox['state']='disabled'
+
+        conductorbox['state']='normal'
+        conductorbox.delete(0, len(str(conductorbox.get())))
+        conductorbox.insert(END, rdic['conductor']['conductor_name'])
+        conductorbox['state']='disabled'
+
+        conconbox['state']='normal'
+        conconbox.delete(0, len(str(conconbox.get())))
+        conconbox.insert(END, rdic['conductor']['conductor_phnum'])
+        conconbox['state']='disabled'
+
         pv22=map_widget.set_path([edm.position,vidhi.position,silver.position,jai.position,ddam.position,para.position,tech.position,press.position,ekta.position,ankur.position,mdp.position,spv.position])
+    
     else:
-        pass
+        
+        button2['state']='disabled'
+
     canvas.update()
     canvas.pack()
 
     
 def edit(): #allows user to edit respective data by enabling the disabled entry boxes
-    button2['state']='disabled'
     
     if str(user.get()) == 'passenger': #passenger can only edit their own data
+
+        button2['state']='disabled'
+
         namebox['state']='normal'
-        passpwdbox['state']='normal'
         phonebox['state']='normal'
         routebox['state']='normal'
         stopbox['state']='normal'
+
+        button3['state']='normal'
         
-    elif str(user.get()) == 'attendant': #attendant can edit some data from routes
-        lengthbox['state']='normal'
-        #stopsbox['state']='normal'
-        capacitybox['state']='normal'
-        attendantbox['state']='normal'
-        driverbox['state']='normal'
-        conductorbox['state']='normal'
-        attenconbox['state']='normal'
-        driverconbox['state']='normal'
-        conconbox['state']='normal'
-        numpassbox['state']='normal'
+    elif str(user.get()) == 'attendant': #attendant can edit some data from their route
+
+        quer1="SELECT route_num FROM attendants WHERE attendant_phnum='{}'".format(str(userbox.get()),)
+        try:
+            cur.execute(quer1)
+            route_tuple1=cur.fetchone()
+            route_num1=route_tuple1[0]
+        except (sqlcon.Error, sqlcon.Warning) as e:
+            print(e)
+
+        quer2="SELECT route_num FROM stops WHERE stop_name='{}'".format(stopnamelabel['text'],)
+        try:
+            cur.execute(quer2)
+            route_tuple2=cur.fetchone()
+            route_num2=route_tuple2[0]
+        except (sqlcon.Error, sqlcon.Warning) as e:
+            print(e)
+
+        if int(str(table.get())[3::]) == route_num1 == route_num2:
+
+            button2['state']='disabled'
+
+            lengthbox['state']='normal'
+            capacitybox['state']='normal'
+            stopsbox['state']='normal'
+            attendantbox['state']='normal'
+            driverbox['state']='normal'
+            conductorbox['state']='normal'
+            attenconbox['state']='normal'
+
+            global attenconvar
+            attenconvar=str(attenconbox.get())
+
+            driverconbox['state']='normal'
+            conconbox['state']='normal'
+            numpassbox['state']='normal'
+
+            button3['state']='normal'
         
-    button3['state']='normal'
+        else:
+
+            pass
     
 def saveload(): #will commit and push changes to main database, then pull it again
     
@@ -317,13 +1417,37 @@ def saveload(): #will commit and push changes to main database, then pull it aga
     button3['state']='disabled'
     
     if str(user.get()) == 'passenger': #data is no longer editable. press edit button to change again
+
+        quer1="SELECT stop_id FROM stops WHERE stop_name='{}'".format(str(stopbox.get()),)
+
+        try:
+            cur.execute(quer1)
+            stop_tuple=cur.fetchone()
+            stop_id=stop_tuple[0]
+        except (sqlcon.Error, sqlcon.Warning) as e:
+            print(e)
+
+
+        try: 
+            pass_update(str(passidbox.get()), str(namebox.get()), int(routebox.get()), stop_id , str(phonebox.get()))
+        except ValueError:
+            conn.rollback()
+            print("Field(s) edited did not match inputed datatype. Please QUIT and try again.")
         namebox['state']='disabled'
-        passpwdbox['state']='disabled'
         phonebox['state']='disabled'
         routebox['state']='disabled'
         stopbox['state']='disabled'
         
     elif str(user.get()) == 'attendant': #data is no longer editable. press edit button to change again
+
+        lst=[[float(lengthbox.get()),int(capacitybox.get())],[str(attendantbox.get()),str(attenconbox.get())],[str(driverbox.get()),str(driverconbox.get())],[str(conductorbox.get()),str(conconbox.get())],[int(stopsbox.get()),int(numpassbox.get())]]
+        
+        try:
+            attendant_update(attenconvar,lst)
+        except ValueError:
+            conn.rollback()
+            print("Field(s) edited did not match inputed datatype. Please QUIT and try again.")
+
         lengthbox['state']='disabled'
         stopsbox['state']='disabled'
         capacitybox['state']='disabled'
@@ -333,7 +1457,7 @@ def saveload(): #will commit and push changes to main database, then pull it aga
         attenconbox['state']='disabled'
         driverconbox['state']='disabled'
         conconbox['state']='disabled'
-        numpassbox['state']='normal'
+        numpassbox['state']='disabled'
         
     button2['state']='normal'
 
@@ -366,6 +1490,10 @@ def accreate():
     button4['state']='normal'
     button1['state']='normal'
         
+def get_variable_name(variable):
+    globals_dict = globals()
+
+    return [var_name for var_name in globals_dict if globals_dict[var_name] is variable]
 
 def stopclick(marker): #Function for displaying info when a stop is clicked
     xbox['state']='normal'
@@ -379,6 +1507,20 @@ def stopclick(marker): #Function for displaying info when a stop is clicked
     ybox['state']='disabled'
 
     stopnamelabel['text']=marker.text
+    
+    markname = get_variable_name(marker)[0]
+    sdic=stop_fetch(markname)
+
+    numpassbox['state']='normal'
+    numpassbox.delete(0, len(str(numpassbox.get())))
+    numpassbox.insert(END, sdic['pass_count'])
+    numpassbox['state']='disabled'
+
+    timebox['state']='normal'
+    timebox.delete(0, len(str(timebox.get())))
+    timebox.insert(END, sdic['morning_time'])
+    timebox['state']='disabled'
+
 
 def quit():
     conn.close()
@@ -455,7 +1597,7 @@ tableselect.bind("<<ComboboxSelected>>", routechange)
 
 PV=ttk.Label(canvas, text=str(table.get()), font=('Courier New',15), background='white') #label showing current route number
 
-lengthlabel=ttk.Label(canvas, text='Length', font=('Courier New',11), background='white') #label and entry showing current route length
+lengthlabel=ttk.Label(canvas, text='Length (k.m.)', font=('Courier New',11), background='white') #label and entry showing current route length
 length=StringVar()
 lengthbox=ttk.Entry(canvas, textvariable=length, font=('Courier New',9))
 
@@ -501,10 +1643,6 @@ namelabel=ttk.Label(canvas, text='Name of Passenger', font=('Courier New',11), b
 name=StringVar()
 namebox=ttk.Entry(canvas, textvariable=name, font=('Courier New',9))
 
-passpwdlabel=ttk.Label(canvas, text='Password', font=('Courier New',11), background='white')#label and entry showing passenger password
-passpwd=StringVar()
-passpwdbox=ttk.Entry(canvas, textvariable=passpwd, font=('Courier New',9))
-
 phonelabel=ttk.Label(canvas, text='Phone Number', font=('Courier New',11), background='white')#label and entry showing passenger phone number
 phone=StringVar()
 phonebox=ttk.Entry(canvas, textvariable=phone, font=('Courier New',9))
@@ -531,7 +1669,7 @@ numpasslabel=ttk.Label(canvas, text='Number of Passengers', font=('Courier New',
 numpass=StringVar()
 numpassbox=ttk.Entry(canvas, textvariable=numpass, font=('Courier New',9))
 
-timelabel=ttk.Label(canvas, text='Time of Arrival', font=('Courier New',11), background='white')#label and entry showing route a stop belongs to
+timelabel=ttk.Label(canvas, text='Time of Arrival (a.m.)', font=('Courier New',11), background='white')#label and entry showing route a stop belongs to
 time=StringVar()
 timebox=ttk.Entry(canvas, textvariable=time, font=('Courier New',9))
 
@@ -564,7 +1702,17 @@ button5['state']='disabled'
 canvas.create_window(1225,50,window=button5)
 canvas.pack()
 
-button6=ttk.Button(canvas, text='QUIT', command=quit)
+button6=ttk.Button(canvas, text='QUIT', command=quit) #to quit program and close connections
+
+#button7=ttk.Button(canvas, text='CREATE TABLE STRUCTURE', command=tables_create)
+#button8=ttk.Button(canvas, text='DROP TABLE STRUCTURE', command=tables_delete)
+#button9=ttk.Button(canvas, text='CREATE logins FROM CSV FILE', command=logins_create(path+"passengers.csv",path+"attendants.csv"))
+#button10=ttk.Button(canvas, text='CREATE bus_routes FROM CSV FILE', command=bus_routes_create(path+"bus_routes.csv"))
+#button11=ttk.Button(canvas, text='CREATE stops FROM CSV FILE', command=stops_create(path+"stops.csv"))
+#button12=ttk.Button(canvas, text='CREATE passengers FROM CSV FILE', command=passengers_create(path+"passengers.csv"))
+#button13=ttk.Button(canvas, text='CREATE drivers FROM CSV FILE', command=drivers_create(path+"drivers.csv"))
+#button14=ttk.Button(canvas, text='CREATE conductors FROM CSV FILE', command=conductors_create(path+"conductors.csv"))
+#button15=ttk.Button(canvas, text='CREATE attendants FROM CSV FILE', command=attendants_create(path+"attendants.csv"))
 
 map_widget=tmap.TkinterMapView(canvas, width=400, height=400, corner_radius=5) #map widget
 
@@ -817,7 +1965,12 @@ ankur=map_widget.set_marker(28.62015, 77.29016,command=stopclick, text="Ankur Ap
 mdp=map_widget.set_marker(28.61861, 77.28664,command=stopclick, text="Mother Dairy Patparganj", font=('Courier New',9), marker_color_circle='white', marker_color_outside='black', text_color='black')
 pv22= map_widget.set_path([edm.position,vidhi.position,silver.position,jai.position,ddam.position,para.position,tech.position,press.position,ekta.position,ankur.position,mdp.position,spv.position])
 
-#FOR AVYAYA: for the down routes, you can plot em as the same, just set marker_color_circle='gray' to differentiate them
+#---Other Conditions:---#
+
+if str(tableselect.get())=='<Choose a route:>':
+    button2['state']='disabled'
+else:
+    button2['state']='normal'
 
 #------#
 
