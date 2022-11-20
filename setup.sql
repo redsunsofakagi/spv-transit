@@ -75,7 +75,8 @@ CREATE TABLE  IF NOT EXISTS attendants (
 )
 
 -- @block
-select * from logins;
+select * from stops;
+
 
 
 

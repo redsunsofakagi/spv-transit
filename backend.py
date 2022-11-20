@@ -151,8 +151,8 @@ def pass_update(pass_id, pass_name, route_num, stop_id, pass_phnum):
 # this function is too long but I am not recoding it
 #function to update data for a admin account
 #Enter None where there is no change
-# Content_list format: [[length_route, capacity], [attendant_name], [driver_name, contact], [conductor_name, contact],[stop_id, number of passengers]]
-def attendant_update(attendant_phnum, content_list ):
+# Content_list format: [[length_route, capacity], [attendant_name], [driver_name, contact], [conductor_name, contact],[stop_name, number of passengers]]
+def attendant_update(attendant_phnum, content_list):
     quer1="SELECT route_num FROM attendants WHERE attendant_phnum={}".format(attendant_phnum,)
     try:
         cur.execute(quer1)
@@ -164,7 +164,7 @@ def attendant_update(attendant_phnum, content_list ):
     quer3="SELECT attendant_name, attendant_phnum from attendants WHERE route_num={}".format(route_num,)
     quer4="SELECT driver_name, driver_phnum from drivers WHERE route_num={}".format(route_num,)
     quer5="SELECT conductor_name, conductor_phnum from conductors WHERE route_num={}".format(route_num,)
-    quer6="SELECT pass_count from stops WHERE stop_id='{}'".format(content_list[4][0],)
+    quer6="SELECT pass_count from stops WHERE stop_name='{}'".format(content_list[4][0],)
     #print(content_list)
     try:
         cur.execute(quer2)
@@ -190,7 +190,7 @@ def attendant_update(attendant_phnum, content_list ):
     quer8="UPDATE attendants SET attendant_name='{}' WHERE route_num={}".format(content_list[1][0], route_num)   
     quer9="UPDATE drivers SET driver_name='{}', driver_phnum='{}' WHERE route_num={}".format(content_list[2][0], content_list[2][1],route_num)
     quer10="UPDATE conductors SET conductor_name='{}', conductor_phnum='{}' WHERE route_num={}".format(content_list[3][0], content_list[3][1], route_num)
-    quer11="UPDATE stops SET pass_count={} WHERE stop_id='{}'".format(content_list[4][1],content_list[4][0])
+    quer11="UPDATE stops SET pass_count={} WHERE stop_name='{}'".format(content_list[4][1],content_list[4][0])
 
     try:
         cur.execute(quer7)

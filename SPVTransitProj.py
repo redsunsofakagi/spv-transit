@@ -197,13 +197,12 @@ def linked(): #moves the user to the data screen
         #elif str(userbox.get()) in ['Avyaya', 'Ritwik', 'Arin'] and str(passbox.get()) == 't0p10p@55w0rD5':
 
             #canvas.delete("all")
-
     except TypeError:
         print("Incorrect/empty fields entered.")
 
 
 def routechange(event): #updates to new route
-    print(1)
+    
     if str(user.get())=='attendant':
         quer1="SELECT route_num FROM attendants WHERE attendant_phnum='{}'".format(str(userbox.get()),)
         try:
@@ -1433,14 +1432,14 @@ def saveload(): #will commit and push changes to main database, then pull it aga
         
     elif str(user.get()) == 'attendant': #data is no longer editable. press edit button to change again
 
-        lst=[[float(lengthbox.get()),int(capacitybox.get())],[str(attendantbox.get())],[str(driverbox.get()),str(driverconbox.get())],[str(conductorbox.get()),str(conconbox.get())],[int(stopsbox.get()),int(numpassbox.get())]]
+        lst=[[float(lengthbox.get()),int(capacitybox.get())],[str(attendantbox.get())],[str(driverbox.get()),str(driverconbox.get())],[str(conductorbox.get()),str(conconbox.get())],[stopnamelabel['text'],int(numpassbox.get())]]
         
         try:
             attendant_update(attenconvar,lst)
             print('Records updated successfully.')
         except ValueError:
             conn.rollback()
-            print("Field(s) edited did not match inputed datatype. Please QUIT and try again.")
+            print("Field(s) edited did not match required datatype. Please QUIT and try again.")
 
         lengthbox['state']='disabled'
         capacitybox['state']='disabled'
@@ -1513,31 +1512,31 @@ def stopclick(marker): #Function for displaying info when a stop is clicked
     timebox.insert(END, sdic['morning_time'])
     timebox['state']='disabled'
 
-    print(stopnamelabel['text'])
-    if (stopnamelabel['text'])!='<Select a Stop:>':
+    if str(user.get())=='attendant':
+        if (stopnamelabel['text'])!='<Select a Stop:>':
 
-        quer2="SELECT route_num FROM stops WHERE stop_name='{}'".format(stopnamelabel['text'],)
-        try:
-            cur.execute(quer2)
-            route_tuple2=cur.fetchone()
-            global route_num2
-            route_num2=route_tuple2[0]
-        except (sqlcon.Error, sqlcon.Warning) as e:
-            print(e)
-    else:
-        route_num2=0
+            quer2="SELECT route_num FROM stops WHERE stop_name='{}'".format(stopnamelabel['text'],)
+            try:
+                cur.execute(quer2)
+                route_tuple2=cur.fetchone()
+                global route_num2
+                route_num2=route_tuple2[0]
+            except (sqlcon.Error, sqlcon.Warning) as e:
+                print(e)
+        else:
+            route_num2=0
 
-    if (str(table.get())[3::]).isdigit():
-        global route_num3
-        route_num3=int(str(table.get())[3::])
+        if (str(table.get())[3::]).isdigit():
+            global route_num3
+            route_num3=int(str(table.get())[3::])
 
-    else:
-        route_num3 = -1  
+        else:
+            route_num3 = -1  
 
-    if (route_num1 == route_num2 == route_num3):
-        button2['state']='normal'
-    else:
-        button2['state']='disabled'
+        if (route_num1 == route_num2 == route_num3):
+            button2['state']='normal'
+        else:
+            button2['state']='disabled'
 
 
 def quit():
