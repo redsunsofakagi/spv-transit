@@ -1392,18 +1392,15 @@ def edit(): #allows user to edit respective data by enabling the disabled entry 
 
         lengthbox['state']='normal'
         capacitybox['state']='normal'
-        stopsbox['state']='normal'
         attendantbox['state']='normal'
         driverbox['state']='normal'
         conductorbox['state']='normal'
-        attenconbox['state']='normal'
-
-        global attenconvar
-        attenconvar=str(attenconbox.get())
-
         driverconbox['state']='normal'
         conconbox['state']='normal'
         numpassbox['state']='normal'
+
+        global attenconvar
+        attenconvar=str(attenconbox.get())
 
         button3['state']='normal'
    
@@ -1436,7 +1433,7 @@ def saveload(): #will commit and push changes to main database, then pull it aga
         
     elif str(user.get()) == 'attendant': #data is no longer editable. press edit button to change again
 
-        lst=[[float(lengthbox.get()),int(capacitybox.get())],[str(attendantbox.get()),str(attenconbox.get())],[str(driverbox.get()),str(driverconbox.get())],[str(conductorbox.get()),str(conconbox.get())],[int(stopsbox.get()),int(numpassbox.get())]]
+        lst=[[float(lengthbox.get()),int(capacitybox.get())],[str(attendantbox.get())],[str(driverbox.get()),str(driverconbox.get())],[str(conductorbox.get()),str(conconbox.get())],[int(stopsbox.get()),int(numpassbox.get())]]
         
         try:
             attendant_update(attenconvar,lst)
@@ -1446,12 +1443,10 @@ def saveload(): #will commit and push changes to main database, then pull it aga
             print("Field(s) edited did not match inputed datatype. Please QUIT and try again.")
 
         lengthbox['state']='disabled'
-        stopsbox['state']='disabled'
         capacitybox['state']='disabled'
         attendantbox['state']='disabled'
         driverbox['state']='disabled'
         conductorbox['state']='disabled'
-        attenconbox['state']='disabled'
         driverconbox['state']='disabled'
         conconbox['state']='disabled'
         numpassbox['state']='disabled'
