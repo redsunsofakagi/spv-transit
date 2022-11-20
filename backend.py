@@ -29,6 +29,20 @@ def create_account(username, permissions, password):
         print(e)
         return False
 
+def update_account(username, permissions, password):
+    salt=bcrypt.gensalt()
+    potato=bytes(password, 'utf-8')
+    hash_brown=bcrypt.hashpw(potato,salt)
+    quer1="UPDATE logins SET permission='{}', password_hash='{}', salt='{}' WHERE username='{}'".format(permissions, hash_brown.decode('ASCII'), salt.decode('ASCII'),username)
+    try:
+        cur.execute(quer1)
+        conn.commit()
+        return True
+    except (sqlcon.Error, sqlcon.Warning) as e:
+        conn.rollback()
+        print(e)
+        return False
+
 #funtion to verify username and password and login and return boolean
 def login(username, permissions, password):
     quer1="SELECT * FROM logins WHERE (username='{}' && permission='{}')".format(username, permissions)

@@ -190,15 +190,33 @@ def linked(): #moves the user to the data screen
                 stopbox['state']='disabled'
                 canvas.create_window(500,500, window=stopbox)
                 canvas.pack()
-        elif str(userbox.get()) in ['Avyaya', 'Ritwik', 'Arin'] and str(passbox.get()) == 't0p10p@55w0rD5':
+            
+            elif str(user.get())=='attendant':
+                button2['state']='disabled'
 
-            canvas.delete("all")
+        #elif str(userbox.get()) in ['Avyaya', 'Ritwik', 'Arin'] and str(passbox.get()) == 't0p10p@55w0rD5':
+
+            #canvas.delete("all")
 
     except TypeError:
         print("Incorrect/empty fields entered.")
 
+
 def routechange(event): #updates to new route
-    button2['state']='normal'
+    print(1)
+    if str(user.get())=='attendant':
+        quer1="SELECT route_num FROM attendants WHERE attendant_phnum='{}'".format(str(userbox.get()),)
+        try:
+            cur.execute(quer1)
+            route_tuple1=cur.fetchone()
+            global route_num1
+            route_num1=route_tuple1[0]
+        except (sqlcon.Error, sqlcon.Warning) as e:
+            print(e)
+
+    elif str(userbox.get())=='passenger':
+        button2['state']='normal'
+
     global pv1, pv2, pv3, pv4, pv5, pv6, pv7, pv8, pv9, pv10, pv11, pv12, pv13, pv14, pv15, pv16, pv17, pv18, pv19, pv20, pv21, pv22
     PV['text']=str(table.get())
     pv1.delete()
@@ -227,7 +245,7 @@ def routechange(event): #updates to new route
     if str(table.get())[3::]=='1':
 
         rdic=route_fetch(1)
-
+        
         lengthbox['state']='normal'
         lengthbox.delete(0, len(str(lengthbox.get())))
         lengthbox.insert(END, rdic['route']['route_length'])
@@ -1347,9 +1365,10 @@ def routechange(event): #updates to new route
         pv22=map_widget.set_path([edm.position,vidhi.position,silver.position,jai.position,ddam.position,para.position,tech.position,press.position,ekta.position,ankur.position,mdp.position,spv.position])
     
     else:
-        
-        button2['state']='disabled'
-
+        if str(user.get())=='attendant':
+            button2['state']='disabled'
+        else:
+            pass
     canvas.update()
     canvas.pack()
 
@@ -1369,50 +1388,26 @@ def edit(): #allows user to edit respective data by enabling the disabled entry 
         
     elif str(user.get()) == 'attendant': #attendant can edit some data from their route
 
-        quer1="SELECT route_num FROM attendants WHERE attendant_phnum='{}'".format(str(userbox.get()),)
-        try:
-            cur.execute(quer1)
-            route_tuple1=cur.fetchone()
-            route_num1=route_tuple1[0]
-        except (sqlcon.Error, sqlcon.Warning) as e:
-            print(e)
+        button2['state']='disabled'
 
-        quer2="SELECT route_num FROM stops WHERE stop_name='{}'".format(stopnamelabel['text'],)
-        try:
-            cur.execute(quer2)
-            route_tuple2=cur.fetchone()
-            route_num2=route_tuple2[0]
-        except (sqlcon.Error, sqlcon.Warning) as e:
-            print(e)
+        lengthbox['state']='normal'
+        capacitybox['state']='normal'
+        stopsbox['state']='normal'
+        attendantbox['state']='normal'
+        driverbox['state']='normal'
+        conductorbox['state']='normal'
+        attenconbox['state']='normal'
 
-        if int(str(table.get())[3::]) == route_num1 == route_num2:
+        global attenconvar
+        attenconvar=str(attenconbox.get())
 
-            button2['state']='disabled'
+        driverconbox['state']='normal'
+        conconbox['state']='normal'
+        numpassbox['state']='normal'
 
-            lengthbox['state']='normal'
-            capacitybox['state']='normal'
-            stopsbox['state']='normal'
-            attendantbox['state']='normal'
-            driverbox['state']='normal'
-            conductorbox['state']='normal'
-            attenconbox['state']='normal'
-
-            global attenconvar
-            attenconvar=str(attenconbox.get())
-
-            driverconbox['state']='normal'
-            conconbox['state']='normal'
-            numpassbox['state']='normal'
-
-            button3['state']='normal'
-        
-        else:
-
-            pass
-    
+        button3['state']='normal'
+   
 def saveload(): #will commit and push changes to main database, then pull it again
-    
-    #code to save and load
     
     button3['state']='disabled'
     
@@ -1430,6 +1425,7 @@ def saveload(): #will commit and push changes to main database, then pull it aga
 
         try: 
             pass_update(str(passidbox.get()), str(namebox.get()), int(routebox.get()), stop_id , str(phonebox.get()))
+            print('Records updated successfully.')
         except ValueError:
             conn.rollback()
             print("Field(s) edited did not match inputed datatype. Please QUIT and try again.")
@@ -1444,6 +1440,7 @@ def saveload(): #will commit and push changes to main database, then pull it aga
         
         try:
             attendant_update(attenconvar,lst)
+            print('Records updated successfully.')
         except ValueError:
             conn.rollback()
             print("Field(s) edited did not match inputed datatype. Please QUIT and try again.")
@@ -1464,7 +1461,7 @@ def saveload(): #will commit and push changes to main database, then pull it aga
 def doubt():
     button1['state']='disabled'
     button4['state']='disabled'
-    accountlabel['text']='<Please fill in the following fields to\ncreate your new account:>'
+    accountlabel['text']='<Please fill in the following fields to\nupdate your existing account:>'
     canvas.create_window(1000,60, window=accusnamebox, tags=('au'))
     canvas.create_window(1000,80, window=accpermitbox, tags=('ap1'))
     canvas.create_window(1000,100, window=accpassbox, tags=('ap2'))
@@ -1472,9 +1469,9 @@ def doubt():
     canvas.pack()
 
 def accreate():
-    x = create_account(str(accusname.get()), str(accpermit.get()), str(accpass.get()))
+    x = update_account(str(accusname.get()), str(accpermit.get()), str(accpass.get()))
     if x:
-        accountlabel['text']='<Account made successfully.>'
+        accountlabel['text']='<Account updated successfully.>'
     else:
         accountlabel['text']='<An error occured.>'
     accusnamebox.delete(0, len(str(accusnamebox.get())))
@@ -1520,6 +1517,32 @@ def stopclick(marker): #Function for displaying info when a stop is clicked
     timebox.delete(0, len(str(timebox.get())))
     timebox.insert(END, sdic['morning_time'])
     timebox['state']='disabled'
+
+    print(stopnamelabel['text'])
+    if (stopnamelabel['text'])!='<Select a Stop:>':
+
+        quer2="SELECT route_num FROM stops WHERE stop_name='{}'".format(stopnamelabel['text'],)
+        try:
+            cur.execute(quer2)
+            route_tuple2=cur.fetchone()
+            global route_num2
+            route_num2=route_tuple2[0]
+        except (sqlcon.Error, sqlcon.Warning) as e:
+            print(e)
+    else:
+        route_num2=0
+
+    if (str(table.get())[3::]).isdigit():
+        global route_num3
+        route_num3=int(str(table.get())[3::])
+
+    else:
+        route_num3 = -1  
+
+    if (route_num1 == route_num2 == route_num3):
+        button2['state']='normal'
+    else:
+        button2['state']='disabled'
 
 
 def quit():
@@ -1673,7 +1696,7 @@ timelabel=ttk.Label(canvas, text='Time of Arrival (a.m.)', font=('Courier New',1
 time=StringVar()
 timebox=ttk.Entry(canvas, textvariable=time, font=('Courier New',9))
 
-accountlabel=ttk.Label(canvas, text="Click the '?' button to\ncreate an account.", font=('Courier New', 9),background='white')#label to prompt making an account
+accountlabel=ttk.Label(canvas, text="Click the '?' button to\nupdate an account.", font=('Courier New', 9),background='white')#label to prompt making an account
 canvas.create_window(1000,20, window=accountlabel)
 canvas.pack()
 
@@ -1964,13 +1987,6 @@ ekta=map_widget.set_marker(28.62129, 77.29332,command=stopclick, text="Ekta Gard
 ankur=map_widget.set_marker(28.62015, 77.29016,command=stopclick, text="Ankur Apartments", font=('Courier New',9), marker_color_circle='white', marker_color_outside='black', text_color='black')
 mdp=map_widget.set_marker(28.61861, 77.28664,command=stopclick, text="Mother Dairy Patparganj", font=('Courier New',9), marker_color_circle='white', marker_color_outside='black', text_color='black')
 pv22= map_widget.set_path([edm.position,vidhi.position,silver.position,jai.position,ddam.position,para.position,tech.position,press.position,ekta.position,ankur.position,mdp.position,spv.position])
-
-#---Other Conditions:---#
-
-if str(tableselect.get())=='<Choose a route:>':
-    button2['state']='disabled'
-else:
-    button2['state']='normal'
 
 #------#
 
